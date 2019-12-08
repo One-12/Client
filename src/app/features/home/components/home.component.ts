@@ -1,16 +1,17 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'one12-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'one12-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
+    public tags: string[];
 
-  constructor() { }
+    constructor() {
+        this.tags = ['arun', 'selva', 'kumar'];
+    }
 
-  ngOnInit() {
-  }
-
+    ngOnInit() {}
 }
