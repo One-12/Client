@@ -10,7 +10,23 @@ export class HomeComponent implements OnInit {
     public tags: string[];
 
     constructor() {
-        this.tags = ['arun', 'selva', 'kumar'];
+        this.tags = [
+            'arun',
+            'selva',
+            'kumar',
+            'arun',
+            'selva',
+            'kumar',
+            'arun',
+            'selva',
+            'kumar',
+            'arun',
+            'selva',
+            'kumar',
+            'arun',
+            'selva',
+            'kumar',
+        ];
     }
 
     ngOnInit() {}

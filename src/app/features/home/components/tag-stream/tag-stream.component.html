@@ -1,5 +1,7 @@
 <section id="tag-stream-container">
-    <section *ngFor="let tag of tags">
-        {{ tag }}
-    </section>
+  <section *ngFor="let tag of tags">
+    <button mat-button color="primary" (click)="onTagButtonClicked(tag)" [class.selected]="selectedTag === tag">
+      #{{ tag }}
+    </button>
+  </section>
 </section>

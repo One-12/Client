@@ -1,3 +1,16 @@
-#tag-stream-container {
+@import '../../../../../assets/styles/colors';
 
+#tag-stream-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  button {
+    color: $light-grey-color;
+    font-size: 1rem;
+    font-weight: 400;
+
+    &.selected {
+      color: $primary-blue-color;
+    }
+  }
 }
