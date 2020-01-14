@@ -3,9 +3,11 @@
 #feed-card-container {
   background-color: $white-color;
   border-radius: 16px;
+  transition: all .2s ease-in-out;
 
   header {
     padding: 16px 24px;
+    border-bottom: 1px $light-grey-color solid;
 
     .title {
       font-size: 18px;
@@ -28,6 +30,12 @@
     justify-content: center;
 
     padding: 16px;
+
+    img {
+      width: auto;
+      height: auto;
+      max-height: 360px;
+    }
   }
 
   footer {
@@ -43,4 +51,8 @@
       }
     }
   }
+}
+
+#feed-card-container:hover {
+  transform: scale(1.03);
 }
