@@ -10,9 +10,10 @@ import { HomeRoutingModule } from './home-routing.module';
 
 import { HomeComponent } from './components/home.component';
 import { TagStreamComponent } from './components/tag-stream/tag-stream.component';
+import { FeedCardComponent } from './components/feed-card/feed-card.component';
 
 @NgModule({
-  declarations: [HomeComponent, TagStreamComponent],
+  declarations: [HomeComponent, TagStreamComponent, FeedCardComponent],
   imports: [CommonModule, HomeRoutingModule, MatButtonModule, SharedModule, StoreModule.forFeature('home', reducers)],
 })
 export class HomeModule {}

@@ -8,4 +8,5 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 })
 export class SectionHeaderComponent {
   @Input() public title         : string;
+  @Input() public subtitle      : string;
 }

@@ -2,13 +2,23 @@
 
   <!-- Tags -->
   <section class="tags-container">
-    <one12-section-header title="What People Are Talking About"></one12-section-header>
+    <one12-section-header title="What People Are" subtitle="Talking About"></one12-section-header>
     <one12-tag-stream [tags]="tags"></one12-tag-stream>
+  </section>
+
+  <section class="popular-posts-container">
+    <one12-section-header title="Popular" subtitle="Now"></one12-section-header>
   </section>
 
   <!-- Posts -->
   <section class="posts-container">
     <one12-section-header title="Feeds"></one12-section-header>
+
+    <section class="posts">
+      <article class="post" *ngFor="let post of posts">
+        <one12-feed-card [title]="post.title" [content]="post.content"></one12-feed-card>
+      </article>
+    </section>
   </section>
 
 </main>

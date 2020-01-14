@@ -1,0 +1,46 @@
+@import '../../../../../assets/styles/colors';
+
+#feed-card-container {
+  background-color: $white-color;
+  border-radius: 16px;
+
+  header {
+    padding: 16px 24px;
+
+    .title {
+      font-size: 18px;
+      color: $primary-blue-color;
+    }
+
+    .sub-title {
+      padding-top: 8px;
+      font-size: 12px;
+      color: $grey-color;
+
+      display: grid;
+      grid-template-columns: 1fr auto;
+    }
+  }
+
+  .image-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 16px;
+  }
+
+  footer {
+    border-top: 1px $light-grey-color solid;
+    padding: 16px 24px;
+    color: $grey-color;
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+    .left-section {
+      i {
+        margin-right: 16px;
+      }
+    }
+  }
+}
