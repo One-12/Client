@@ -1,8 +1,31 @@
 #home-container {
   display: grid;
   grid-template-columns: 240px 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+          "logo trending-tags"
+          "logo popular-posts"
+          "left-sidebar feeds";
+
+  .left-sidebar-container {
+    grid-area: left-sidebar;
+
+    .menu-nav-sidebar-wrapper {
+      margin-top: 52px;
+      margin-left: 16px;
+    }
+  }
+
+  .tags-container {
+    grid-area: trending-tags;
+  }
+
+  .popular-posts-container {
+    grid-area: popular-posts;
+  }
 
   .posts-container {
+    grid-area: feeds;
     display: grid;
 
     .posts {
