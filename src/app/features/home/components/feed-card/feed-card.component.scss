@@ -3,7 +3,8 @@
 #feed-card-container {
   background-color: $white-color;
   border-radius: 16px;
-  transition: all .2s ease-in-out;
+  transition: all .5s ease-in-out;
+  border: $light-grey-color 1px solid;
 
   header {
     padding: 16px 24px;
@@ -54,5 +55,5 @@
 }
 
 #feed-card-container:hover {
-  transform: scale(1.03);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
