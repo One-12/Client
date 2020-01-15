@@ -8,8 +8,8 @@
   overflow: hidden;
 
   .menu-items-container {
-    background-color: $lighter-grey-color;
-    color: $dark-grey-color;
+    background-color: $primary-blue-color;
+    color: $white-color;
     padding-top: 18px;
     padding-bottom: 18px;
 
@@ -20,12 +20,11 @@
       border-left: transparent 5px solid;
 
       &:hover {
-        border-left-color: $dark-grey-color;
+        border-left-color: white;
 
         section {
-          color: $primary-blue-color;
           i {
-            color: $orange-color;
+            color: #EB597B;
           }
         }
       }
