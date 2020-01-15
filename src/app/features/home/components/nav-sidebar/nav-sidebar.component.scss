@@ -1,0 +1,38 @@
+@import '../../../../../assets/styles/colors';
+
+#nav-sidebar-container {
+  background-color: $white-color;
+  border-radius: 16px;
+  transition: all 0.5s ease-in-out;
+  border: $light-grey-color 1px solid;
+  overflow: hidden;
+
+  .menu-items-container {
+    background-color: $lighter-grey-color;
+    color: $dark-grey-color;
+    padding-top: 18px;
+    padding-bottom: 18px;
+
+    .menu-item {
+      display: flex;
+      padding: 16px;
+      margin-top: 8px;
+      border-left: transparent 5px solid;
+
+      &:hover {
+        border-left-color: $dark-grey-color;
+
+        section {
+          color: $primary-blue-color;
+          i {
+            color: $orange-color;
+          }
+        }
+      }
+
+      section {
+        margin-right: 16px;
+      }
+    }
+  }
+}
