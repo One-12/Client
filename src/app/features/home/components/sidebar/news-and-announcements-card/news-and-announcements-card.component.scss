@@ -1,0 +1,10 @@
+@import '../../../../../../assets/styles/colors';
+
+#news-and-announcements-card-container {
+  border-radius: 16px;
+  border: $light-grey-color 1px solid;
+  overflow: hidden;
+  background-color: $blue-color;
+  color: white;
+  padding: 16px;
+}
