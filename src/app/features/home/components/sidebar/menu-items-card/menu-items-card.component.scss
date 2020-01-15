@@ -1,9 +1,8 @@
-@import '../../../../../assets/styles/colors';
+@import '../../../../../../assets/styles/colors';
 
-#nav-sidebar-container {
+#menu-sidebar-card-container {
   background-color: $white-color;
   border-radius: 16px;
-  transition: all 0.5s ease-in-out;
   border: $light-grey-color 1px solid;
   overflow: hidden;
 

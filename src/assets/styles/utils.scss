@@ -1,3 +1,33 @@
 .pointer {
   cursor: pointer !important;
 }
+
+.mb-16 {
+  margin-bottom: 16px !important;
+}
+
+.mr-16 {
+  margin-right: 16px !important;
+}
+
+.flex {
+  display: flex !important;
+}
+
+.flex-column {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.flex-row {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
+.justify-content-center {
+  justify-content: center !important;
+}
+
+.f-12 {
+  font-size: 12px !important;
+}

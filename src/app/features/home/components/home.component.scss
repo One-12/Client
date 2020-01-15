@@ -9,11 +9,10 @@
 
   .left-sidebar-container {
     grid-area: left-sidebar;
-
-    .menu-nav-sidebar-wrapper {
-      margin-top: 52px;
-      margin-left: 16px;
-    }
+    margin-top: 52px;
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
   }
 
   .tags-container {
