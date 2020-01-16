@@ -16,7 +16,20 @@ import { SupportCenterCardComponent } from './components/sidebar/support-center-
 import { NewsAndAnnouncementsCardComponent } from './components/sidebar/news-and-announcements-card/news-and-announcements-card.component';
 
 @NgModule({
-  declarations: [HomeComponent, TagStreamComponent, FeedCardComponent, MenuItemsCardComponent, SupportCenterCardComponent, NewsAndAnnouncementsCardComponent],
-  imports: [CommonModule, HomeRoutingModule, MatButtonModule, SharedModule, StoreModule.forFeature('home', reducers)],
+  declarations: [
+    HomeComponent,
+    TagStreamComponent,
+    FeedCardComponent,
+    MenuItemsCardComponent,
+    SupportCenterCardComponent,
+    NewsAndAnnouncementsCardComponent,
+  ],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    MatButtonModule,
+    SharedModule,
+    StoreModule.forFeature('home', reducers),
+  ],
 })
 export class HomeModule {}
