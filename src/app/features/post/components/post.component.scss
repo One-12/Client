@@ -1,0 +1,36 @@
+@import "../../../../assets/styles/colors";
+
+#post-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'logo post-details'
+    'post post-details'
+    'comments comments';
+
+  .logo-wrapper {
+    grid-area: logo;
+    padding-left: 64px;
+  }
+
+  .post-container {
+    grid-area: post;
+    height: 75vh;
+
+    img {
+      width: auto;
+      height: auto;
+      max-height: 480px;
+      max-width: 520px;
+    }
+  }
+
+  .post-details-container {
+    grid-area: post-details;
+    background-color: $lighter-grey-color;
+  }
+
+  .comments-container {
+    grid-area: comments;
+  }
+}

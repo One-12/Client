@@ -10,6 +10,14 @@
   margin-right: 16px !important;
 }
 
+.p-32 {
+  padding: 32px !important;
+}
+
+.pt-16 {
+  padding-top: 16px !important;
+}
+
 .flex {
   display: flex !important;
 }
@@ -28,6 +36,22 @@
   justify-content: center !important;
 }
 
+.align-items-center {
+  align-items: center !important;
+}
+
 .f-12 {
   font-size: 12px !important;
+}
+
+.f-26 {
+  font-size: 26px !important;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.half-width {
+  width: 50% !important;
 }
