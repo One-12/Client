@@ -10,8 +10,16 @@
   margin-right: 16px !important;
 }
 
+.p-2 {
+  padding: 2px !important;
+}
+
 .p-32 {
   padding: 32px !important;
+}
+
+.p-16 {
+  padding: 16px !important;
 }
 
 .pt-16 {
@@ -40,8 +48,20 @@
   align-items: center !important;
 }
 
+.wrap {
+  flex-wrap: wrap;
+}
+
+.no-wrap {
+  flex-wrap: nowrap;
+}
+
 .f-12 {
   font-size: 12px !important;
+}
+
+.f-18 {
+  font-size: 18px !important;
 }
 
 .f-26 {

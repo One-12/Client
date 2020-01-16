@@ -1,0 +1,33 @@
+@import '../../../../../assets/styles/colors';
+
+.post-details-card {
+  border: $light-grey-color 2px solid;
+  border-radius: 8px;
+  width: 80px;
+}
+
+#post-details-cards-container {
+  .points-card-container {
+    @extend .post-details-card;
+
+    i {
+      color: $brick-color;
+    }
+  }
+
+  .views-card-container {
+    @extend .post-details-card;
+
+    i {
+      color: $green-color;
+    }
+  }
+
+  .comments-card-container {
+    @extend .post-details-card;
+
+    i {
+      color: $dark-blue-color;
+    }
+  }
+}
