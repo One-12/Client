@@ -2,6 +2,10 @@
   cursor: pointer !important;
 }
 
+.mb-6 {
+  margin-bottom: 6px;
+}
+
 .mb-16 {
   margin-bottom: 16px !important;
 }
@@ -14,12 +18,12 @@
   padding: 2px !important;
 }
 
-.p-32 {
-  padding: 32px !important;
-}
-
 .p-16 {
   padding: 16px !important;
+}
+
+.p-32 {
+  padding: 32px !important;
 }
 
 .pt-16 {
@@ -42,6 +46,10 @@
 
 .justify-content-center {
   justify-content: center !important;
+}
+
+.justify-content-end {
+  justify-content: flex-end !important;
 }
 
 .align-items-center {

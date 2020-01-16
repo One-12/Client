@@ -4,13 +4,22 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    'logo post-details'
+    'logo close'
     'post post-details'
     'comments comments';
 
   .logo-wrapper {
     grid-area: logo;
     padding-left: 64px;
+  }
+
+  .close-button-wrapper {
+    grid-area: close;
+    background-color: $lighter-grey-color;
+    color: $dark-grey-color;
+    font-size: 48px;
+    padding-top: 16px;
+    padding-right: 32px;
   }
 
   .post-container {
