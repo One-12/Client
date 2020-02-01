@@ -7,7 +7,7 @@ export class TagsEntity {
       let tags: TagModel[] = [];
 
       for (let i = 0; i < 10; i++) {
-          const tag = { name: faker.name.firstName(), code: faker.lorem.slug(8)};
+          const tag = { name: faker.name.firstName(), id: faker.lorem.slug(8)};
           tags = [...tags, tag];
       }
 
