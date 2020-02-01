@@ -22,17 +22,27 @@
   padding: 16px !important;
 }
 
-.px-64 {
-  padding-left: 64px !important;
-  padding-right: 64px !important;
-}
-
 .p-32 {
   padding: 32px !important;
 }
 
 .pt-16 {
   padding-top: 16px !important;
+}
+
+.px-16 {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+.px-64 {
+  padding-left: 64px !important;
+  padding-right: 64px !important;
+}
+
+.py-16 {
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
 }
 
 .flex {
@@ -62,7 +72,7 @@
 }
 
 .wrap {
-  flex-wrap: wrap;
+  flex-wrap: wrap !important;
 }
 
 .no-wrap {

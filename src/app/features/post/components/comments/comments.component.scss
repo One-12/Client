@@ -1,14 +1,35 @@
+@import "../../../../../assets/styles/colors";
+
 #comments-container {
   .comment {
     display: grid;
     grid-template-columns: auto 1fr auto;
-
+    font-size: 14px;
+    
     .image-wrapper {
       img {
         height: 50px;
         width: 50px;
         border-radius: 50%;
       }
+    }
+    .comment-posted-by {
+      color: $primary-blue-color;
+    }
+
+    .comment-content {
+      margin-top: 8px;
+    }
+
+    .time-content {
+      font-size: 12px;
+      color: $grey-color;
+    }
+
+    .respond-container {
+      font-size: 12px;
+      color: $grey-color;
+      margin: 8px;
     }
   }
 }

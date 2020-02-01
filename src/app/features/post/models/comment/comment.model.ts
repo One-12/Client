@@ -8,5 +8,6 @@ export interface CommentModel {
 
 interface UserModel {
   id: string;
+  name: string;
   profilePic: string;
 }
