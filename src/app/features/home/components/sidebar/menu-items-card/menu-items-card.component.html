@@ -1,18 +1,26 @@
+<!-- Sidebar Navigation Menu -->
 <section id="menu-sidebar-card-container">
   <section class="menu-items-container">
-    <section class="menu-item pointer">
+    <!-- My Feeds -->
+    <section class="menu-item pointer" (click)="onMyFeedsButtonClicked()">
       <section><i class="fas fa-chalkboard"></i></section>
       <section>My Feeds</section>
     </section>
-    <section class="menu-item pointer">
+
+    <!-- Editor Picks -->
+    <section class="menu-item pointer" (click)="onEditionPicksButtonClicked()">
       <section><i class="fas fa-user-tie"></i></section>
       <section>Editor Picks</section>
     </section>
-    <section class="menu-item pointer">
+
+    <!-- Discover -->
+    <section class="menu-item pointer" (click)="onDiscoverButtonClicked()">
       <section><i class="fas fa-binoculars"></i></section>
       <section>Discover</section>
     </section>
-    <section class="menu-item pointer">
+
+    <!-- Fresh Posts -->
+    <section class="menu-item pointer" (click)="onFreshButtonClicked()">
       <section><i class="fas fa-fire"></i></section>
       <section>Fresh</section>
     </section>

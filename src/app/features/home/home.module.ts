@@ -8,6 +8,8 @@ import { reducers } from './state';
 import { SharedModule } from '../shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
 
+import { TagsFacade } from './state/tags/tags.facade';
+import { PostsFacade } from './state/posts/posts.facade';
 import { HomeComponent } from './components/home.component';
 import { TagStreamComponent } from './components/tag-stream/tag-stream.component';
 import { FeedCardComponent } from './components/feed-card/feed-card.component';
@@ -24,6 +26,7 @@ import { NewsAndAnnouncementsCardComponent } from './components/sidebar/news-and
     SupportCenterCardComponent,
     NewsAndAnnouncementsCardComponent,
   ],
+  providers: [PostsFacade, TagsFacade],
   imports: [
     CommonModule,
     HomeRoutingModule,

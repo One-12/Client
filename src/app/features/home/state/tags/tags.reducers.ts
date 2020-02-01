@@ -8,15 +8,15 @@ export interface TagsState extends EntityState<TagModel> {
   isFetching: boolean;
 }
 
-export const adapter: EntityAdapter<TagModel> = createEntityAdapter<TagModel>();
+export const tagsAdapter: EntityAdapter<TagModel> = createEntityAdapter<TagModel>();
 
-export const initialState: TagsState = adapter.getInitialState({ isFetching: false });
+export const initialState: TagsState = tagsAdapter.getInitialState({ isFetching: false });
 
 export function tagsReducer(state: TagsState = initialState, action: TagsActions): TagsState {
   switch (action.type) {
     case TagsActionType.LoadTrendingTags: {
       state.isFetching = true;
-      return adapter.addAll(TagsEntity.getTrendingTags(), state);
+      return tagsAdapter.addAll(TagsEntity.getTrendingTags(), state);
     }
 
     case TagsActionType.TrendingTagsLoaded: {
