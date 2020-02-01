@@ -1,0 +1,14 @@
+#comments-container {
+  .comment {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+
+    .image-wrapper {
+      img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+      }
+    }
+  }
+}

@@ -1,1 +1,27 @@
-<p>comments works!</p>
+<section id="comments-container" class="px-64">
+
+  <!-- Header -->
+  <header class="f-26">Comments</header>
+
+  <!-- Comments List -->
+  <section *ngFor="let comment of comments">
+    <section class="comment">
+
+      <!-- User Image Wrapper -->
+      <section class="image-wrapper p-16">
+        <img [src]="comment.postedBy.profilePic" alt="">
+      </section>
+
+      <!-- Comment Content -->
+      <section class="comment-content">
+        {{ comment.comment }}
+      </section>
+
+      <!-- Time Content -->
+      <section class="time-content">
+        {{ comment.postedOn }}
+      </section>
+
+    </section>
+  </section>
+</section>

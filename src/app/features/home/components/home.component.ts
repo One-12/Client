@@ -10,7 +10,7 @@ import { PostModel } from '../models/post/post.model';
 export class HomeComponent implements OnInit {
   public tags: string[];
   public posts: PostModel[];
-
+  
   constructor() {
     this.posts = [
       { title: 'Title 1', id: '1', content: 'https://pics.jilljuck.com/content/medium/041937content_d78972b3-97e4-40e7-80b8-98cd80d5b70c.jpg' },
