@@ -1,5 +1,10 @@
 <main id="home-container">
   <!-- Left Sidebar -->
+  <!-- Logo -->
+  <header class="logo flex flex-row align-items-center justify-content-center">
+    <h1>One 12</h1>
+  </header>
+  <!-- Navigation Menu -->
   <section class="left-sidebar-container">
     <!-- Menu Items -->
     <one12-menu-items-card class="mb-16"
@@ -39,9 +44,7 @@
 
     <section class="posts" *ngIf="posts$ | async as posts; else postsLoading">
       <article class="post" *ngFor="let post of posts">
-        <one12-feed-card [title]="post.title"
-                         [content]="post.content">
-        </one12-feed-card>
+        <one12-feed-card [post]="post"></one12-feed-card>
       </article>
     </section>
     <ng-template #postsLoading>

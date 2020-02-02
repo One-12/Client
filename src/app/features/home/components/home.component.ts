@@ -66,34 +66,33 @@ export class HomeComponent implements OnInit {
 
     if (tag) {
       await this.postsFacade.loadPostsForTag(tag);
+      return;
     }
 
-    if (filter) {
-      switch (filter) {
-        case NAVIGATION_MENU_ITEMS.Discover: {
-          await this.postsFacade.loadDiscoverPosts();
-          break;
-        }
+    switch (filter) {
+      case NAVIGATION_MENU_ITEMS.Discover: {
+        await this.postsFacade.loadDiscoverPosts();
+        break;
+      }
 
-        case NAVIGATION_MENU_ITEMS.Fresh: {
-          await this.postsFacade.loadFreshPosts();
-          break;
-        }
+      case NAVIGATION_MENU_ITEMS.Fresh: {
+        await this.postsFacade.loadFreshPosts();
+        break;
+      }
 
-        case NAVIGATION_MENU_ITEMS.EditorPicks: {
-          await this.postsFacade.loadEditorPicks();
-          break;
-        }
+      case NAVIGATION_MENU_ITEMS.EditorPicks: {
+        await this.postsFacade.loadEditorPicks();
+        break;
+      }
 
-        case NAVIGATION_MENU_ITEMS.MyFeeds: {
-          await this.postsFacade.loadMyFeeds();
-          break;
-        }
+      case NAVIGATION_MENU_ITEMS.MyFeeds: {
+        await this.postsFacade.loadMyFeeds();
+        break;
+      }
 
-        default: {
-          await this.postsFacade.loadMyFeeds();
-          break;
-        }
+      default: {
+        await this.postsFacade.loadMyFeeds();
+        break;
       }
     }
   }

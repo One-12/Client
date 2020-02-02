@@ -1,12 +1,12 @@
-import {Component, ChangeDetectionStrategy, Input} from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { PostModel } from '../../models/post/post.model';
 
 @Component({
   selector: 'one12-feed-card',
   templateUrl: './feed-card.component.html',
   styleUrls: ['./feed-card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeedCardComponent {
-  @Input() public title     : string;
-  @Input() public content   : string;
+  @Input() public post: PostModel;
 }

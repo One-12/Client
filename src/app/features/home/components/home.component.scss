@@ -4,12 +4,16 @@
   grid-template-rows: auto auto auto;
   grid-template-areas:
           "logo trending-tags"
-          "logo popular-posts"
+          "left-sidebar popular-posts"
           "left-sidebar feeds";
+
+  .logo {
+    grid-area: logo;
+  }
 
   .left-sidebar-container {
     grid-area: left-sidebar;
-    margin-top: 52px;
+    margin-top: 16px;
     margin-left: 16px;
     display: flex;
     flex-direction: column;

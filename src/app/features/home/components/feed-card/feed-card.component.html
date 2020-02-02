@@ -2,12 +2,12 @@
   <header>
     <section class="title">
       <strong>
-        {{ title }}
+        {{ post.title }}
       </strong>
     </section>
     <section class="sub-title">
       <section>
-        @arunselvakumar
+        @{{post.postedBy.userName}}
       </section>
       <section>
         Few Moments Ago
@@ -16,7 +16,7 @@
   </header>
   <section>
     <article class="image-wrapper">
-      <img [src]="content" alt="" />
+      <img [src]="post.content" alt="" />
     </article>
   </section>
   <section class="tags-container"></section>
