@@ -7,6 +7,7 @@ import { TagModel } from '../models/tag/tag.model';
 import { PostModel } from '../models/post/post.model';
 import { TagsFacade } from '../state/tags/tags.facade';
 import { PostsFacade } from '../state/posts/posts.facade';
+
 import { NAVIGATION_MENU_ITEMS } from '../utils/constants';
 
 @Component({
@@ -21,6 +22,8 @@ export class HomeComponent implements OnInit {
 
   public trendingTags$: Observable<TagModel[]>;
   public isFetchingTags$: Observable<boolean>;
+
+  private popularPosts$: Observable<PostModel[]>;
 
   constructor(
     private readonly postsFacade: PostsFacade,
@@ -40,7 +43,10 @@ export class HomeComponent implements OnInit {
     this.trendingTags$ = this.tagsFacade.trendingTags$;
     this.isFetchingTags$ = this.tagsFacade.isFetching$;
 
+    this.popularPosts$ = this.postsFacade.popularPosts$;
+
     await this.tagsFacade.loadTrendingTags();
+    await this.postsFacade.loadPopularPosts();
   }
 
   public async onNavigationButtonClicked(selectedMenu: string): Promise<void> {

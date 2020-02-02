@@ -16,6 +16,7 @@ import { FeedCardComponent } from './components/feed-card/feed-card.component';
 import { MenuItemsCardComponent } from './components/sidebar/menu-items-card/menu-items-card.component';
 import { SupportCenterCardComponent } from './components/sidebar/support-center-card/support-center-card.component';
 import { NewsAndAnnouncementsCardComponent } from './components/sidebar/news-and-announcements-card/news-and-announcements-card.component';
+import { PopularPostsStreamComponent } from './components/popular-posts-stream/popular-posts-stream.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NewsAndAnnouncementsCardComponent } from './components/sidebar/news-and
     MenuItemsCardComponent,
     SupportCenterCardComponent,
     NewsAndAnnouncementsCardComponent,
+    PopularPostsStreamComponent,
   ],
   providers: [PostsFacade, TagsFacade],
   imports: [

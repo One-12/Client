@@ -1,11 +1,12 @@
-import { Action } from '@ngrx/store/src/models';
+import { Action } from '@ngrx/store';
 
 export enum PostsActionType {
   LoadMyFeeds             = '[Posts] Load My Feeds',
   LoadEditorPicks         = '[Posts] Load Editor Picks',
   LoadDiscoverPosts       = '[Posts] Load Discover Posts',
   LoadFreshPosts          = '[Posts] Load Fresh Posts',
-  LoadPostsForTag         = '[Posts] Load Posts for Tag'
+  LoadPostsForTag         = '[Posts] Load Posts for Tag',
+  LoadPopularPosts        = '[Posts] Load Popular Posts',
 }
 
 export class LoadMyFeeds implements Action {
@@ -30,4 +31,14 @@ export class LoadPostsForTag implements Action {
   constructor(public payload: string) {}
 }
 
-export type PostsActions = LoadMyFeeds | LoadEditorPicks | LoadDiscoverPosts | LoadFreshPosts | LoadPostsForTag;
+export class LoadPopularPosts implements Action {
+  public readonly type = PostsActionType.LoadPopularPosts;
+}
+
+export type PostsActions =
+                            | LoadMyFeeds
+                            | LoadEditorPicks
+                            | LoadDiscoverPosts
+                            | LoadFreshPosts
+                            | LoadPostsForTag
+                            | LoadPopularPosts;

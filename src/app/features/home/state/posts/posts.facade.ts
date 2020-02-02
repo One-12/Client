@@ -4,16 +4,16 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
 import { PostsState } from './posts.reducers';
-import { selectAllPosts, selectIsFetchingData } from './posts.selectors';
-import { LoadMyFeeds, LoadEditorPicks, LoadFreshPosts, LoadDiscoverPosts, LoadPostsForTag } from './posts.actions';
+import { LoadMyFeeds, LoadEditorPicks, LoadFreshPosts } from './posts.actions';
+import { LoadDiscoverPosts, LoadPostsForTag, LoadPopularPosts } from './posts.actions';
+import { selectAllPosts, selectIsFetchingData, selectPopularPosts } from './posts.selectors';
 
 @Injectable({ providedIn: 'root' })
 export class PostsFacade {
-  posts$ = this.store
-               .select(selectAllPosts)
-               .pipe(map(data => Object.values(data)));
-
-  isFetching$ = this.store.select(selectIsFetchingData);
+  isFetching$       = this.store.select(selectIsFetchingData);
+  popularPosts$     = this.store.select(selectPopularPosts);
+  posts$            = this.store.select(selectAllPosts)
+                                .pipe(map(data => Object.values(data)));
 
   constructor(private readonly store: Store<PostsState>) {}
 
@@ -35,5 +35,9 @@ export class PostsFacade {
 
   async loadPostsForTag(tagName: string): Promise<void> {
     await this.store.dispatch(new LoadPostsForTag(tagName));
+  }
+
+  async loadPopularPosts(): Promise<void> {
+    await this.store.dispatch(new LoadPopularPosts());
   }
 }

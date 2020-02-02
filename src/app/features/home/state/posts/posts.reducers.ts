@@ -6,11 +6,12 @@ import { PostsActions, PostsActionType } from './posts.actions';
 
 export interface PostsState extends EntityState<PostModel> {
   isFetching: boolean;
+  trendingPosts: PostModel[];
 }
 
 export const postsAdapter: EntityAdapter<PostModel> = createEntityAdapter<PostModel>();
 
-export const initialState: PostsState = postsAdapter.getInitialState({ isFetching: false });
+export const initialState: PostsState = postsAdapter.getInitialState({ isFetching: false, trendingPosts: [] });
 
 export function postsReducer(state: PostsState = initialState, action: PostsActions): PostsState {
   switch (action.type) {
@@ -37,6 +38,11 @@ export function postsReducer(state: PostsState = initialState, action: PostsActi
     case PostsActionType.LoadPostsForTag: {
       state.isFetching = true;
       return postsAdapter.addAll(PostsEntity.getPostsForTag(action.payload), state);
+    }
+
+    case PostsActionType.LoadPopularPosts: {
+      const trendingPosts = PostsEntity.getPopularPosts();
+      return { ...state, trendingPosts: trendingPosts };
     }
 
     default: {
