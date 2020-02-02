@@ -55,9 +55,15 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  public async onTagSelected(selectedTag: TagModel) {
+  public async onTagSelected(selectedTag: TagModel): Promise<void> {
     await this.router.navigate(['/home'], {
       queryParams: { tag: selectedTag.name },
+    });
+  }
+
+  public async onPostSelected(selectedPost: PostModel): Promise<void> {
+    await this.router.navigate(['/post'], {
+      queryParams: { id: selectedPost.id },
     });
   }
 

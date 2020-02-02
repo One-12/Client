@@ -1,10 +1,14 @@
+<!-- Post Container -->
 <section id="feed-card-container">
   <header>
-    <section class="title">
+    <!-- Post Title -->
+    <section class="title pointer" (click)="onPostClicked(post)">
       <strong>
         {{ post.title }}
       </strong>
     </section>
+
+    <!-- Username -->
     <section class="sub-title">
       <section>
         @{{post.postedBy.userName}}
@@ -14,12 +18,18 @@
       </section>
     </section>
   </header>
+
+  <!-- Post Content -->
   <section>
-    <article class="image-wrapper">
+    <article class="image-wrapper pointer" (click)="onPostClicked(post)">
       <img [src]="post.content" alt="" />
     </article>
   </section>
+
+  <!-- Tags Container -->
   <section class="tags-container"></section>
+
+  <!-- Footer -->
   <footer>
     <section class="left-section">
       <i class="far fa-thumbs-up"></i>

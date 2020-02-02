@@ -44,7 +44,9 @@
 
     <section class="posts" *ngIf="posts$ | async as posts; else postsLoading">
       <article class="post" *ngFor="let post of posts">
-        <one12-feed-card [post]="post"></one12-feed-card>
+        <one12-feed-card [post]="post"
+                         (postSelected)="onPostSelected($event)">
+        </one12-feed-card>
       </article>
     </section>
     <ng-template #postsLoading>
