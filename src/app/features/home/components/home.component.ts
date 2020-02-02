@@ -45,37 +45,49 @@ export class HomeComponent implements OnInit {
 
   public async onNavigationButtonClicked(selectedMenu: string): Promise<void> {
     await this.router.navigate(['/home'], {
-      queryParams: { page: selectedMenu },
+      queryParams: { filter: selectedMenu },
+    });
+  }
+
+  public async onTagSelected(selectedTag: TagModel) {
+    await this.router.navigate(['/home'], {
+      queryParams: { tag: selectedTag.name },
     });
   }
 
   private async _onQueryParamsChanged(params): Promise<void> {
-    const { page } = params;
+    const { filter, tag } = params;
 
-    switch (page) {
-      case NAVIGATION_MENU_ITEMS.Discover: {
-        await this.postsFacade.loadDiscoverPosts();
-        break;
-      }
+    if (tag) {
+      await this.postsFacade.loadPostsForTag(tag);
+    }
 
-      case NAVIGATION_MENU_ITEMS.Fresh: {
-        await this.postsFacade.loadFreshPosts();
-        break;
-      }
+    if (filter) {
+      switch (filter) {
+        case NAVIGATION_MENU_ITEMS.Discover: {
+          await this.postsFacade.loadDiscoverPosts();
+          break;
+        }
 
-      case NAVIGATION_MENU_ITEMS.EditorPicks: {
-        await this.postsFacade.loadEditorPicks();
-        break;
-      }
+        case NAVIGATION_MENU_ITEMS.Fresh: {
+          await this.postsFacade.loadFreshPosts();
+          break;
+        }
 
-      case NAVIGATION_MENU_ITEMS.MyFeeds: {
-        await this.postsFacade.loadMyFeeds();
-        break;
-      }
+        case NAVIGATION_MENU_ITEMS.EditorPicks: {
+          await this.postsFacade.loadEditorPicks();
+          break;
+        }
 
-      default: {
-        await this.postsFacade.loadMyFeeds();
-        break;
+        case NAVIGATION_MENU_ITEMS.MyFeeds: {
+          await this.postsFacade.loadMyFeeds();
+          break;
+        }
+
+        default: {
+          await this.postsFacade.loadMyFeeds();
+          break;
+        }
       }
     }
   }

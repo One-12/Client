@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 import { PostsState } from './posts.reducers';
 import { selectAllPosts, selectIsFetchingData } from './posts.selectors';
-import { LoadMyFeeds, LoadEditorPicks, LoadFreshPosts, LoadDiscoverPosts } from './posts.actions';
+import { LoadMyFeeds, LoadEditorPicks, LoadFreshPosts, LoadDiscoverPosts, LoadPostsForTag } from './posts.actions';
 
 @Injectable({ providedIn: 'root' })
 export class PostsFacade {
@@ -18,18 +18,22 @@ export class PostsFacade {
   constructor(private readonly store: Store<PostsState>) {}
 
   async loadDiscoverPosts(): Promise<void> {
-    this.store.dispatch(new LoadDiscoverPosts());
+    await this.store.dispatch(new LoadDiscoverPosts());
   }
 
   async loadEditorPicks(): Promise<void> {
-    this.store.dispatch(new LoadEditorPicks());
+    await this.store.dispatch(new LoadEditorPicks());
   }
 
   async loadFreshPosts(): Promise<void> {
-    this.store.dispatch(new LoadFreshPosts());
+    await this.store.dispatch(new LoadFreshPosts());
   }
 
   async loadMyFeeds(): Promise<void> {
-    this.store.dispatch(new LoadMyFeeds());
+    await this.store.dispatch(new LoadMyFeeds());
+  }
+
+  async loadPostsForTag(tagName: string): Promise<void> {
+    await this.store.dispatch(new LoadPostsForTag(tagName));
   }
 }

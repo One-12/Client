@@ -42,6 +42,16 @@ export class PostsEntity {
     return posts;
   }
 
+  public static getPostsForTag(tagName: string): PostModel[] {
+    const posts: PostModel[] = [];
+    for (let i = 0; i < 50; i++) {
+      const post = this._getPostDetails();
+      posts.push(post);
+    }
+
+    return posts;
+  }
+
   private static _getPostDetails(): PostModel {
     return {
       id: faker.lorem.word(),

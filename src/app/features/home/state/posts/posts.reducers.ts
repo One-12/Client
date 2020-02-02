@@ -34,6 +34,11 @@ export function postsReducer(state: PostsState = initialState, action: PostsActi
       return postsAdapter.addAll(PostsEntity.getMyFeeds(), state);
     }
 
+    case PostsActionType.LoadPostsForTag: {
+      state.isFetching = true;
+      return postsAdapter.addAll(PostsEntity.getPostsForTag(action.payload), state);
+    }
+
     default: {
       return state;
     }
