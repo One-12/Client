@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     private readonly postsFacade: PostsFacade,
     private readonly tagsFacade: TagsFacade,
     private readonly router: Router,
-    private readonly activatedRoute: ActivatedRoute,
+    private readonly activatedRoute: ActivatedRoute
   ) {
     this.activatedRoute.queryParams.subscribe(params =>
       this._onQueryParamsChanged(params),

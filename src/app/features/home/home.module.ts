@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
 
 import { TagsFacade } from './state/tags/tags.facade';
+import { PostService } from './services/post.service';
 import { PostsFacade } from './state/posts/posts.facade';
 import { HomeComponent } from './components/home.component';
 import { TagStreamComponent } from './components/tag-stream/tag-stream.component';
@@ -28,7 +29,7 @@ import { PopularPostsStreamComponent } from './components/popular-posts-stream/p
     NewsAndAnnouncementsCardComponent,
     PopularPostsStreamComponent,
   ],
-  providers: [PostsFacade, TagsFacade],
+  providers: [PostsFacade, TagsFacade, PostService],
   imports: [
     CommonModule,
     HomeRoutingModule,
