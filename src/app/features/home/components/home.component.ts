@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   public trendingTags$: Observable<TagModel[]>;
   public isFetchingTags$: Observable<boolean>;
 
-  private popularPosts$: Observable<PostModel[]>;
+  public popularPosts$: Observable<PostModel[]>;
 
   constructor(
     private readonly postsFacade: PostsFacade,
