@@ -25,6 +25,13 @@ export class HomeComponent implements OnInit {
 
   public popularPosts$: Observable<PostModel[]>;
 
+  /**
+   *
+   * @param postsFacade
+   * @param tagsFacade
+   * @param router
+   * @param activatedRoute
+   */
   constructor(
     private readonly postsFacade: PostsFacade,
     private readonly tagsFacade: TagsFacade,
@@ -36,6 +43,9 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  /**
+   *
+   */
   public async ngOnInit(): Promise<void> {
     this.posts$ = this.postsFacade.posts$;
     this.isFetchingPosts$ = this.postsFacade.isFetching$;
@@ -49,24 +59,41 @@ export class HomeComponent implements OnInit {
     await this.postsFacade.loadPopularPosts();
   }
 
+  /**
+   *
+   * @param selectedMenu
+   */
   public async onNavigationButtonClicked(selectedMenu: string): Promise<void> {
     await this.router.navigate(['/home'], {
       queryParams: { filter: selectedMenu },
     });
   }
 
+  /**
+   *
+   * @param selectedTag
+   */
   public async onTagSelected(selectedTag: TagModel): Promise<void> {
     await this.router.navigate(['/home'], {
       queryParams: { tag: selectedTag.name },
     });
   }
 
+  /**
+   *
+   * @param selectedPost
+   */
   public async onPostSelected(selectedPost: PostModel): Promise<void> {
     await this.router.navigate(['/post'], {
       queryParams: { id: selectedPost.id },
     });
   }
 
+  /**
+   *
+   * @param params
+   * @private
+   */
   private async _onQueryParamsChanged(params): Promise<void> {
     const { filter, tag } = params;
 
