@@ -26,11 +26,11 @@ export class HomeComponent implements OnInit {
   public popularPosts$: Observable<PostModel[]>;
 
   /**
-   *
-   * @param postsFacade
-   * @param tagsFacade
-   * @param router
-   * @param activatedRoute
+   * @constructor
+   * @param {PostsFacade} postsFacade
+   * @param {TagsFacade} tagsFacade
+   * @param {Router} router
+   * @param {ActivatedRoute} activatedRoute
    */
   constructor(
     private readonly postsFacade: PostsFacade,
@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
   }
 
   /**
-   *
+   * A lifecycle hook that is called after Angular has initialized all data-bound properties of a directive.
    */
   public async ngOnInit(): Promise<void> {
     this.posts$ = this.postsFacade.posts$;
@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
   }
 
   /**
-   *
+   * Event handler for Button Click Event for Navigation Buttons.
    * @param selectedMenu
    */
   public async onNavigationButtonClicked(selectedMenu: string): Promise<void> {
@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
   }
 
   /**
-   *
+   * Event handler for Button Click Event for Tag Buttons.
    * @param selectedTag
    */
   public async onTagSelected(selectedTag: TagModel): Promise<void> {
@@ -80,7 +80,7 @@ export class HomeComponent implements OnInit {
   }
 
   /**
-   *
+   * Event handler for Post Selection Event.ß
    * @param selectedPost
    */
   public async onPostSelected(selectedPost: PostModel): Promise<void> {
@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
   }
 
   /**
-   *
+   * Query Changed Subscriber.
    * @param params
    * @private
    */
