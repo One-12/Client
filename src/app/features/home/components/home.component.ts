@@ -3,12 +3,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
+import { NAVIGATION_MENU_ITEMS } from '../utils/constants';
+
 import { TagModel } from '../models/tag/tag.model';
 import { PostResponseModel } from '../models/post/post-response.model';
 import { TagsFacade } from '../state/tags/tags.facade';
 import { PostsFacade } from '../state/posts/posts.facade';
-
-import { NAVIGATION_MENU_ITEMS } from '../utils/constants';
 
 @Component({
   selector: 'one12-home',
@@ -27,18 +27,18 @@ export class HomeComponent implements OnInit {
 
   /**
    * @constructor
-   * @param {PostsFacade} postsFacade
-   * @param {TagsFacade} tagsFacade
-   * @param {Router} router
-   * @param {ActivatedRoute} activatedRoute
+   * @param {PostsFacade} _postsFacade
+   * @param {TagsFacade} _tagsFacade
+   * @param {Router} _router
+   * @param {ActivatedRoute} _activatedRoute
    */
   constructor(
-    private readonly postsFacade: PostsFacade,
-    private readonly tagsFacade: TagsFacade,
-    private readonly router: Router,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly _postsFacade: PostsFacade,
+    private readonly _tagsFacade: TagsFacade,
+    private readonly _router: Router,
+    private readonly _activatedRoute: ActivatedRoute
   ) {
-    this.activatedRoute.queryParams.subscribe(params =>
+    this._activatedRoute.queryParams.subscribe(params =>
       this._onQueryParamsChanged(params),
     );
   }
@@ -47,16 +47,16 @@ export class HomeComponent implements OnInit {
    * A lifecycle hook that is called after Angular has initialized all data-bound properties of a directive.
    */
   public async ngOnInit(): Promise<void> {
-    this.posts$ = this.postsFacade.posts$;
-    this.isFetchingPosts$ = this.postsFacade.isFetching$;
+    this.posts$ = this._postsFacade.posts$;
+    this.isFetchingPosts$ = this._postsFacade.isFetching$;
 
-    this.trendingTags$ = this.tagsFacade.trendingTags$;
-    this.isFetchingTags$ = this.tagsFacade.isFetching$;
+    this.trendingTags$ = this._tagsFacade.trendingTags$;
+    this.isFetchingTags$ = this._tagsFacade.isFetching$;
 
-    this.popularPosts$ = this.postsFacade.popularPosts$;
+    this.popularPosts$ = this._postsFacade.popularPosts$;
 
-    await this.tagsFacade.loadTrendingTags();
-    await this.postsFacade.loadPopularPosts();
+    await this._tagsFacade.loadTrendingTags();
+    await this._postsFacade.loadPopularPosts();
   }
 
   /**
@@ -64,7 +64,7 @@ export class HomeComponent implements OnInit {
    * @param selectedMenu
    */
   public async onNavigationButtonClicked(selectedMenu: string): Promise<void> {
-    await this.router.navigate(['/home'], {
+    await this._router.navigate(['/home'], {
       queryParams: { filter: selectedMenu },
     });
   }
@@ -74,7 +74,7 @@ export class HomeComponent implements OnInit {
    * @param selectedTag
    */
   public async onTagSelected(selectedTag: TagModel): Promise<void> {
-    await this.router.navigate(['/home'], {
+    await this._router.navigate(['/home'], {
       queryParams: { tag: selectedTag.name },
     });
   }
@@ -84,7 +84,7 @@ export class HomeComponent implements OnInit {
    * @param selectedPost
    */
   public async onPostSelected(selectedPost: PostResponseModel): Promise<void> {
-    await this.router.navigate(['/post'], {
+    await this._router.navigate(['/post'], {
       queryParams: { id: selectedPost.id },
     });
   }
@@ -98,33 +98,33 @@ export class HomeComponent implements OnInit {
     const { filter, tag } = params;
 
     if (tag) {
-      await this.postsFacade.loadPostsForTag(tag);
+      await this._postsFacade.loadPostsForTag(tag);
       return;
     }
 
     switch (filter) {
       case NAVIGATION_MENU_ITEMS.Discover: {
-        await this.postsFacade.loadDiscoverPosts();
+        await this._postsFacade.loadDiscoverPosts();
         break;
       }
 
       case NAVIGATION_MENU_ITEMS.Fresh: {
-        await this.postsFacade.loadFreshPosts();
+        await this._postsFacade.loadFreshPosts();
         break;
       }
 
       case NAVIGATION_MENU_ITEMS.EditorPicks: {
-        await this.postsFacade.loadEditorPicks();
+        await this._postsFacade.loadEditorPicks();
         break;
       }
 
       case NAVIGATION_MENU_ITEMS.MyFeeds: {
-        await this.postsFacade.loadMyFeeds();
+        await this._postsFacade.loadMyFeeds(0, 20);
         break;
       }
 
       default: {
-        await this.postsFacade.loadMyFeeds();
+        await this._postsFacade.loadMyFeeds(0, 20);
         break;
       }
     }

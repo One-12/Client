@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { PostResponseModel } from "../../models/post/post-response.model";
 
 export enum PostsActionType {
   LoadMyFeeds           = '[Posts] Load My Feeds',
@@ -19,11 +20,13 @@ export enum PostsActionType {
 export class LoadMyFeeds implements Action {
   public readonly type = PostsActionType.LoadMyFeeds;
 
-  constructor(public startIndex: number, public pageSize: number) {}
+  constructor(public startIndex: number, public limit: number) {}
 }
 
 export class MyFeedsLoaded implements Action {
   public readonly type = PostsActionType.MyFeedsLoaded;
+
+  constructor(public payload: PostResponseModel[]) {}
 }
 
 export class LoadEditorPicks implements Action {

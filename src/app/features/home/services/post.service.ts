@@ -16,11 +16,12 @@ export class PostService {
     private readonly _configService: ConfigService,
     private readonly _httpClient: HttpClient,
   ) {
-    this.baseUrl = this._configService.getConfig('endPoint');
+    const apiConfig = this._configService.getConfig('api');
+    this.baseUrl = apiConfig.baseUrl;
   }
 
   public getPostsForFeed(startIndex: number = 0, limit: number = 0): Observable<PostResponseModel> {
-    const apiUrl = `${this.baseUrl}/api/posts?start?=${startIndex}&limit?=${limit}`;
+    const apiUrl = `${this.baseUrl}/api/posts?start=${startIndex}&limit=${limit}`;
     return this._httpClient.get<PostResponseModel>(apiUrl);
   }
 }

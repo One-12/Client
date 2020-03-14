@@ -35,7 +35,7 @@ export function postsReducer(state: PostsState = initialState, action: PostsActi
     }
 
     case PostsActionType.MyFeedsLoaded: {
-      return { ...state, isFetching: false };
+      return postsAdapter.addAll(action.payload, {...state, isFetching: false});
     }
 
     case PostsActionType.LoadPostsForTag: {
