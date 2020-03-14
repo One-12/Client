@@ -1,9 +1,9 @@
 import * as faker from 'faker';
-import {PostModel} from '../../models/post/post.model';
+import {PostResponseModel} from '../../models/post/post-response.model';
 
 export class PostsEntity {
-  public static getMyFeeds(): PostModel[] {
-    const posts: PostModel[] = [];
+  public static getMyFeeds(): PostResponseModel[] {
+    const posts: PostResponseModel[] = [];
     for (let i = 0; i < 50; i++) {
       const post = this._getPostDetails();
       posts.push(post);
@@ -12,8 +12,8 @@ export class PostsEntity {
     return posts;
   }
 
-  public static getEditorPicks(): PostModel[] {
-    const posts: PostModel[] = [];
+  public static getEditorPicks(): PostResponseModel[] {
+    const posts: PostResponseModel[] = [];
     for (let i = 0; i < 50; i++) {
       const post = this._getPostDetails();
       posts.push(post);
@@ -22,8 +22,8 @@ export class PostsEntity {
     return posts;
   }
 
-  public static getDiscoverPosts(): PostModel[] {
-    const posts: PostModel[] = [];
+  public static getDiscoverPosts(): PostResponseModel[] {
+    const posts: PostResponseModel[] = [];
     for (let i = 0; i < 50; i++) {
       const post = this._getPostDetails();
       posts.push(post);
@@ -32,8 +32,8 @@ export class PostsEntity {
     return posts;
   }
 
-  public static getFreshPosts(): PostModel[] {
-    const posts: PostModel[] = [];
+  public static getFreshPosts(): PostResponseModel[] {
+    const posts: PostResponseModel[] = [];
     for (let i = 0; i < 50; i++) {
       const post = this._getPostDetails();
       posts.push(post);
@@ -42,8 +42,8 @@ export class PostsEntity {
     return posts;
   }
 
-  public static getPopularPosts(): PostModel[] {
-    const posts: PostModel[] = [];
+  public static getPopularPosts(): PostResponseModel[] {
+    const posts: PostResponseModel[] = [];
     for (let i = 0; i < 10; i++) {
       const post = this._getPostDetails();
       posts.push(post);
@@ -52,8 +52,8 @@ export class PostsEntity {
     return posts;
   }
 
-  public static getPostsForTag(tagName: string): PostModel[] {
-    const posts: PostModel[] = [];
+  public static getPostsForTag(tagName: string): PostResponseModel[] {
+    const posts: PostResponseModel[] = [];
     for (let i = 0; i < 50; i++) {
       const post = this._getPostDetails();
       posts.push(post);
@@ -62,7 +62,7 @@ export class PostsEntity {
     return posts;
   }
 
-  private static _getPostDetails(): PostModel {
+  private static _getPostDetails(): PostResponseModel {
     return {
       id: faker.lorem.word(),
       content: faker.internet.avatar(),

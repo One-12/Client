@@ -1,7 +1,7 @@
 import { Component, Input, Output } from '@angular/core';
 import { ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 
-import { PostModel } from '../../models/post/post.model';
+import { PostResponseModel } from '../../models/post/post-response.model';
 
 @Component({
   selector: 'one12-feed-card',
@@ -10,14 +10,14 @@ import { PostModel } from '../../models/post/post.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeedCardComponent {
-  @Input() public post: PostModel;
-  @Output() public postSelected: EventEmitter<PostModel>;
+  @Input() public post: PostResponseModel;
+  @Output() public postSelected: EventEmitter<PostResponseModel>;
 
   constructor() {
-    this.postSelected = new EventEmitter<PostModel>();
+    this.postSelected = new EventEmitter<PostResponseModel>();
   }
 
-  public async onPostClicked(post: PostModel): Promise<void> {
+  public async onPostClicked(post: PostResponseModel): Promise<void> {
     this.postSelected.emit(post);
   }
 }

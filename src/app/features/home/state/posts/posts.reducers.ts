@@ -1,15 +1,15 @@
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
 
-import { PostsEntity } from './posts.entity';
-import { PostModel } from '../../models/post/post.model';
-import { PostsActions, PostsActionType } from './posts.actions';
+import { PostsEntity } from "./posts.entity";
+import { PostResponseModel } from "../../models/post/post-response.model";
+import { PostsActions, PostsActionType } from "./posts.actions";
 
-export interface PostsState extends EntityState<PostModel> {
+export interface PostsState extends EntityState<PostResponseModel> {
   isFetching: boolean;
-  trendingPosts: PostModel[];
+  trendingPosts: PostResponseModel[];
 }
 
-export const postsAdapter: EntityAdapter<PostModel> = createEntityAdapter<PostModel>();
+export const postsAdapter: EntityAdapter<PostResponseModel> = createEntityAdapter<PostResponseModel>();
 
 export const initialState: PostsState = postsAdapter.getInitialState({ isFetching: false, trendingPosts: [] });
 
@@ -31,8 +31,11 @@ export function postsReducer(state: PostsState = initialState, action: PostsActi
     }
 
     case PostsActionType.LoadMyFeeds: {
-      state.isFetching = true;
-      return postsAdapter.addAll(PostsEntity.getMyFeeds(), state);
+      return { ...state, isFetching: true };
+    }
+
+    case PostsActionType.MyFeedsLoaded: {
+      return { ...state, isFetching: false };
     }
 
     case PostsActionType.LoadPostsForTag: {

@@ -4,7 +4,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { TagModel } from '../models/tag/tag.model';
-import { PostModel } from '../models/post/post.model';
+import { PostResponseModel } from '../models/post/post-response.model';
 import { TagsFacade } from '../state/tags/tags.facade';
 import { PostsFacade } from '../state/posts/posts.facade';
 
@@ -17,13 +17,13 @@ import { NAVIGATION_MENU_ITEMS } from '../utils/constants';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
-  public posts$: Observable<PostModel[]>;
+  public posts$: Observable<PostResponseModel[]>;
   public isFetchingPosts$: Observable<boolean>;
 
   public trendingTags$: Observable<TagModel[]>;
   public isFetchingTags$: Observable<boolean>;
 
-  public popularPosts$: Observable<PostModel[]>;
+  public popularPosts$: Observable<PostResponseModel[]>;
 
   /**
    * @constructor
@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
    * Event handler for Post Selection Event.ß
    * @param selectedPost
    */
-  public async onPostSelected(selectedPost: PostModel): Promise<void> {
+  public async onPostSelected(selectedPost: PostResponseModel): Promise<void> {
     await this.router.navigate(['/post'], {
       queryParams: { id: selectedPost.id },
     });

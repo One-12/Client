@@ -17,27 +17,27 @@ export class PostsFacade {
 
   constructor(private readonly store: Store<PostsState>) {}
 
-  async loadDiscoverPosts(): Promise<void> {
+  public async loadDiscoverPosts(): Promise<void> {
     await this.store.dispatch(new LoadDiscoverPosts());
   }
 
-  async loadEditorPicks(): Promise<void> {
+  public async loadEditorPicks(): Promise<void> {
     await this.store.dispatch(new LoadEditorPicks());
   }
 
-  async loadFreshPosts(): Promise<void> {
+  public async loadFreshPosts(): Promise<void> {
     await this.store.dispatch(new LoadFreshPosts());
   }
 
-  async loadMyFeeds(): Promise<void> {
-    await this.store.dispatch(new LoadMyFeeds());
+  public async loadMyFeeds(startIndex: number, limit: number): Promise<void> {
+    await this.store.dispatch(new LoadMyFeeds(startIndex, limit));
   }
 
-  async loadPostsForTag(tagName: string): Promise<void> {
+  public async loadPostsForTag(tagName: string): Promise<void> {
     await this.store.dispatch(new LoadPostsForTag(tagName));
   }
 
-  async loadPopularPosts(): Promise<void> {
+  public async loadPopularPosts(): Promise<void> {
     await this.store.dispatch(new LoadPopularPosts());
   }
 }
