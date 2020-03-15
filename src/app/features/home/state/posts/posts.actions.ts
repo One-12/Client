@@ -20,7 +20,7 @@ export enum PostsActionType {
 export class LoadMyFeeds implements Action {
   public readonly type = PostsActionType.LoadMyFeeds;
 
-  constructor(public startIndex: number, public limit: number) {}
+  constructor(public startIndex: number, public pageSize: number) {}
 }
 
 export class MyFeedsLoaded implements Action {

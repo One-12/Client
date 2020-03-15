@@ -14,7 +14,7 @@
         <!-- ToDo: UserName Binding -->
       </section>
       <section>
-        Few Moments Ago
+        {{ post.postedOn | timeAgo }}
       </section>
     </section>
   </header>
@@ -32,8 +32,8 @@
   <!-- Footer -->
   <footer>
     <section class="left-section">
-      <i class="far fa-thumbs-up"></i>
-      <i class="fas fa-comments"></i>
+      <span> {{ post.likesCount | round | numberFormatter }} &nbsp; <i class="far fa-thumbs-up"></i></span>
+      <span> {{ post.commentsCount | round | numberFormatter }} &nbsp; <i class="fas fa-comments"></i></span>
     </section>
 
     <section class="right-section">
