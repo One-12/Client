@@ -11,6 +11,7 @@ import { PostResponseModel } from '../../models/post/post-response.model';
 })
 export class FeedCardComponent {
   @Input() public post: PostResponseModel;
+
   @Output() public postSelected: EventEmitter<PostResponseModel>;
 
   constructor() {
