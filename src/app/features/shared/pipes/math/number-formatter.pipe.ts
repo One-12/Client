@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'numberFormatter',
 })
 export class NumberFormatterPipe implements PipeTransform {
-  public transform(value: number, ...args: unknown[]): string {
+  public transform(value: number): string {
     return value ? this._numberFormatter(value) : '0';
   }
 

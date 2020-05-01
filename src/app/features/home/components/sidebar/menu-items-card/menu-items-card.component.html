@@ -1,28 +1,14 @@
 <!-- Sidebar Navigation Menu -->
 <section id="menu-sidebar-card-container">
   <section class="menu-items-container">
-    <!-- My Feeds -->
-    <section class="menu-item pointer" (click)="onMyFeedsButtonClicked()">
-      <section><i class="fas fa-chalkboard"></i></section>
-      <section>My Feeds</section>
-    </section>
-
-    <!-- Editor Picks -->
-    <section class="menu-item pointer" (click)="onEditionPicksButtonClicked()">
-      <section><i class="fas fa-user-tie"></i></section>
-      <section>Editor Picks</section>
-    </section>
-
-    <!-- Discover -->
-    <section class="menu-item pointer" (click)="onDiscoverButtonClicked()">
-      <section><i class="fas fa-binoculars"></i></section>
-      <section>Discover</section>
-    </section>
-
-    <!-- Fresh Posts -->
-    <section class="menu-item pointer" (click)="onFreshButtonClicked()">
-      <section><i class="fas fa-fire"></i></section>
-      <section>Fresh</section>
+    <!-- Menu Items -->
+    <section
+      class="menu-item pointer"
+      [class.selected]="item.isSelected"
+      *ngFor="let item of navItems"
+      (click)="onMenuItemClicked(item)">
+      <section><i class="fas" [ngClass]="item.icon"></i></section>
+      <section>{{ item.title }}</section>
     </section>
   </section>
 </section>

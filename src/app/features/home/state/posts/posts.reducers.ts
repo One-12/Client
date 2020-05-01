@@ -1,8 +1,8 @@
-import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
-import { PostsEntity } from "./posts.entity";
-import { PostResponseModel } from "../../models/post/post-response.model";
-import { PostsActions, PostsActionType } from "./posts.actions";
+import { PostsEntity } from './posts.entity';
+import { PostResponseModel } from '../../models/post/post-response.model';
+import { PostsActions, PostsActionType } from './posts.actions';
 
 export interface PostsState extends EntityState<PostResponseModel> {
   isFetching: boolean;
@@ -16,18 +16,15 @@ export const initialState: PostsState = postsAdapter.getInitialState({ isFetchin
 export function postsReducer(state: PostsState = initialState, action: PostsActions): PostsState {
   switch (action.type) {
     case PostsActionType.LoadDiscoverPosts: {
-      state.isFetching = true;
-      return postsAdapter.addAll(PostsEntity.getDiscoverPosts(), state);
+      return postsAdapter.setAll(PostsEntity.getDiscoverPosts(), { ...state, isFetching: true });
     }
 
     case PostsActionType.LoadEditorPicks: {
-      state.isFetching = true;
-      return postsAdapter.addAll(PostsEntity.getEditorPicks(), state);
+      return postsAdapter.setAll(PostsEntity.getEditorPicks(), { ...state, isFetching: true });
     }
 
     case PostsActionType.LoadFreshPosts: {
-      state.isFetching = true;
-      return postsAdapter.addAll(PostsEntity.getFreshPosts(), state);
+      return postsAdapter.setAll(PostsEntity.getFreshPosts(), { ...state, isFetching: true });
     }
 
     case PostsActionType.LoadMyFeeds: {
@@ -35,12 +32,11 @@ export function postsReducer(state: PostsState = initialState, action: PostsActi
     }
 
     case PostsActionType.MyFeedsLoaded: {
-      return postsAdapter.addAll(action.payload, {...state, isFetching: false});
+      return postsAdapter.setAll(action.payload, { ...state, isFetching: false });
     }
 
     case PostsActionType.LoadPostsForTag: {
-      state.isFetching = true;
-      return postsAdapter.addAll(PostsEntity.getPostsForTag(action.payload), state);
+      return postsAdapter.setAll(PostsEntity.getPostsForTag(action.payload), { ...state, isFetching: true });
     }
 
     case PostsActionType.LoadPopularPosts: {

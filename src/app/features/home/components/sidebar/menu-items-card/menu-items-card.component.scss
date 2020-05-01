@@ -12,6 +12,16 @@
     padding-top: 18px;
     padding-bottom: 18px;
 
+    .selected {
+      border-left-color: white !important;
+
+      section {
+        i {
+          color: #EB597B;
+        }
+      }
+    }
+
     .menu-item {
       display: flex;
       padding: 16px;
@@ -19,13 +29,7 @@
       border-left: transparent 5px solid;
 
       &:hover {
-        border-left-color: white;
-
-        section {
-          i {
-            color: #EB597B;
-          }
-        }
+        @extend .selected;
       }
 
       section {

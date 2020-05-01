@@ -15,8 +15,7 @@ export const initialState: TagsState = tagsAdapter.getInitialState({ isFetching:
 export function tagsReducer(state: TagsState = initialState, action: TagsActions): TagsState {
   switch (action.type) {
     case TagsActionType.LoadTrendingTags: {
-      state.isFetching = true;
-      return tagsAdapter.addAll(TagsEntity.getTrendingTags(), state);
+      return tagsAdapter.setAll(TagsEntity.getTrendingTags(), { ...state, isFetching: true });
     }
 
     case TagsActionType.TrendingTagsLoaded: {

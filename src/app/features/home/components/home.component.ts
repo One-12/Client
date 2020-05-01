@@ -36,11 +36,9 @@ export class HomeComponent implements OnInit {
     private readonly _postsFacade: PostsFacade,
     private readonly _tagsFacade: TagsFacade,
     private readonly _router: Router,
-    private readonly _activatedRoute: ActivatedRoute
+    private readonly _activatedRoute: ActivatedRoute,
   ) {
-    this._activatedRoute.queryParams.subscribe(params =>
-      this._onQueryParamsChanged(params),
-    );
+    this._activatedRoute.queryParams.subscribe(params => this._onQueryParamsChanged(params));
   }
 
   /**
@@ -65,7 +63,7 @@ export class HomeComponent implements OnInit {
    */
   public async onNavigationButtonClicked(selectedMenu: string): Promise<void> {
     await this._router.navigate(['/home'], {
-      queryParams: { filter: selectedMenu },
+      queryParams: { page: selectedMenu },
     });
   }
 
@@ -95,14 +93,14 @@ export class HomeComponent implements OnInit {
    * @private
    */
   private async _onQueryParamsChanged(params): Promise<void> {
-    const { filter, tag } = params;
+    const { page, tag } = params;
 
     if (tag) {
       await this._postsFacade.loadPostsForTag(tag);
       return;
     }
 
-    switch (filter) {
+    switch (page) {
       case NAVIGATION_MENU_ITEMS.Discover: {
         await this._postsFacade.loadDiscoverPosts();
         break;
