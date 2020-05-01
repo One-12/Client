@@ -6,28 +6,39 @@ import { of } from 'rxjs';
 
 import { PostService } from '../../services/post.service';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { LoadMyFeeds, PostsActionType } from './posts.actions';
+import { LoadPopularPosts, LoadPosts, PostsActionType } from './posts.actions';
 
 @Injectable({ providedIn: 'root' })
 export class PostsEffects {
-  constructor(
-    private readonly _actions$: Actions,
-    private readonly _postService: PostService,
-  ) {}
+  constructor(private readonly _actions$: Actions, private readonly _postService: PostService) {}
 
   @Effect()
-  loadMyFeedsPosts$ = this._actions$.pipe(
-    ofType(PostsActionType.LoadMyFeeds),
-    switchMap((action: LoadMyFeeds) =>
-      this._postService
-          .getPostsForFeed(action.startIndex, action.pageSize)
-          .pipe(
-            map(posts => {
-              return { type: PostsActionType.MyFeedsLoaded, payload: posts };
-            }),
-            catchError((err: HttpErrorResponse) => {
-              return of({ type: PostsActionType.LoadPostFailed, payload: null });
-            }),
-          ),
-      ));
+  loadPosts$ = this._actions$.pipe(
+    ofType(PostsActionType.LoadPosts),
+    switchMap((action: LoadPosts) =>
+      this._postService.getPosts(action.payload).pipe(
+        map(posts => {
+          return { type: PostsActionType.PostsLoaded, payload: posts };
+        }),
+        catchError((err: HttpErrorResponse) => {
+          return of({ type: PostsActionType.LoadPostsFailed, payload: null });
+        }),
+      ),
+    ),
+  );
+
+  @Effect()
+  loadPopularPosts$ = this._actions$.pipe(
+    ofType(PostsActionType.LoadPopularPosts),
+    switchMap((action: LoadPopularPosts) =>
+      this._postService.getPosts(action.payload).pipe(
+        map(posts => {
+          return { type: PostsActionType.PopularPostsLoaded, payload: posts };
+        }),
+        catchError((err: HttpErrorResponse) => {
+          return of({ type: PostsActionType.LoadPopularPostsFailed, payload: null });
+        }),
+      ),
+    ),
+  );
 }

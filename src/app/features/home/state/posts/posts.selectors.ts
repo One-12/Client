@@ -11,6 +11,11 @@ const { selectEntities } = postsAdapter.getSelectors(selectPostsState);
 
 export const selectAllPosts = selectEntities;
 
-export const selectIsFetchingData = createSelector(selectPostsState, (state: PostsState) => state.isFetching);
+export const selectIsFetchingPosts = createSelector(selectPostsState, (state: PostsState) => state.isFetchingPosts);
 
-export const selectPopularPosts = createSelector(selectPostsState, (state: PostsState) => state.trendingPosts);
+export const selectIsFetchingPopularPosts = createSelector(
+  selectPostsState,
+  (state: PostsState) => state.isFetchingPopularPosts,
+);
+
+export const selectPopularPosts = createSelector(selectPostsState, (state: PostsState) => state.popularPosts);

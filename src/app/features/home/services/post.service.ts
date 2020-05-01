@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
 import { ConfigService } from '../../../core/services/config.service';
+import { PostRequestModel } from '../models/post/post-request.model';
 import { PostResponseModel } from '../models/post/post-response.model';
 
 @Injectable({
@@ -12,16 +13,19 @@ import { PostResponseModel } from '../models/post/post-response.model';
 export class PostService {
   private readonly baseUrl: any;
 
-  constructor(
-    private readonly _configService: ConfigService,
-    private readonly _httpClient: HttpClient,
-  ) {
+  constructor(private readonly _configService: ConfigService, private readonly _httpClient: HttpClient) {
     const apiConfig = this._configService.getConfig('api');
     this.baseUrl = apiConfig.baseUrl;
   }
 
-  public getPostsForFeed(startIndex: number = 0, limit: number = 0): Observable<PostResponseModel> {
-    const apiUrl = `${this.baseUrl}/api/posts?start=${startIndex}&limit=${limit}`;
-    return this._httpClient.get<PostResponseModel>(apiUrl);
+  public getPosts(postRequest: PostRequestModel): Observable<PostResponseModel> {
+    let httpParams = new HttpParams();
+    const apiUrl = `${this.baseUrl}/api/posts`;
+    httpParams = httpParams.append('page', postRequest.page);
+    httpParams = httpParams.append('offset', String(postRequest.offset));
+    httpParams = httpParams.append('limit', String(postRequest.limit));
+    httpParams = httpParams.append('tag', String(postRequest.tag));
+
+    return this._httpClient.get<PostResponseModel>(apiUrl, { params: httpParams });
   }
 }

@@ -7,29 +7,23 @@
   <!-- Navigation Menu -->
   <section class="left-sidebar-container">
     <!-- Menu Items -->
-    <one12-menu-items-card class="mb-16"
-                           (navigationButtonClicked)="onNavigationButtonClicked($event)">
+    <one12-menu-items-card class="mb-16" (navigationButtonClicked)="onNavigationButtonClicked($event)">
     </one12-menu-items-card>
 
     <!-- Help & Support Card -->
     <one12-support-center-card class="mb-16"></one12-support-center-card>
 
     <!-- Announcements Card -->
-    <one12-news-and-announcements-card class="mb-16">
-    </one12-news-and-announcements-card>
+    <one12-news-and-announcements-card class="mb-16"> </one12-news-and-announcements-card>
   </section>
 
   <!-- Tags -->
   <section class="tags-container">
     <!-- Tags Header -->
-    <one12-section-header title="What People Are"
-                          subtitle="Talking">
-    </one12-section-header>
+    <one12-section-header title="What People Are" subtitle="Talking"> </one12-section-header>
 
     <!-- Tags Stream -->
-    <one12-tag-stream [tags]="trendingTags$ | async"
-                      (tagSelected)="onTagSelected($event)">
-    </one12-tag-stream>
+    <one12-tag-stream [tags]="trendingTags$ | async" (tagSelected)="onTagSelected($event)"> </one12-tag-stream>
   </section>
 
   <!-- Popular Posts -->
@@ -42,15 +36,22 @@
   <section class="posts-container">
     <one12-section-header title="Feeds"></one12-section-header>
 
-    <section class="posts" *ngIf="posts$ | async as posts; else postsLoading">
-      <article class="post" *ngFor="let post of posts">
-        <one12-feed-card [post]="post"
-                         (postSelected)="onPostSelected($event)">
-        </one12-feed-card>
-      </article>
-    </section>
-    <ng-template #postsLoading>
+    <!-- Load Indicator -->
+    <section *ngIf="isFetchingPosts$ | async">
       <h1>Loading</h1>
-    </ng-template>
+    </section>
+
+    <!-- Feed Stream -->
+    <section
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="50"
+      (scrolled)="onFeedsScrolled($event)"
+      class="posts"
+      *ngIf="posts$ | async as posts">
+        <article class="post" *ngFor="let post of posts">
+          <one12-feed-card [post]="post" (postSelected)="onPostSelected($event)"> </one12-feed-card>
+        </article>
+    </section>
   </section>
 </main>

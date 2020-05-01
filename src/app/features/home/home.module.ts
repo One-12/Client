@@ -21,6 +21,7 @@ import { MenuItemsCardComponent } from './components/sidebar/menu-items-card/men
 import { PopularPostsStreamComponent } from './components/popular-posts-stream/popular-posts-stream.component';
 import { SupportCenterCardComponent } from './components/sidebar/support-center-card/support-center-card.component';
 import { NewsAndAnnouncementsCardComponent } from './components/sidebar/news-and-announcements-card/news-and-announcements-card.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { NewsAndAnnouncementsCardComponent } from './components/sidebar/news-and
     SharedModule,
     StoreModule.forFeature('home', reducers),
     EffectsModule.forFeature([PostsEffects]),
+    InfiniteScrollModule,
   ],
 })
 export class HomeModule {}

@@ -1,7 +1,7 @@
 import { Component, Output } from '@angular/core';
 import { ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 
-import { NAVIGATION_MENU_ITEMS } from '../../../utils/constants';
+import { POST_PAGES } from '../../../utils/constants';
 import { NavItemModel } from '../../../models/nav/nav-item.model';
 
 @Component({
@@ -28,10 +28,10 @@ export class MenuItemsCardComponent {
   private _initializeProperties(): void {
     this.navigationButtonClicked = new EventEmitter<string>();
     this.navItems = [
-      { isSelected: true, id: NAVIGATION_MENU_ITEMS.MyFeeds, title: 'My Feeds', icon: 'fa-chalkboard' },
-      { isSelected: false, id: NAVIGATION_MENU_ITEMS.EditorPicks, title: 'Editor Picks', icon: 'fa-user-tie' },
-      { isSelected: false, id: NAVIGATION_MENU_ITEMS.Fresh, title: 'Fresh', icon: 'fa-binoculars' },
-      { isSelected: false, id: NAVIGATION_MENU_ITEMS.Discover, title: 'Discover', icon: 'fa-fire' },
+      { isSelected: true, id: POST_PAGES.MyFeeds, title: 'My Feeds', icon: 'fa-chalkboard' },
+      { isSelected: false, id: POST_PAGES.EditorPicks, title: 'Editor Picks', icon: 'fa-user-tie' },
+      { isSelected: false, id: POST_PAGES.Fresh, title: 'Fresh', icon: 'fa-binoculars' },
+      { isSelected: false, id: POST_PAGES.Discover, title: 'Discover', icon: 'fa-fire' },
     ];
   }
 }
