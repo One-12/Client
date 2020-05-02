@@ -9,14 +9,12 @@ const routes: Routes = [
     component: FeaturesComponent,
     children: [
       {
-        path: 'home',
-        loadChildren: () =>
-          import('./home/home.module').then(m => m.HomeModule),
+        path: 'post',
+        loadChildren: () => import('./post/post.module').then(m => m.PostModule),
       },
       {
-        path: 'post',
-        loadChildren: () =>
-          import('./post/post.module').then(m => m.PostModule),
+        path: '',
+        loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
       },
     ],
   },

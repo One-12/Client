@@ -53,14 +53,16 @@ export class HomeComponent implements OnInit {
   }
 
   public async onNavigationButtonClicked(selectedMenu: string): Promise<void> {
-    await this._router.navigate(['/home'], {
+    await this._router.navigate([], {
       queryParams: { page: selectedMenu },
+      relativeTo: this._activatedRoute,
     });
   }
 
   public async onTagSelected(selectedTag: TagModel): Promise<void> {
-    await this._router.navigate(['/home'], {
+    await this._router.navigate([], {
       queryParams: { page: POST_PAGES.Tag, tag: selectedTag.name },
+      relativeTo: this._activatedRoute,
     });
   }
 

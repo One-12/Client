@@ -17,13 +17,17 @@
     <one12-news-and-announcements-card class="mb-16"> </one12-news-and-announcements-card>
   </section>
 
+  <section class="time-line-header">
+    <one12-time-line-header></one12-time-line-header>
+  </section>
+
   <!-- Tags -->
   <section class="tags-container">
     <!-- Tags Header -->
     <one12-section-header title="What People Are" subtitle="Talking"> </one12-section-header>
 
     <!-- Tags Stream -->
-    <one12-tag-stream [tags]="trendingTags$ | async" (tagSelected)="onTagSelected($event)"> </one12-tag-stream>
+    <!-- <one12-tag-stream [tags]="trendingTags$ | async" (tagSelected)="onTagSelected($event)"> </one12-tag-stream> -->
   </section>
 
   <!-- Popular Posts -->

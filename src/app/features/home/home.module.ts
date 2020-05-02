@@ -5,6 +5,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 import { reducers } from './state';
 import { SharedModule } from '../shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
@@ -21,7 +23,8 @@ import { MenuItemsCardComponent } from './components/sidebar/menu-items-card/men
 import { PopularPostsStreamComponent } from './components/popular-posts-stream/popular-posts-stream.component';
 import { SupportCenterCardComponent } from './components/sidebar/support-center-card/support-center-card.component';
 import { NewsAndAnnouncementsCardComponent } from './components/sidebar/news-and-announcements-card/news-and-announcements-card.component';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { TimeLineHeaderComponent } from './components/time-line-header/time-line-header.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,8 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     SupportCenterCardComponent,
     NewsAndAnnouncementsCardComponent,
     PopularPostsStreamComponent,
+    TimeLineHeaderComponent,
+    LoginComponent,
   ],
   providers: [PostsFacade, TagsFacade, PostService],
   imports: [

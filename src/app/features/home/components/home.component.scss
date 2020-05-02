@@ -3,6 +3,7 @@
   grid-template-columns: 240px 1fr;
   grid-template-rows: auto auto auto;
   grid-template-areas:
+          "logo time-line-header"
           "logo trending-tags"
           "left-sidebar popular-posts"
           "left-sidebar feeds";
@@ -17,6 +18,11 @@
     margin-left: 16px;
     display: flex;
     flex-direction: column;
+  }
+
+  .time-line-header {
+    grid-area: time-line-header;
+    margin: 8px 16px;
   }
 
   .tags-container {
