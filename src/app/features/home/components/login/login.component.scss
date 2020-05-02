@@ -1,0 +1,30 @@
+@import "../../../../../assets/styles/colors";
+
+#login-component-container {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+
+  .left-panel {
+    height: 100vh;
+
+    img {
+      zoom: 15%;
+    }
+  }
+
+  .right-panel {
+    border-left: $light-grey-color solid 1px;
+
+    .google-login {
+      background-color: #CB4023;
+    }
+
+    .facebook-login {
+      background-color: #3A5999;
+    }
+
+    .guest-login {
+      background-color: $grey-color;
+    }
+  }
+}
