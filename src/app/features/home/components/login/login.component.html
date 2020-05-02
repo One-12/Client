@@ -14,17 +14,17 @@
     </section>
 
     <!-- Login with Google -->
-    <button mat-flat-button color="primary" class="mb-16 google-login">
+    <button mat-flat-button color="primary" class="mb-16 google-login" (click)="onLoginWithGoogleButtonClicked()">
       <fa-icon [icon]="googleIcon"></fa-icon> Login With Google
     </button>
 
     <!-- Login with Facebook -->
-    <button mat-flat-button color="primary" class="mb-16 facebook-login">
+    <button mat-flat-button color="primary" class="mb-16 facebook-login" (click)="onLoginWithFacebookButtonClicked()">
       <fa-icon [icon]="facebookIcon"></fa-icon> Login With Facebook
     </button>
 
     <!-- Login with Facebook -->
-    <button mat-flat-button color="primary" class="mb-16 guest-login">
+    <button mat-flat-button color="primary" class="mb-16 guest-login" (click)="onContinueAsGuestButtonClicked()">
       Continue as a Guest
     </button>
   </section>

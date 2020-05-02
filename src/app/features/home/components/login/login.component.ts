@@ -1,5 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { faFacebookSquare, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { Router } from '@angular/router';
+import { AuthService, FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 
 @Component({
   selector: 'one12-login',
@@ -7,14 +9,24 @@ import { faFacebookSquare, faGoogle } from '@fortawesome/free-brands-svg-icons';
   styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   public facebookIcon = faFacebookSquare;
 
   public googleIcon = faGoogle;
 
-  public;
+  constructor(private readonly _router: Router, private readonly _authService: AuthService) {
+    this._authService.authState.subscribe(console.log);
+  }
 
-  constructor() {}
+  public async onLoginWithGoogleButtonClicked(): Promise<void> {
+    await this._authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
 
-  ngOnInit(): void {}
+  public async onLoginWithFacebookButtonClicked(): Promise<void> {
+    await this._authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+
+  public async onContinueAsGuestButtonClicked(): Promise<void> {
+    await this._router.navigate(['/']);
+  }
 }
