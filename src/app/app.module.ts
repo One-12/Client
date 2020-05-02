@@ -13,6 +13,7 @@ import { FeaturesModule } from './features/features.module';
 import { AppComponent } from './app.component';
 import { AuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const authServiceConfig = new AuthServiceConfig([
   {
@@ -43,6 +44,7 @@ export function getAuthServiceConfig() {
     StoreDevtoolsModule.instrument({
       maxAge: 50,
     }),
+    FontAwesomeModule,
   ],
   providers: [
     {
