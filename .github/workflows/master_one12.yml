@@ -1,9 +1,10 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - one12
+name: Build and Deploy Angular Client 
 env:
   AZURE_WEBAPP_PACKAGE_PATH: './dist/One12'
+  APP_NAME: 'One12'
 
 on:
   push:
@@ -26,10 +27,16 @@ jobs:
       run: |
         npm install
         npm run build -- --prod
+        
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ env.APP_NAME }}
+        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
     - name: 'Deploy to Azure Web App'
       uses: azure/webapps-deploy@v1
       with:
-        app-name: 'one12'
+        app-name: ${{ env.APP_NAME }}
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_280c3d4f4b574573b54e94589fc85f2b }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
