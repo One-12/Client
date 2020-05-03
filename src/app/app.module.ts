@@ -18,7 +18,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 const authServiceConfig = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider('706878206699-qa4hsvj0mmkm4ae3e4f2t11samqm85gk.apps.googleusercontent.com'),
+    provider: new GoogleLoginProvider('706878206699-r0vpih8qmofo67uf6mo0hqtp8b1v85s4.apps.googleusercontent.com'),
   },
   {
     id: FacebookLoginProvider.PROVIDER_ID,
