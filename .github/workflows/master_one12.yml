@@ -12,7 +12,7 @@ on:
       - master
 
 jobs:
-  Build And Deploy One12:
+  Build-And-Deploy-One12:
     runs-on: windows-latest
 
     steps:
