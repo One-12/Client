@@ -1,23 +1,30 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { AuthService, SocialUser } from 'angularx-social-login';
+import { User } from 'firebase';
 import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'one12-time-line-header',
   templateUrl: './time-line-header.component.html',
   styleUrls: ['./time-line-header.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TimeLineHeaderComponent implements OnInit {
-  public socialUser: SocialUser;
+  public user: User;
 
-  constructor(private readonly _authService: AuthService, private readonly _router: Router) {}
+  constructor(private readonly _router: Router, private readonly _angularFireAuth: AngularFireAuth) {}
 
-  ngOnInit(): void {
-    this._authService.authState.subscribe(user => (this.socialUser = user));
+  public ngOnInit(): void {
+    this._angularFireAuth.authState.subscribe(user => {
+      this.user = user;
+      console.log(this.user);
+    });
   }
 
   public async onLoginButtonClicked(): Promise<void> {
     await this._router.navigate(['/login']);
+  }
+
+  public async onLogOutButtonClicked(): Promise<void> {
+    await this._angularFireAuth.signOut();
   }
 }

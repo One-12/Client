@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
 import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { StoreModule } from '@ngrx/store';
@@ -11,24 +14,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { FeaturesModule } from './features/features.module';
 
 import { AppComponent } from './app.component';
-import { AuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
-import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-const authServiceConfig = new AuthServiceConfig([
-  {
-    id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider('706878206699-r0vpih8qmofo67uf6mo0hqtp8b1v85s4.apps.googleusercontent.com'),
-  },
-  {
-    id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider('162354331854070'),
-  },
-]);
-
-export function getAuthServiceConfig() {
-  return authServiceConfig;
-}
+const firebaseConfig = {
+  apiKey: 'AIzaSyBj-DGF0P5unpVEAGAi1qFfNF-de3E8a44',
+  authDomain: 'one-12-dev-1588433721353.firebaseapp.com',
+  databaseURL: 'https://one-12-dev-1588433721353.firebaseio.com',
+  projectId: 'one-12-dev-1588433721353',
+  storageBucket: 'one-12-dev-1588433721353.appspot.com',
+  messagingSenderId: '706878206699',
+  appId: '1:706878206699:web:115eb5d5897bf3651dc4ae',
+  measurementId: 'G-LL6K95B1LC',
+};
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,20 +34,16 @@ export function getAuthServiceConfig() {
     BrowserModule,
     FeaturesModule,
     AppRoutingModule,
-    SocialLoginModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
     StoreModule.forRoot([]),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 50,
     }),
     FontAwesomeModule,
-  ],
-  providers: [
-    {
-      provide: AuthServiceConfig,
-      useFactory: getAuthServiceConfig,
-    },
   ],
   bootstrap: [AppComponent],
 })

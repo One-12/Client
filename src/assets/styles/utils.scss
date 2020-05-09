@@ -4,6 +4,10 @@
   color: $grey-color;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .pointer {
   cursor: pointer !important;
 }
@@ -18,6 +22,10 @@
 
 .mb-32 {
   margin-bottom: 32px !important;
+}
+
+.ml-15 {
+  margin-left: 15px !important;
 }
 
 .ml-64 {

@@ -1,33 +1,58 @@
 <section id="login-component-container">
+  <!-- Left Panel -->
   <section class="left-panel flex justify-content-center align-items-center">
-    <img src="../../../../../assets/images/login.png" alt="">
+    <img src="../../../../../assets/images/login.png" alt="" />
   </section>
-  <section class="right-panel flex-column justify-content-center align-items-center">
-    <section class="f-26 mb-16">Hello, Again!</section>
-    <section>{{ loggedInUser?.name }}</section>
-    <section class="f-12 text-muted mb-32 flex-column justify-content-center align-items-center">
-      <section>
-      <strong class="f-14">login</strong> using any of your trusted services
+
+  <!-- Right Panel -->
+  <section *ngIf="_angularFireAuth.user | async; then authenticated; else guest"></section>
+
+  <!-- Authenticated User Section -->
+  <ng-template #authenticated>
+    <section class="right-panel flex-column justify-content-center align-items-center">
+      <!-- User Information Display Section -->
+      <section class="f-26 mb-16" *ngIf="_angularFireAuth.user | async as user">
+        Welcome, {{ user.displayName }}!
       </section>
-      <section>
-        or you can still decide to stay anonymous by continuing as <strong class="f-14">guest</strong>
-      </section>
+
+      <!-- Continue To Home Button -->
+      <button mat-flat-button color="primary" class="mb-16" (click)="onContinueToHomePageButtonClicked()">
+        Continue to Home
+      </button>
+
+      <!-- Log Out Button -->
+      <button mat-flat-button color="primary" class="mb-16 logout" (click)="onContinueLogOutButtonClicked()">
+        Log Off
+      </button>
     </section>
+  </ng-template>
 
-    <!-- Login with Google -->
-    <button mat-flat-button color="primary" class="mb-16 google-login" (click)="onLoginWithGoogleButtonClicked()">
-      <fa-icon [icon]="googleIcon"></fa-icon> Login With Google
-    </button>
+  <!-- Guest User Section -->
+  <ng-template #guest class="right-panel flex-column justify-content-center align-items-center">
+    <section class="right-panel flex-column justify-content-center align-items-center">
+      <!-- Title & Description -->
+      <section class="f-26 mb-16">Hello, Again!</section>
+      <section class="f-12 text-muted mb-32 flex-column justify-content-center align-items-center">
+        <section><strong class="f-14">login</strong> using any of your trusted services</section>
+        <section>
+          or you can still decide to stay anonymous by continuing as <strong class="f-14">guest</strong>
+        </section>
+      </section>
 
-    <!-- Login with Facebook -->
-    <button mat-flat-button color="primary" class="mb-16 facebook-login" (click)="onLoginWithFacebookButtonClicked()">
-      <fa-icon [icon]="facebookIcon"></fa-icon> Login With Facebook
-    </button>
+      <!-- Login with Google Button -->
+      <button mat-flat-button color="primary" class="mb-16 google-login" (click)="onLoginWithGoogleButtonClicked()">
+        <fa-icon [icon]="googleIcon"></fa-icon> Login With Google
+      </button>
 
-    <!-- Login with Facebook -->
-    <button mat-flat-button color="primary" class="mb-16 guest-login" (click)="onContinueAsGuestButtonClicked()">
-      Continue as a Guest
-    </button>
-  </section>
+      <!-- Login with Facebook Button -->
+      <button mat-flat-button color="primary" class="mb-16 facebook-login" (click)="onLoginWithFacebookButtonClicked()">
+        <fa-icon [icon]="facebookIcon"></fa-icon> Login With Facebook
+      </button>
+
+      <!-- Login with Facebook Button -->
+      <button mat-flat-button color="primary" class="mb-16 guest-login" (click)="onContinueAsGuestButtonClicked()">
+        Continue as a Guest
+      </button>
+    </section>
+  </ng-template>
 </section>
-

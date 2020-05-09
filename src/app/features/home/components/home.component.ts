@@ -17,7 +17,6 @@ import { PostResponseModel } from '../models/post/post-response.model';
   selector: 'one12-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
   public posts$: Observable<PostResponseModel[]>;

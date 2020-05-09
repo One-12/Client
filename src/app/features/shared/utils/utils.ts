@@ -36,22 +36,6 @@ export function isVowel(letter: string): boolean {
   return vowels.indexOf(letter) !== -1;
 }
 
-export function ucFirst(text: string) {
-  const [part, ...split] = text.split(/\s/g);
-
-  const ucd = part
-    .toLowerCase()
-    .split(/(?=['|-])/g)
-    .map((word: any) =>
-      word.indexOf('-') + word.indexOf("'") > -2
-        ? word.slice(0, 2).toUpperCase() + word.slice(2)
-        : word.slice(0, 1).toUpperCase() + word.slice(1),
-    )
-    .join('');
-
-  return [ucd, ...split].join(' ');
-}
-
 export function applyPrecision(num: number, precision: number) {
   if (precision <= 0) {
     return Math.round(num);
@@ -67,9 +51,7 @@ export function extractDeepPropertyByMapKey(obj: any, map: string): any {
   const head = keys.shift();
 
   return keys.reduce((prop: any, key: string) => {
-    return !isUndefined(prop) && !isNull(prop) && !isUndefined(prop[key])
-      ? prop[key]
-      : undefined;
+    return !isUndefined(prop) && !isNull(prop) && !isUndefined(prop[key]) ? prop[key] : undefined;
   }, obj[head || '']);
 }
 
@@ -82,9 +64,7 @@ export function extractDeepPropertyByParentMapKey(obj: any, map: string): any {
 }
 
 export function getKeysTwoObjects(obj: any, other: any): any {
-  return [...Object.keys(obj), ...Object.keys(other)].filter(
-    (key, index, array) => array.indexOf(key) === index,
-  );
+  return [...Object.keys(obj), ...Object.keys(other)].filter((key, index, array) => array.indexOf(key) === index);
 }
 
 export function isDeepEqual(obj: any, other: any): any {

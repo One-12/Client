@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and Deploy Angular Client 
+name: Build and Deploy Angular Client
 env:
   AZURE_WEBAPP_PACKAGE_PATH: './dist/One12'
   APP_NAME: 'One12'
@@ -16,21 +16,25 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@master
+      - uses: actions/checkout@master
 
-    - name: Set Up NodeJS
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12.13.0'
+      - name: Set Up NodeJS
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.13.0'
 
-    - name: Build
-      run: |
-        npm install
-        npm run build -- --prod
+      - name: Build
+        run: |
+          npm install
+          npm run build -- --prod
 
-    - name: 'Deploy to Azure Web App'
-      uses: azure/webapps-deploy@v1
-      with:
-        app-name: ${{ env.APP_NAME }}
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_280c3d4f4b574573b54e94589fc85f2b }}
-        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+      - name: Lint
+        run: |
+          npm run lint
+
+      - name: 'Deploy to Azure Web App'
+        uses: azure/webapps-deploy@v1
+        with:
+          app-name: ${{ env.APP_NAME }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_280c3d4f4b574573b54e94589fc85f2b }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}

@@ -1,5 +1,22 @@
-<section id="time-line-header-container" *ngIf="!socialUser">
-  <section class="flex justify-content-end">
+<section id="time-line-header-container">
+  <section class="flex justify-content-end" *ngIf="user">
+    <!-- User Information -->
+    <section class="user-badge">
+      <!-- User Details -->
+      <section class="flex-column">
+        <section class="animate__lightSpeedInRight">
+          Good Morning, {{ user.displayName }} <strong class="italic">!</strong>
+        </section>
+        <section class="log-out f-14 pointer" (click)="onLogOutButtonClicked()">Log Out</section>
+      </section>
+
+      <!-- User Profile Pic -->
+      <section class="ml-15"><img [src]="user.photoURL" alt="" /></section>
+    </section>
+  </section>
+
+  <!-- Login Button -->
+  <section class="flex justify-content-end" *ngIf="!user">
     <button mat-flat-button color="primary" (click)="onLoginButtonClicked()">Login</button>
   </section>
 </section>

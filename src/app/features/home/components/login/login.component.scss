@@ -1,4 +1,4 @@
-@import "../../../../../assets/styles/colors";
+@import '../../../../../assets/styles/colors';
 
 #login-component-container {
   display: grid;
@@ -16,14 +16,18 @@
     border-left: $light-grey-color solid 1px;
 
     .google-login {
-      background-color: #CB4023;
+      background-color: #cb4023;
     }
 
     .facebook-login {
-      background-color: #3A5999;
+      background-color: #3a5999;
     }
 
     .guest-login {
+      background-color: $grey-color;
+    }
+
+    .logout {
       background-color: $grey-color;
     }
   }
