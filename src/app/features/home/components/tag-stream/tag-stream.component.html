@@ -2,12 +2,8 @@
 <section id="tag-stream-container">
   <section *ngFor="let tag of tags">
     <!-- Tag Button -->
-    <button
-      mat-button
-      color="primary"
-      (click)="onTagButtonClicked(tag)"
-      [class.selected]="selectedTag?.id === tag?.id">
-        #{{ tag?.name }}
+    <button mat-button color="primary" (click)="onTagButtonClicked(tag)" [class.selected]="selectedTag?.id === tag?.id">
+      #{{ tag?.name }}
     </button>
   </section>
 </section>

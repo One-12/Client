@@ -30,6 +30,7 @@ export class LoginComponent {
   }
 
   public async onContinueAsGuestButtonClicked(): Promise<void> {
-    await this._router.navigate(['/']);
+    await this._authService.signOut();
+    // await this._router.navigate(['/']);
   }
 }

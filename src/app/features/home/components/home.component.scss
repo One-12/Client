@@ -3,10 +3,10 @@
   grid-template-columns: 240px 1fr;
   grid-template-rows: auto auto auto;
   grid-template-areas:
-          "logo time-line-header"
-          "logo trending-tags"
-          "left-sidebar popular-posts"
-          "left-sidebar feeds";
+    'logo time-line-header'
+    'logo trending-tags'
+    'left-sidebar popular-posts'
+    'left-sidebar feeds';
 
   .logo {
     grid-area: logo;

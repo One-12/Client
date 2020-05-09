@@ -1,16 +1,17 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 import { Observable } from 'rxjs';
+import { IInfiniteScrollEvent } from 'ngx-infinite-scroll';
 
 import { POST_PAGES } from '../utils/constants';
 
-import { TagModel } from '../models/tag/tag.model';
-import { PostResponseModel } from '../models/post/post-response.model';
 import { TagsFacade } from '../state/tags/tags.facade';
 import { PostsFacade } from '../state/posts/posts.facade';
-import { IInfiniteScrollEvent } from 'ngx-infinite-scroll';
+
+import { TagModel } from '../models/tag/tag.model';
 import { PostRequestModel } from '../models/post/post-request.model';
+import { PostResponseModel } from '../models/post/post-response.model';
 
 @Component({
   selector: 'one12-home',
@@ -30,9 +31,9 @@ export class HomeComponent implements OnInit {
   private _postRequestModel: PostRequestModel;
 
   constructor(
-    private readonly _postsFacade: PostsFacade,
-    private readonly _tagsFacade: TagsFacade,
     private readonly _router: Router,
+    private readonly _tagsFacade: TagsFacade,
+    private readonly _postsFacade: PostsFacade,
     private readonly _activatedRoute: ActivatedRoute,
   ) {
     this._activatedRoute.queryParams.subscribe(params => this._onQueryParamsChanged(params));
@@ -76,8 +77,8 @@ export class HomeComponent implements OnInit {
     await this._postsFacade.loadPosts(this._postRequestModel);
   }
 
-  private async _onQueryParamsChanged(params): Promise<void> {
-    const { page, tag } = params;
+  private async _onQueryParamsChanged(queryParams: Params): Promise<void> {
+    const { page, tag } = queryParams;
 
     if (page) {
       this._postRequestModel = { page, tag, limit: 20, offset: 1 };
