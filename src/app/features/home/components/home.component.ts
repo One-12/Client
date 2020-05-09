@@ -11,7 +11,6 @@ import { TagsFacade } from '../state/tags/tags.facade';
 import { PostsFacade } from '../state/posts/posts.facade';
 import { IInfiniteScrollEvent } from 'ngx-infinite-scroll';
 import { PostRequestModel } from '../models/post/post-request.model';
-import { ancestorWhere } from 'tslint';
 
 @Component({
   selector: 'one12-home',
@@ -81,7 +80,7 @@ export class HomeComponent implements OnInit {
     const { page, tag } = params;
 
     if (page) {
-      this._postRequestModel = { page: page, tag: tag, limit: 20, offset: 1 };
+      this._postRequestModel = { page, tag, limit: 20, offset: 1 };
       await this._postsFacade.loadPosts(this._postRequestModel);
     }
   }
