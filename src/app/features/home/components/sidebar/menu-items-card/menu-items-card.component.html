@@ -4,9 +4,10 @@
     <!-- Menu Items -->
     <section
       class="menu-item pointer"
-      [class.selected]="item.isSelected"
+      [class.selected]="item.id === selectedNavItem.id"
       *ngFor="let item of navItems"
-      (click)="onMenuItemClicked(item)">
+      (click)="onMenuItemClicked(item)"
+    >
       <section><i class="fas" [ngClass]="item.icon"></i></section>
       <section>{{ item.title }}</section>
     </section>

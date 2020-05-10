@@ -1,5 +1,6 @@
 import { Action } from '@ngrx/store';
 
+import { Payload } from '../../../shared/models/payload.model';
 import { PostRequestModel } from '../../models/post/post-request.model';
 import { PostResponseModel } from '../../models/post/post-response.model';
 
@@ -15,7 +16,7 @@ export enum PostsActionType {
 export class LoadPosts implements Action {
   public readonly type = PostsActionType.LoadPosts;
 
-  constructor(public payload: PostRequestModel) {}
+  constructor(public payload: Payload<PostRequestModel>) {}
 }
 
 export class PostLoaded implements Action {
@@ -31,7 +32,7 @@ export class LoadPostsFailed implements Action {
 export class LoadPopularPosts implements Action {
   public readonly type = PostsActionType.LoadPopularPosts;
 
-  constructor(public payload: PostRequestModel) {}
+  constructor(public payload: Payload<PostRequestModel>) {}
 }
 
 export class PopularPostsLoaded implements Action {
