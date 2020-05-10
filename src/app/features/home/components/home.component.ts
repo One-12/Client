@@ -10,12 +10,15 @@ import { POST_PAGES } from '../utils/constants';
 import { TagsFacade } from '../state/tags/tags.facade';
 import { PostsFacade } from '../state/posts/posts.facade';
 import { MenuItemsService } from '../services/menu-items.service';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { TagModel } from '../models/tag/tag.model';
 import { NavItemModel } from '../models/nav/nav-item.model';
 import { PostRequestModel } from '../models/post/post-request.model';
 import { PostResponseModel } from '../models/post/post-response.model';
+import { take } from 'rxjs/operators';
 
+@UntilDestroy()
 @Component({
   selector: 'one12-home',
   templateUrl: './home.component.html',
@@ -46,7 +49,7 @@ export class HomeComponent implements OnInit {
     this.navItems = this._menuItemsService.getMenuItems();
     this.selectedNavItem = this.navItems[0];
 
-    this._activatedRoute.queryParams.subscribe(params => this._onQueryParamsChanged(params));
+    this._activatedRoute.queryParams.pipe(untilDestroyed(this)).subscribe(params => this._onQueryParamsChanged(params));
   }
 
   public async ngOnInit(): Promise<void> {
@@ -78,7 +81,7 @@ export class HomeComponent implements OnInit {
   }
 
   public async onFeedsScrolled($event: IInfiniteScrollEvent): Promise<void> {
-    this._angularFireAuth.idToken.subscribe(async (idToken: string) => {
+    this._angularFireAuth.idToken.pipe(take(1)).subscribe(async (idToken: string) => {
       this._postRequestModel = { ...this._postRequestModel, offset: this._postRequestModel.offset + 1 };
       await this._postsFacade.loadPosts({ payload: this._postRequestModel, idToken });
     });
@@ -89,7 +92,7 @@ export class HomeComponent implements OnInit {
 
     if (page) {
       this.selectedNavItem = this.navItems.find(x => x.id === page);
-      this._angularFireAuth.idToken.subscribe(async (idToken: string) => {
+      this._angularFireAuth.idToken.pipe(take(1)).subscribe(async (idToken: string) => {
         this._postRequestModel = { page, tag, limit: 20, offset: 1 };
         await this._postsFacade.loadPosts({ payload: this._postRequestModel, idToken });
       });

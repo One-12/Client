@@ -24,18 +24,18 @@ export class PostService {
     const { idToken } = payload;
     const postRequest = payload.payload;
 
-    let httpParams = new HttpParams();
-    httpParams = httpParams.append('page', postRequest.page);
-    httpParams = httpParams.append('tag', String(postRequest.tag));
-    httpParams = httpParams.append('limit', String(postRequest.limit));
-    httpParams = httpParams.append('offset', String(postRequest.offset));
+    let params = new HttpParams();
+    params = params.append('page', postRequest.page);
+    params = params.append('tag', String(postRequest.tag));
+    params = params.append('limit', String(postRequest.limit));
+    params = params.append('offset', String(postRequest.offset));
 
+    let headers = new HttpHeaders();
     if (idToken) {
-      const httpHeaders = new HttpHeaders();
-      httpHeaders.set('Authorization', `Bearer ${idToken}`);
+      headers = headers.set('Authorization', `Bearer ${idToken}`);
     }
 
     const apiUrl = `${this.baseUrl}/api/posts`;
-    return this._httpClient.get<PostResponseModel>(apiUrl, { params: httpParams });
+    return this._httpClient.get<PostResponseModel>(apiUrl, { params, headers });
   }
 }
