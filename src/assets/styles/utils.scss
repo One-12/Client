@@ -1,5 +1,9 @@
 @import 'colors';
 
+.primary-color {
+  color: $primary-blue-color;
+}
+
 .text-muted {
   color: $grey-color;
 }
@@ -10,6 +14,10 @@
 
 .pointer {
   cursor: pointer !important;
+}
+
+.mt-5 {
+  margin-top: 5px !important;
 }
 
 .mb-6 {
@@ -115,6 +123,10 @@
 
 .f-18 {
   font-size: 18px !important;
+}
+
+.f-22 {
+  font-size: 22px !important;
 }
 
 .f-26 {

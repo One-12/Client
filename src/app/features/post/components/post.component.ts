@@ -9,15 +9,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 export class PostComponent {
   public tags: string[];
   constructor() {
-    this.tags = [
-      'Tag 1',
-      'Tag 2',
-      'Tag 3',
-      'Tag 4',
-      'Tag 5',
-      'Tag 6',
-      'Tag 7',
-      'Tag 8',
-    ];
+    this.tags = ['Tag 1', 'Tag 2', 'Tag 3', 'Tag 4', 'Tag 5', 'Tag 6', 'Tag 7', 'Tag 8'];
   }
 }
