@@ -1,5 +1,5 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import { Component, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { NavItemModel } from '../../../models/nav/nav-item.model';
 
