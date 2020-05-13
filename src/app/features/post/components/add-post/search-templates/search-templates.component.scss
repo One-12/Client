@@ -1,0 +1,14 @@
+@import "../../../../../../assets/styles/colors";
+
+#search-templates-container {
+
+  input {
+    border-color: $grey-color;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+  }
+
+  ::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+}
