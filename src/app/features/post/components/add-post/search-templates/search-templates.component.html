@@ -1,14 +1,23 @@
-<section id="search-templates-container">
+<section id="search-templates-container" class="mt-m10">
   <!-- Search Header-->
   <section>
-    <form action="" autocomplete="off" spellcheck="false">
+    <form action="" autocomplete="off" spellcheck="false" class="mt-m20">
+      <!-- Search Text Box Header -->
       <section class="text-muted">Filter Templates</section>
-      <mat-form-field class="full-width" appearance="standard" floatLabel="always">
-        <input matInput type="text" />
-        <button mat-button matSuffix mat-icon-button color="primary">
-          <mat-icon>search</mat-icon>
-        </button>
-      </mat-form-field>
+      <!-- Search Text Box -->
+      <section class="flex">
+        <mat-form-field class="full-width mt-m20" appearance="standard" floatLabel="always">
+          <input matInput type="text" class="p-5" />
+          <button mat-button matSuffix mat-icon-button color="primary">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </section>
     </form>
+  </section>
+
+  <!-- Search Results -->
+  <section class="search-templates-results-container">
+    Search Results Container.
   </section>
 </section>

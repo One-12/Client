@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'one12-add-post',
@@ -6,7 +7,11 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./add-post.component.scss'],
 })
 export class AddPostComponent implements OnInit {
-  constructor() {}
+  constructor(private readonly _router: Router) {}
 
-  ngOnInit(): void {}
+  public ngOnInit(): void {}
+
+  public async onBackButtonClicked(): Promise<void> {
+    await this._router.navigate(['/']);
+  }
 }

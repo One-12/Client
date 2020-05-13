@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -28,6 +29,7 @@ import { SearchTemplatesComponent } from './components/add-post/search-templates
     CommonModule,
     SharedModule,
     MatIconModule,
+    MatMenuModule,
     MatInputModule,
     MatButtonModule,
     PostRoutingModule,
