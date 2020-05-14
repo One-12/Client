@@ -9,7 +9,9 @@ export interface PostsState extends EntityState<PostResponseModel> {
   popularPosts: PostResponseModel[];
 }
 
-export const postsAdapter: EntityAdapter<PostResponseModel> = createEntityAdapter<PostResponseModel>();
+export const postsAdapter: EntityAdapter<PostResponseModel> = createEntityAdapter<
+  PostResponseModel
+>();
 
 export const initialState: PostsState = postsAdapter.getInitialState({
   isFetchingPosts: false,
@@ -17,7 +19,10 @@ export const initialState: PostsState = postsAdapter.getInitialState({
   popularPosts: [],
 });
 
-export function postsReducer(state: PostsState = initialState, action: PostsActions): PostsState {
+export function postsReducer(
+  state: PostsState = initialState,
+  action: PostsActions,
+): PostsState {
   switch (action.type) {
     case PostsActionType.LoadPosts: {
       return { ...state, isFetchingPosts: true };
@@ -28,11 +33,18 @@ export function postsReducer(state: PostsState = initialState, action: PostsActi
     }
 
     case PostsActionType.PostsLoaded: {
-      return postsAdapter.upsertMany(action.payload, { ...state, isFetchingPosts: false });
+      return postsAdapter.upsertMany(action.payload, {
+        ...state,
+        isFetchingPosts: false,
+      });
     }
 
     case PostsActionType.PopularPostsLoaded: {
-      return { ...state, popularPosts: [...state.popularPosts, ...action.payload], isFetchingPosts: false };
+      return {
+        ...state,
+        popularPosts: [...state.popularPosts, ...action.payload],
+        isFetchingPosts: false,
+      };
     }
 
     default: {
