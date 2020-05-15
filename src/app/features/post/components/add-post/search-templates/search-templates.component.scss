@@ -5,6 +5,7 @@
     border-color: $grey-color;
     border-width: 0 0 1px 0;
     border-style: solid;
+    color: $text-color;
   }
 
   ::ng-deep .mat-form-field-underline {
@@ -14,6 +15,16 @@
   .search-templates-results-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 20px;
+
+    img {
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
+
+    .search-result-item {
+      border: $grey-color 1px solid;
+      border-radius: 5px;
+    }
   }
 }
