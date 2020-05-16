@@ -1,0 +1,16 @@
+@import "../../../../../../assets/styles/colors";
+
+#add-post-container {
+  .add-post-header {
+    background: $purple-color;
+    padding: 5px 5px 5px 10px;
+    color: $white-color;
+    font-size: 22px;
+  }
+
+  .empty-post-placeholder {
+    background: $white-color;
+    border: $text-color 2px dashed;
+    color: $grey-color;
+  }
+}

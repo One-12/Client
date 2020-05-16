@@ -1,0 +1,22 @@
+<section id="add-post-container">
+  <!-- Header -->
+  <header class="flex-column add-post-header">
+    <section>{{ title }}</section>
+  </header>
+
+  <!-- Selected Post -->
+  <section class="flex-column align-items-justify-content-center m-20">
+    <!-- Image Placeholder -->
+    <section class="full-width flex-column align-items-justify-content-center empty-post-placeholder h-200" *ngIf="!selectedTemplate">
+      <mat-icon class="f-48 h-48">add</mat-icon>
+      <span>Click here to Upload Meme</span>
+    </section>
+
+    <!-- Selected Image -->
+    <section class="post-content" (drop)="onTextDroppedOverImage($event)">
+      <section id="post-messages"></section>
+      <img [src]="imageUrl" alt="">
+    </section>
+      <!-- <canvas #postCanvas></canvas> -->
+  </section>
+</section>

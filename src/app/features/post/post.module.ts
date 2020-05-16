@@ -11,18 +11,20 @@ import { SharedModule } from '../shared/shared.module';
 import { PostRoutingModule } from './post-routing.module';
 
 import { PostComponent } from './components/post.component';
-import { AddPostComponent } from './components/add-post/add-post.component';
+import { CreatorsCornerComponent } from './components/creators-corner/creators-corner.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { PostDetailsCardsComponent } from './components/post-details-cards/post-details-cards.component';
-import { SearchTemplatesComponent } from './components/add-post/search-templates/search-templates.component';
+import { SearchTemplatesPanelComponent } from './components/creators-corner/search-templates-panel/search-templates-panel.component';
+import { AddPostComponentComponent } from './components/creators-corner/add-post-component/add-post-component.component';
 
 @NgModule({
   declarations: [
     PostComponent,
-    AddPostComponent,
+    CreatorsCornerComponent,
     CommentsComponent,
-    SearchTemplatesComponent,
+    SearchTemplatesPanelComponent,
     PostDetailsCardsComponent,
+    AddPostComponentComponent,
   ],
   imports: [
     FormsModule,

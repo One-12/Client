@@ -6,11 +6,7 @@
       <section class="text-muted">Filter Templates</section>
       <!-- Search Text Box -->
       <section class="flex">
-        <mat-form-field
-          class="full-width mt-m20"
-          appearance="standard"
-          floatLabel="always"
-        >
+        <mat-form-field class="full-width mt-m20" appearance="standard" floatLabel="always">
           <input matInput type="text" class="p-5" />
           <button mat-button matSuffix mat-icon-button color="primary">
             <mat-icon>search</mat-icon>
@@ -26,6 +22,7 @@
     <section
       class="flex-column search-result-item pointer"
       *ngFor="let searchResult of searchResults"
+      (click)="onTemplateSelected(searchResult)"
     >
       <img [src]="searchResult.imageUrl" alt="" />
       <section class="m-5">Used by 100 Posts</section>

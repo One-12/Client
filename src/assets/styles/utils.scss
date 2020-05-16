@@ -20,6 +20,10 @@
   margin: 5px !important;
 }
 
+.m-20 {
+  margin: 20px !important;
+}
+
 .mt-5 {
   margin-top: 5px !important;
 }
@@ -121,6 +125,11 @@
   align-items: center !important;
 }
 
+.align-items-justify-content-center {
+  @extend .align-items-center;
+  @extend .justify-content-center
+}
+
 .wrap {
   flex-wrap: wrap !important;
 }
@@ -153,6 +162,10 @@
   font-size: 32px !important;
 }
 
+.f-48 {
+  font-size: 48px !important;
+}
+
 .f-64 {
   font-size: 64px !important;
 }
@@ -163,6 +176,14 @@
 
 .half-width {
   width: 50% !important;
+}
+
+.h-48 {
+  height: 48px !important;
+}
+
+.h-200 {
+  height: 200px !important;
 }
 
 .overflow-auto {

@@ -1,8 +1,9 @@
 <section id="add-post-container">
+  <!-- Left Panel -->
   <section>
     <!-- Header -->
     <header class="flex">
-      <!-- Backspace -->
+      <!-- Back Button -->
       <button mat-icon-button color="primary" class="animate__animated animate__zoomIn" (click)="onBackButtonClicked()">
         <mat-icon>keyboard_backspace</mat-icon>
       </button>
@@ -17,8 +18,12 @@
 
     <!-- Search Templates -->
     <section class="p-32">
-      <search-templates></search-templates>
+      <one-12-search-templates-panel (templateSelected)="selectedTemplate = $event"></one-12-search-templates-panel>
     </section>
   </section>
-  <section>Right Wing</section>
+
+  <!-- Right Panel -->
+  <section>
+    <one12-add-post-component [selectedTemplate]="selectedTemplate"></one12-add-post-component>
+  </section>
 </section>

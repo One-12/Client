@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
 import { EMPTY_STRING } from '../../../../shared/constants/constants';
 import { SearchTemplatesResponseModel } from '../../../models/template/search-templates-response.model';
 
 @Component({
-  selector: 'search-templates',
-  templateUrl: 'search-templates.component.html',
-  styleUrls: ['./search-templates.component.scss'],
+  selector: 'one-12-search-templates-panel',
+  templateUrl: 'search-templates-panel.component.html',
+  styleUrls: ['./search-templates-panel.component.scss'],
 })
-export class SearchTemplatesComponent implements OnInit {
+export class SearchTemplatesPanelComponent implements OnInit {
+  @Output()
+  public templateSelected = new EventEmitter<SearchTemplatesResponseModel>();
+
   public searchQuery: string;
 
   public searchResults: SearchTemplatesResponseModel[];
@@ -17,8 +21,8 @@ export class SearchTemplatesComponent implements OnInit {
   }
 
   private _initializeProperties(): void {
-    this.searchQuery = EMPTY_STRING;
     this.searchResults = [];
+    this.searchQuery = EMPTY_STRING;
 
     for (let i = 0; i < 25; i++) {
       this.searchResults.push({
@@ -26,5 +30,9 @@ export class SearchTemplatesComponent implements OnInit {
         imageUrl: 'https://picsum.photos/200/300',
       });
     }
+  }
+
+  public async onTemplateSelected(selectedTemplate: SearchTemplatesResponseModel): Promise<void> {
+    this.templateSelected.emit(selectedTemplate);
   }
 }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { PostComponent } from './components/post.component';
-import { AddPostComponent } from './components/add-post/add-post.component';
+import { CreatorsCornerComponent } from './components/creators-corner/creators-corner.component';
 
 const routes: Routes = [
   {
@@ -10,8 +10,8 @@ const routes: Routes = [
     component: PostComponent,
   },
   {
-    path: 'add',
-    component: AddPostComponent,
+    path: 'creators-corner',
+    component: CreatorsCornerComponent,
   },
   { path: '**', redirectTo: '' },
 ];
