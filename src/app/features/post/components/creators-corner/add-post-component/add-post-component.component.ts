@@ -1,8 +1,10 @@
+import { DOCUMENT } from '@angular/common';
 import { Component, Inject, Input } from '@angular/core';
 import { ChangeDetectionStrategy, OnChanges, SimpleChanges, ElementRef, ViewChild } from '@angular/core';
 
+import html2canvas from 'html2canvas';
+
 import { SearchTemplatesResponseModel } from '../../../models/template/search-templates-response.model';
-import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'one12-add-post-component',
@@ -47,8 +49,6 @@ export class AddPostComponentComponent implements OnChanges {
       });
       textnode.addEventListener('dragend', this.onDrag.bind(this), false);
       postContent.appendChild(textnode);
-
-      return;
     }
   }
 
@@ -60,10 +60,13 @@ export class AddPostComponentComponent implements OnChanges {
     });
   }
 
-  private onDrag(dragEvent: any) {
+  private async onDrag(dragEvent: any): Promise<void> {
     dragEvent.stopPropagation();
     (<HTMLElement>dragEvent.explicitOriginalTarget).style.left = `${this.clientX}px`;
     (<HTMLElement>dragEvent.explicitOriginalTarget).style.top = `${this.clientY}px`;
+
+    const canvas = await html2canvas(this.document.querySelector('.post-content'), { allowTaint: true });
+    this.document.querySelector('#id-content').appendChild(canvas);
   }
 
   onTextDroppedOverImage($event: DragEvent) {
