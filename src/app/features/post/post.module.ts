@@ -5,6 +5,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { SharedModule } from '../shared/shared.module';
@@ -34,6 +35,7 @@ import { AddPostComponentComponent } from './components/creators-corner/add-post
     MatMenuModule,
     MatInputModule,
     MatButtonModule,
+    MatSliderModule,
     PostRoutingModule,
     MatFormFieldModule,
   ],

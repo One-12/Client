@@ -1,4 +1,4 @@
-@import "../../../../../../assets/styles/colors";
+@import '../../../../../../assets/styles/colors';
 
 #add-post-container {
   .add-post-header {
@@ -10,15 +10,31 @@
     input {
       caret-color: $white-color;
     }
-
-    ::ng-deep .mat-form-field-underline {
-      display: none;
-    }
   }
 
   .empty-post-placeholder {
     background: $white-color;
     border: $text-color 2px dashed;
     color: $grey-color;
+  }
+  .post-add-text-container {
+    color: $white-color;
+    background-color: $text-color;
+
+    input {
+      border-color: $grey-color;
+      border-width: 0 0 1px 0;
+      border-style: solid;
+      color: $white-color;
+      caret-color: $white-color;
+    }
+  }
+
+  ::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+
+  ::ng-deep .mat-form-field-label {
+    color: $white-color;
   }
 }

@@ -39,8 +39,35 @@
     </section>
   </header>
 
+  <section class="flex justify-content-end mt-10" *ngIf="imageUrl">
+    <section *ngIf="!canShowAddTextPanel">
+      <button mat-flat-button color="accent" (click)="canShowAddTextPanel = true">Add Text</button>
+    </section>
+  </section>
+
+  <!-- Text -->
+  <section
+    class="post-add-text-container flex-column align-items-justify-content-center p-20"
+    *ngIf="canShowAddTextPanel"
+  >
+    <!-- Text -->
+    <mat-form-field class="full-width mt-m20" appearance="standard" floatLabel="always">
+      <mat-label>Enter Text</mat-label>
+      <input matInput type="text" class="p-5" placeholder="Enter Text" [(ngModel)]="postText" />
+    </mat-form-field>
+
+    <!-- Font Size -->
+    <label for="mat-slider" class="align-self-start f-12">Select Font Size ({{ fontSize + ' px' }})</label>
+    <mat-slider class="full-width" id="mat-slider" thumbLabel="true" min="2" max="64" [(value)]="fontSize"></mat-slider>
+
+    <section class="action-buttons-container">
+      <button mat-flat-button color="primary" (click)="onSaveTextButtonClicked()">Save</button>
+      <button mat-flat-button color="warn" class="ml-15" (click)="canShowAddTextPanel = false">Cancel</button>
+    </section>
+  </section>
+
   <!-- Selected Post -->
-  <section class="flex-column align-items-justify-content-center m-20" #container>
+  <section class="flex-column align-items-justify-content-center mt-10" #container>
     <input class="collapse" type="file" accept="image/*" (change)="onFileSelected(fileUpload)" #fileUpload />
 
     <!-- Image Placeholder -->

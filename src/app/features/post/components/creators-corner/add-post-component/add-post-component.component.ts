@@ -1,12 +1,12 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, Input } from '@angular/core';
-import { ChangeDetectionStrategy, OnChanges, SimpleChanges } from '@angular/core';
+import { OnChanges, SimpleChanges } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 import html2canvas from 'html2canvas';
 
 import { nameOf } from '../../../../shared/utils/utils';
 import { SearchTemplatesResponseModel } from '../../../models/template/search-templates-response.model';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'one12-add-post-component',
@@ -25,7 +25,13 @@ export class AddPostComponentComponent implements OnChanges {
 
   public description: string;
 
+  public fontSize: number;
+
   public imageUrl: SafeUrl;
+
+  public postText: string;
+
+  public canShowAddTextPanel: boolean;
 
   private _mousePositionX: number;
 
@@ -45,17 +51,6 @@ export class AddPostComponentComponent implements OnChanges {
       const imageElement = new Image();
       // @ts-ignore: Sanitized URL.
       imageElement.src = this.imageUrl;
-      const postContent = document.querySelector('#post-messages');
-      const textnode = document.createElement('section');
-      textnode.innerText = 'Hello World';
-      textnode.draggable = true;
-      textnode.style.position = 'absolute';
-      textnode.addEventListener('dragstart', ev => {
-        ev.dataTransfer.setData('text/plain', null);
-        ev.dataTransfer.setDragImage(new Image(), 0, 0);
-      });
-      textnode.addEventListener('dragend', this._onDragEnd.bind(this), false);
-      postContent.appendChild(textnode);
     }
   }
 
@@ -77,11 +72,29 @@ export class AddPostComponentComponent implements OnChanges {
     }
   }
 
+  public async onSaveTextButtonClicked(): Promise<void> {
+    const postContent = document.querySelector('#post-messages');
+    const textNode = document.createElement('section');
+    textNode.innerText = this.postText;
+    textNode.draggable = true;
+    textNode.style.position = 'absolute';
+    textNode.style.fontSize = `${this.fontSize}px`;
+    textNode.addEventListener('dragstart', ev => {
+      ev.dataTransfer.setData('text/plain', null);
+      ev.dataTransfer.setDragImage(new Image(), 0, 0);
+    });
+    textNode.addEventListener('dragend', this._onDragEnd.bind(this), false);
+    postContent.appendChild(textNode);
+    this.canShowAddTextPanel = false;
+  }
+
   private _initializeProperties(): void {
     this._mousePositionX = 0;
     this._mousePositionY = 0;
 
     this.tags = [];
+    this.fontSize = 12;
+    this.canShowAddTextPanel = false;
   }
 
   private async _onDragEnd(dragEvent: DragEvent): Promise<void> {
