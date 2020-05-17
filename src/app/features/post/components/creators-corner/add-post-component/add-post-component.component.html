@@ -1,21 +1,62 @@
 <section id="add-post-container">
   <!-- Header -->
   <header class="flex-column add-post-header">
-    <section>{{ title }}</section>
+    <section class="flex-column full-width">
+      <!-- Title Text Box -->
+      <section class="flex">
+        <input matInput type="text" class="p-5" [value]="title" placeholder="Title" [(ngModel)]="title" />
+      </section>
+
+      <!-- Description Text Box -->
+      <section class="flex">
+        <input
+          matInput
+          type="text"
+          class="p-5 f-12"
+          placeholder="Description"
+          [value]="description"
+          [(ngModel)]="description"
+        />
+      </section>
+
+      <!-- Tags -->
+      <section class="ml-5 flex align-items-center" *ngIf="tags.length">
+        <section>Tags</section>
+        <one12-tags class="ml-15" [tags]="tags"></one12-tags>
+      </section>
+
+      <section class="flex">
+        <input
+          matInput
+          type="text"
+          class="p-5"
+          [value]="tag"
+          [(ngModel)]="tag"
+          placeholder="+ Tag(s)"
+          (keydown.enter)="onEnterKeyPressed()"
+        />
+      </section>
+    </section>
   </header>
 
   <!-- Selected Post -->
-  <section class="flex-column align-items-justify-content-center m-20">
+  <section class="flex-column align-items-justify-content-center m-20" #container>
+    <input class="collapse" type="file" accept="image/*" (change)="onFileSelected(fileUpload)" #fileUpload />
+
     <!-- Image Placeholder -->
-    <section class="full-width flex-column align-items-justify-content-center empty-post-placeholder h-200" *ngIf="!selectedTemplate">
+    <section
+      class="full-width flex-column align-items-justify-content-center empty-post-placeholder h-200 pointer"
+      *ngIf="!imageUrl"
+      (click)="fileUpload.click()"
+    >
       <mat-icon class="f-48 h-48">add</mat-icon>
       <span>Click here to Upload Meme</span>
     </section>
 
     <!-- Selected Image -->
-    <section class="post-content" (drop)="onTextDroppedOverImage($event)">
+    <section class="post-content" (dragover)="onPostContentDragOver($event)">
       <section id="post-messages"></section>
-      <img [src]="imageUrl" alt="">
+      <img [src]="imageUrl" alt="" [style.max-width]="container.clientWidth + 'px'" />
     </section>
     <section id="id-content"></section>
   </section>

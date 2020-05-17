@@ -1,3 +1,7 @@
+export function nameOf<T>(propertyName: keyof T) {
+  return propertyName;
+}
+
 export function isUndefined(value: any) {
   return typeof value === 'undefined';
 }

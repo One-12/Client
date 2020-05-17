@@ -1,45 +1,52 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, Input } from '@angular/core';
-import { ChangeDetectionStrategy, OnChanges, SimpleChanges, ElementRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, OnChanges, SimpleChanges } from '@angular/core';
 
 import html2canvas from 'html2canvas';
 
+import { nameOf } from '../../../../shared/utils/utils';
 import { SearchTemplatesResponseModel } from '../../../models/template/search-templates-response.model';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'one12-add-post-component',
   templateUrl: './add-post-component.component.html',
   styleUrls: ['./add-post-component.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddPostComponentComponent implements OnChanges {
   @Input()
   public selectedTemplate: SearchTemplatesResponseModel;
 
-  @ViewChild('postCanvas', { static: false })
-  public postCanvasRef: ElementRef;
-
   public title: string;
 
-  public imageUrl: string;
+  public tag: string;
 
-  private clientX: number;
+  public tags: string[];
 
-  private clientY: number;
+  public description: string;
 
-  constructor(@Inject(DOCUMENT) private document: Document) {
+  public imageUrl: SafeUrl;
+
+  private _mousePositionX: number;
+
+  private _mousePositionY: number;
+
+  constructor(@Inject(DOCUMENT) private document: Document, private readonly _sanitizer: DomSanitizer) {
     this._initializeProperties();
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    const selectedTemplateChanges = changes['selectedTemplate'];
+    const selectedTemplateProperty = nameOf<AddPostComponentComponent>('selectedTemplate');
+    const selectedTemplateChanges = changes[selectedTemplateProperty];
 
     if (selectedTemplateChanges && selectedTemplateChanges.currentValue) {
-      this.imageUrl = (<SearchTemplatesResponseModel>selectedTemplateChanges.currentValue).imageUrl;
-      let imageElement = new Image();
+      const url = (selectedTemplateChanges.currentValue as SearchTemplatesResponseModel).imageUrl;
+      this.imageUrl = this._sanitizer.bypassSecurityTrustUrl(url);
+      const imageElement = new Image();
+      // @ts-ignore: Sanitized URL.
       imageElement.src = this.imageUrl;
-      let postContent = document.querySelector('#post-messages');
-      var textnode = document.createElement('section');
+      const postContent = document.querySelector('#post-messages');
+      const textnode = document.createElement('section');
       textnode.innerText = 'Hello World';
       textnode.draggable = true;
       textnode.style.position = 'absolute';
@@ -47,29 +54,44 @@ export class AddPostComponentComponent implements OnChanges {
         ev.dataTransfer.setData('text/plain', null);
         ev.dataTransfer.setDragImage(new Image(), 0, 0);
       });
-      textnode.addEventListener('dragend', this.onDrag.bind(this), false);
+      textnode.addEventListener('dragend', this._onDragEnd.bind(this), false);
       postContent.appendChild(textnode);
     }
   }
 
-  private _initializeProperties(): void {
-    this.title = 'TITLE';
-    this.document.addEventListener('dragover', ev => {
-      this.clientX = ev.clientX;
-      this.clientY = ev.clientY;
-    });
+  public async onPostContentDragOver($event: DragEvent): Promise<void> {
+    this._mousePositionX = $event.clientX;
+    this._mousePositionY = $event.clientY;
   }
 
-  private async onDrag(dragEvent: any): Promise<void> {
-    dragEvent.stopPropagation();
-    (<HTMLElement>dragEvent.explicitOriginalTarget).style.left = `${this.clientX}px`;
-    (<HTMLElement>dragEvent.explicitOriginalTarget).style.top = `${this.clientY}px`;
+  public async onEnterKeyPressed(): Promise<void> {
+    if (this.tag) {
+      this.tags = [...this.tags, this.tag];
+      this.tag = '';
+    }
+  }
 
+  public async onFileSelected(fileInputElement: HTMLInputElement): Promise<void> {
+    if (fileInputElement.files && fileInputElement.files[0]) {
+      this.imageUrl = this._sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(fileInputElement.files[0]));
+    }
+  }
+
+  private _initializeProperties(): void {
+    this._mousePositionX = 0;
+    this._mousePositionY = 0;
+
+    this.tags = [];
+  }
+
+  private async _onDragEnd(dragEvent: DragEvent): Promise<void> {
+    dragEvent.stopPropagation();
+    (dragEvent.target as HTMLElement).style.left = `${this._mousePositionX}px`;
+    (dragEvent.target as HTMLElement).style.top = `${this._mousePositionY}px`;
+
+    /*
     const canvas = await html2canvas(this.document.querySelector('.post-content'), { allowTaint: true });
     this.document.querySelector('#id-content').appendChild(canvas);
-  }
-
-  onTextDroppedOverImage($event: DragEvent) {
-    console.log($event);
+     */
   }
 }
