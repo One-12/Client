@@ -60,6 +60,12 @@
     <label for="mat-slider" class="align-self-start f-12">Select Font Size ({{ fontSize + ' px' }})</label>
     <mat-slider class="full-width" id="mat-slider" thumbLabel="true" min="2" max="64" [(value)]="fontSize"></mat-slider>
 
+    <!-- Font Color -->
+    <mat-form-field class="full-width mt-m20" appearance="standard" floatLabel="always">
+      <mat-label>Font Color</mat-label>
+      <input matInput [(colorPicker)]="color" [style.background]="color" cpPosition="bottom" class="pointer" />
+    </mat-form-field>
+
     <section class="action-buttons-container">
       <button mat-flat-button color="primary" (click)="onSaveTextButtonClicked()">Save</button>
       <button mat-flat-button color="warn" class="ml-15" (click)="canShowAddTextPanel = false">Cancel</button>

@@ -1,6 +1,6 @@
 {
   "name": "one12",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -31,8 +31,9 @@
     "@ngrx/entity": "^9.1.2",
     "@ngrx/store": "^9.1.2",
     "animate.css": "^4.1.0",
-    "firebase": "^7.14.3",
+    "firebase": "^7.14.4",
     "html2canvas": "^1.0.0-rc.5",
+    "ngx-color-picker": "^9.1.0",
     "ngx-infinite-scroll": "^9.0.0",
     "rxjs": "^6.5.5",
     "tslib": "^2.0.0",

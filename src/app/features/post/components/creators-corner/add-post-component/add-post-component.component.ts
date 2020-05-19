@@ -1,11 +1,12 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { OnChanges, SimpleChanges } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 import html2canvas from 'html2canvas';
 
 import { nameOf } from '../../../../shared/utils/utils';
+import { EMPTY_STRING } from '../../../../shared/constants/constants';
 import { SearchTemplatesResponseModel } from '../../../models/template/search-templates-response.model';
 
 @Component({
@@ -13,23 +14,25 @@ import { SearchTemplatesResponseModel } from '../../../models/template/search-te
   templateUrl: './add-post-component.component.html',
   styleUrls: ['./add-post-component.component.scss'],
 })
-export class AddPostComponentComponent implements OnChanges {
+export class AddPostComponentComponent implements OnChanges, OnInit {
   @Input()
   public selectedTemplate: SearchTemplatesResponseModel;
 
-  public title: string;
-
   public tag: string;
+
+  public color: string;
+
+  public title: string;
 
   public tags: string[];
 
-  public description: string;
+  public postText: string;
 
   public fontSize: number;
 
   public imageUrl: SafeUrl;
 
-  public postText: string;
+  public description: string;
 
   public canShowAddTextPanel: boolean;
 
@@ -37,8 +40,14 @@ export class AddPostComponentComponent implements OnChanges {
 
   private _mousePositionY: number;
 
-  constructor(@Inject(DOCUMENT) private document: Document, private readonly _sanitizer: DomSanitizer) {
+  constructor(@Inject(DOCUMENT) private document: Document, private readonly _domSanitizer: DomSanitizer) {
     this._initializeProperties();
+  }
+
+  public ngOnInit(): void {
+    document.addEventListener('dragover', e => {
+      e.preventDefault();
+    });
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -47,7 +56,7 @@ export class AddPostComponentComponent implements OnChanges {
 
     if (selectedTemplateChanges && selectedTemplateChanges.currentValue) {
       const url = (selectedTemplateChanges.currentValue as SearchTemplatesResponseModel).imageUrl;
-      this.imageUrl = this._sanitizer.bypassSecurityTrustUrl(url);
+      this.imageUrl = this._domSanitizer.bypassSecurityTrustUrl(url);
       const imageElement = new Image();
       // @ts-ignore: Sanitized URL.
       imageElement.src = this.imageUrl;
@@ -68,23 +77,28 @@ export class AddPostComponentComponent implements OnChanges {
 
   public async onFileSelected(fileInputElement: HTMLInputElement): Promise<void> {
     if (fileInputElement.files && fileInputElement.files[0]) {
-      this.imageUrl = this._sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(fileInputElement.files[0]));
+      this.imageUrl = this._domSanitizer.bypassSecurityTrustUrl(URL.createObjectURL(fileInputElement.files[0]));
     }
   }
 
   public async onSaveTextButtonClicked(): Promise<void> {
-    const postContent = document.querySelector('#post-messages');
-    const textNode = document.createElement('section');
-    textNode.innerText = this.postText;
-    textNode.draggable = true;
-    textNode.style.position = 'absolute';
-    textNode.style.fontSize = `${this.fontSize}px`;
-    textNode.addEventListener('dragstart', ev => {
-      ev.dataTransfer.setData('text/plain', null);
-      ev.dataTransfer.setDragImage(new Image(), 0, 0);
-    });
-    textNode.addEventListener('dragend', this._onDragEnd.bind(this), false);
-    postContent.appendChild(textNode);
+    if (this.postText) {
+      const postContent = document.querySelector('#post-messages');
+      const textNode = document.createElement('section');
+      textNode.innerText = this.postText;
+      textNode.draggable = true;
+      textNode.style.position = 'absolute';
+      textNode.style.fontSize = `${this.fontSize}px`;
+      textNode.style.color = this.color;
+      textNode.addEventListener('dragstart', ev => {
+        ev.dataTransfer.setData('text/plain', null);
+        ev.dataTransfer.setDragImage(new Image(), 0, 0);
+      });
+      textNode.addEventListener('dragend', this._onDragEnd.bind(this), false);
+      postContent.appendChild(textNode);
+    }
+
+    this.postText = EMPTY_STRING;
     this.canShowAddTextPanel = false;
   }
 
@@ -94,6 +108,7 @@ export class AddPostComponentComponent implements OnChanges {
 
     this.tags = [];
     this.fontSize = 12;
+    this.color = '#0ca867';
     this.canShowAddTextPanel = false;
   }
 
