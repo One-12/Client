@@ -89,7 +89,7 @@
     <!-- Selected Image -->
     <section class="post-content" (dragover)="onPostContentDragOver($event)">
       <section id="post-messages"></section>
-      <img [src]="imageUrl" alt="" [style.max-width]="container.clientWidth + 'px'" />
+      <img [src]="imageUrl | safe: 'url'" alt="" [style.max-width]="container.clientWidth + 'px'" />
     </section>
     <section id="id-content"></section>
   </section>
