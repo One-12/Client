@@ -87,3 +87,9 @@ export function isDeepEqual(obj: any, other: any): any {
     return isDeepEqual(obj[key], other[key]);
   });
 }
+
+export function dataURLtoFile(dataurl: any, filename: string, mimeType: string): Promise<File> {
+  return fetch(dataurl)
+    .then(res => res.arrayBuffer())
+    .then(buf => new File([buf], filename, { type: mimeType }));
+}

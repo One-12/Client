@@ -13,7 +13,7 @@ import { PostResponseModel } from '../models/post/post-response.model';
   providedIn: 'root',
 })
 export class PostService {
-  private readonly baseUrl: any;
+  private readonly baseUrl: string;
 
   constructor(private readonly _httpClient: HttpClient, private readonly _configService: ConfigService) {
     const apiConfig = this._configService.getConfig('api');

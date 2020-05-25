@@ -2,11 +2,12 @@ import { DOCUMENT } from '@angular/common';
 import { OnChanges, SimpleChanges } from '@angular/core';
 import { Component, Inject, Input, OnInit } from '@angular/core';
 
-import html2canvas from 'html2canvas';
+import domtoimage from 'dom-to-image';
 
-import { nameOf } from '../../../../shared/utils/utils';
+import { dataURLtoFile, nameOf } from '../../../../shared/utils/utils';
 import { EMPTY_STRING } from '../../../../shared/constants/constants';
 import { SearchTemplatesResponseModel } from '../../../models/template/search-templates-response.model';
+import { UploadService } from '../../../services/upload.service';
 
 @Component({
   selector: 'one12-add-post-component',
@@ -39,7 +40,7 @@ export class AddPostComponentComponent implements OnChanges, OnInit {
 
   private _mousePositionY: number;
 
-  constructor(@Inject(DOCUMENT) private readonly _document: Document) {
+  constructor(@Inject(DOCUMENT) private readonly _document: Document, private readonly _uploadService: UploadService) {
     this._initializeProperties();
   }
 
@@ -108,10 +109,13 @@ export class AddPostComponentComponent implements OnChanges, OnInit {
     dragEvent.stopPropagation();
     (dragEvent.target as HTMLElement).style.left = `${this._mousePositionX}px`;
     (dragEvent.target as HTMLElement).style.top = `${this._mousePositionY}px`;
+  }
 
-    /*
-    const canvas = await html2canvas(this.document.querySelector('.post-content'), { allowTaint: true });
-    this.document.querySelector('#id-content').appendChild(canvas);
-     */
+  public async onUploadPostButtonClicked(): Promise<void> {
+    domtoimage.toPng(this._document.querySelector('.post-content')).then(img => {
+      dataURLtoFile(img, 'hello.png', `image/png`).then(res => {
+        this._uploadService.uploadFiles(res).subscribe(response => {});
+      });
+    });
   }
 }
