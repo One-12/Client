@@ -4,10 +4,10 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 
 import domtoimage from 'dom-to-image';
 
+import { UploadService } from '../../../services/upload.service';
 import { dataURLtoFile, nameOf } from '../../../../shared/utils/utils';
 import { EMPTY_STRING } from '../../../../shared/constants/constants';
 import { SearchTemplatesResponseModel } from '../../../models/template/search-templates-response.model';
-import { UploadService } from '../../../services/upload.service';
 
 @Component({
   selector: 'one12-add-post-component',
