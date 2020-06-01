@@ -13,13 +13,13 @@ import { selectIsFetchingPopularPosts, selectIsFetchingPosts } from './posts.sel
 
 @Injectable({ providedIn: 'root' })
 export class PostsFacade {
-  isFetchingPosts$ = this.store.select(selectIsFetchingPosts);
+  public isFetchingPosts$ = this.store.select(selectIsFetchingPosts);
 
-  isFetchingPopularPosts = this.store.select(selectIsFetchingPopularPosts);
+  public isFetchingPopularPosts = this.store.select(selectIsFetchingPopularPosts);
 
-  popularPosts$ = this.store.select(selectPopularPosts);
+  public popularPosts$ = this.store.select(selectPopularPosts);
 
-  posts$ = this.store.select(selectAllPosts).pipe(map(data => Object.values(data)));
+  public posts$ = this.store.select(selectAllPosts).pipe(map(data => Object.values(data)));
 
   constructor(private readonly store: Store<PostsState>) {}
 

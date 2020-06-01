@@ -8,8 +8,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+import { StoreModule } from '@ngrx/store';
+
 import { ColorPickerModule } from 'ngx-color-picker';
 
+import { reducers } from '../home/state';
 import { SharedModule } from '../shared/shared.module';
 import { PostRoutingModule } from './post-routing.module';
 
@@ -41,6 +44,7 @@ import { SearchTemplatesPanelComponent } from './components/creators-corner/sear
     ColorPickerModule,
     PostRoutingModule,
     MatFormFieldModule,
+    StoreModule.forFeature('posts', reducers),
   ],
 })
 export class PostModule {}

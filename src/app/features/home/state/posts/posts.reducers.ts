@@ -9,9 +9,7 @@ export interface PostsState extends EntityState<PostResponseModel> {
   popularPosts: PostResponseModel[];
 }
 
-export const postsAdapter: EntityAdapter<PostResponseModel> = createEntityAdapter<
-  PostResponseModel
->();
+export const postsAdapter: EntityAdapter<PostResponseModel> = createEntityAdapter<PostResponseModel>();
 
 export const initialState: PostsState = postsAdapter.getInitialState({
   isFetchingPosts: false,
@@ -19,10 +17,7 @@ export const initialState: PostsState = postsAdapter.getInitialState({
   popularPosts: [],
 });
 
-export function postsReducer(
-  state: PostsState = initialState,
-  action: PostsActions,
-): PostsState {
+export function postsReducer(state: PostsState = initialState, action: PostsActions): PostsState {
   switch (action.type) {
     case PostsActionType.LoadPosts: {
       return { ...state, isFetchingPosts: true };
