@@ -8,11 +8,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+import { reducers } from './state';
 import { StoreModule } from '@ngrx/store';
 
 import { ColorPickerModule } from 'ngx-color-picker';
 
-import { reducers } from '../home/state';
 import { SharedModule } from '../shared/shared.module';
 import { PostRoutingModule } from './post-routing.module';
 
