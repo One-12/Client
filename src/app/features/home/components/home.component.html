@@ -22,17 +22,17 @@
   </section>
 
   <!-- Tags -->
-  <section class="tags-container">
+  <section class="tags-container overflow-hidden">
     <!-- Tags Header -->
-    <one12-section-header title="What People Are" subtitle="Talking"> </one12-section-header>
+    <one12-section-header title="What People Are" subtitle="Talking" showScrollButton="true"> </one12-section-header>
 
     <!-- Tags Stream -->
     <!-- <one12-tag-stream [tags]="trendingTags$ | async" (tagSelected)="onTagSelected($event)"> </one12-tag-stream> -->
   </section>
 
   <!-- Popular Posts -->
-  <section class="popular-posts-container overflow-auto">
-    <one12-section-header title="Popular" subtitle="Now"></one12-section-header>
+  <section class="popular-posts-container overflow-hidden">
+    <one12-section-header title="Popular" subtitle="Now" showScrollButton="true"></one12-section-header>
     <one12-popular-posts-stream [popularPosts]="popularPosts$ | async"></one12-popular-posts-stream>
   </section>
 

@@ -23,11 +23,11 @@ export class PostsFacade {
 
   constructor(private readonly store: Store<PostsState>) {}
 
-  public async loadPosts(_payload: Payload<PostRequestModel>): Promise<void> {
-    this.store.dispatch(new LoadPosts(_payload));
+  public async loadPosts(payload: Payload<PostRequestModel>): Promise<void> {
+    this.store.dispatch(new LoadPosts(payload));
   }
 
-  public async loadPopularPosts(_payload: Payload<PostRequestModel>): Promise<void> {
-    this.store.dispatch(new LoadPopularPosts(_payload));
+  public async loadPopularPosts(payload: Payload<PostRequestModel>): Promise<void> {
+    this.store.dispatch(new LoadPopularPosts(payload));
   }
 }

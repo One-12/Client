@@ -7,6 +7,7 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SectionHeaderComponent {
-  @Input() public title         : string;
-  @Input() public subtitle      : string;
+  @Input() public title: string;
+  @Input() public subtitle: string;
+  @Input() public showScrollButton: boolean;
 }

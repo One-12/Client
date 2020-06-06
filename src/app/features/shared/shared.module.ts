@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatRippleModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
 
 import { SafePipe } from './pipes/safe.pipe';
 import { RoundPipe } from './pipes/math/round.pipe';
@@ -11,6 +14,6 @@ import { SectionHeaderComponent } from './components/section-header/section-head
 @NgModule({
   declarations: [SectionHeaderComponent, TagsComponent, RoundPipe, NumberFormatterPipe, SafePipe],
   exports: [SectionHeaderComponent, TagsComponent, RoundPipe, NumberFormatterPipe, SafePipe],
-  imports: [CommonModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatRippleModule],
 })
 export class SharedModule {}

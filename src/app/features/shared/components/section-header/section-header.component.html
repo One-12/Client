@@ -1,3 +1,10 @@
-<header id="section-header-container">
-  <strong> {{title}}</strong> {{ subtitle }}
+<header id="section-header-container" class="flex-row justify-content-space-between pr-30">
+  <section>
+    <strong> {{ title }} </strong> {{ subtitle }}
+  </section>
+
+  <section *ngIf="showScrollButton">
+    <mat-icon matRipple class="pointer">keyboard_arrow_left</mat-icon>
+    <mat-icon matRipple class="pointer">keyboard_arrow_right</mat-icon>
+  </section>
 </header>

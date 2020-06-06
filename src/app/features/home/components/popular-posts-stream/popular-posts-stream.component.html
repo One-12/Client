@@ -1,6 +1,6 @@
 <!-- Popular Posts Stream Container -->
-<section id="popular-posts-stream-container" class="flex flex-row">
-  <section *ngFor="let post of popularPosts" class="pt-16 pl-16">
-    <img [src]="post.content" alt="">
+<section id="popular-posts-stream-container" class="flex flex-row overflow-hidden">
+  <section *ngFor="let post of popularPosts" class="pt-16 px-16">
+    <img [src]="post.content" alt="" />
   </section>
 </section>

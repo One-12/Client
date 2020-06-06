@@ -104,6 +104,10 @@
   padding-left: 16px !important;
 }
 
+.pr-30 {
+  padding-right: 30px !important;
+}
+
 .px-16 {
   padding-left: 16px !important;
   padding-right: 16px !important;
@@ -139,6 +143,10 @@
 
 .justify-content-end {
   justify-content: flex-end !important;
+}
+
+.justify-content-space-between {
+  justify-content: space-between !important;
 }
 
 .align-items-center {
@@ -212,6 +220,10 @@
 
 .overflow-auto {
   overflow: auto !important;
+}
+
+.overflow-hidden {
+  overflow: hidden !important;
 }
 
 .collapse {
