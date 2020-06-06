@@ -1,5 +1,5 @@
 {
   "api": {
-    "baseUrl": "https://one12server.azurewebsites.net/"
+    "baseUrl": "http://localhost:3000"
   }
 }

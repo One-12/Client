@@ -65,9 +65,9 @@ export class AddPostComponentComponent implements OnChanges, OnInit {
     }
   }
 
-  public async onPostContentDragOver($event: DragEvent): Promise<void> {
-    this._mousePositionX = $event.clientX;
-    this._mousePositionY = $event.clientY;
+  public async onPostContentDragOver(dragEvent: DragEvent): Promise<void> {
+    this._mousePositionX = dragEvent.clientX;
+    this._mousePositionY = dragEvent.clientY;
   }
 
   public async onEnterKeyPressed(): Promise<void> {

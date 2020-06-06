@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
@@ -13,18 +13,18 @@ import { UploadFileResponseModel } from '../models/post/upload-file-response.mod
   providedIn: 'root',
 })
 export class UploadService extends ApiService {
-  constructor(_httpClient: HttpClient, _configService: ConfigService) {
-    super(_httpClient, _configService);
+  constructor(httpClient: HttpClient, configService: ConfigService) {
+    super(httpClient, configService);
   }
 
   public uploadFiles(payload: Payload<File>): Observable<UploadFileResponseModel> {
     const { idToken } = payload;
-    const apiUrl = `${this.baseUrl}/api/upload`;
+    const headers = this.getDefaultHttpHeaders(idToken);
 
     const formData: FormData = new FormData();
     formData.append('file', payload.content, payload.content.name);
-    return this._httpClient.post<UploadFileResponseModel>(apiUrl, formData, {
-      headers: this.getDefaultHttpHeaders(idToken),
-    });
+
+    const apiUrl = `${this.baseUrl}/api/upload`;
+    return this._httpClient.post<UploadFileResponseModel>(apiUrl, formData, { headers });
   }
 }
