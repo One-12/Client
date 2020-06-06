@@ -22,7 +22,7 @@ export class PostService {
 
   public getPosts(payload: Payload<PostRequestModel>): Observable<PostResponseModel> {
     const { idToken } = payload;
-    const postRequest = payload.payload;
+    const postRequest = payload.content;
 
     let params = new HttpParams();
     params = params.append('page', postRequest.page);

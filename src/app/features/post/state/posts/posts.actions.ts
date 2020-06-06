@@ -6,6 +6,7 @@ import { PostResponseModel } from '../../models/post/post-response.model';
 export enum PostsActionType {
   UploadContent = '[Posts] Upload Content',
   ContentUploaded = '[Posts] Content Upload',
+  ContentUploadFailed = '[Posts] Content Upload Failed',
   CreatePost = '[Posts] Upload Post',
   PostCreated = '[Posts] Post Created',
 }
@@ -22,6 +23,10 @@ export class ContentUploaded implements Action {
   constructor(public payload: string) {}
 }
 
+export class ContentUploadFailed implements Action {
+  public readonly type = PostsActionType.ContentUploadFailed;
+}
+
 export class CreatePost implements Action {
   public readonly type = PostsActionType.CreatePost;
 
@@ -34,4 +39,4 @@ export class PostCreated implements Action {
   constructor(public payload: PostResponseModel) {}
 }
 
-export type PostsActions = UploadContent | CreatePost | ContentUploaded | PostCreated;
+export type PostsActions = UploadContent | ContentUploaded | ContentUploadFailed | CreatePost | PostCreated;

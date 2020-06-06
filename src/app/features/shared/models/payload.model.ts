@@ -1,4 +1,4 @@
 export interface Payload<T> {
-  payload: T;
+  content: T;
   idToken: string;
 }

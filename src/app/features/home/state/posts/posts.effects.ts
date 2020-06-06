@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect, ofType } from '@ngrx/effects';
 import { HttpErrorResponse } from '@angular/common/http';
 
+import { Actions, Effect, ofType } from '@ngrx/effects';
+
 import { of } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
 
 import { PostService } from '../../services/post.service';
-import { catchError, map, switchMap } from 'rxjs/operators';
 import { LoadPopularPosts, LoadPosts, PostsActionType } from './posts.actions';
 
 @Injectable({ providedIn: 'root' })

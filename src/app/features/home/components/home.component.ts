@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
 
     await this._tagsFacade.loadTrendingTags();
     await this._postsFacade.loadPopularPosts({
-      payload: { page: POST_PAGES.Popular, offset: 1, limit: 20, tag: null },
+      content: { page: POST_PAGES.Popular, offset: 1, limit: 20, tag: null },
       idToken: null,
     });
   }
@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
   public async onFeedsScrolled($event: IInfiniteScrollEvent): Promise<void> {
     this._angularFireAuth.idToken.pipe(take(1)).subscribe(async (idToken: string) => {
       this._postRequestModel = { ...this._postRequestModel, offset: this._postRequestModel.offset + 1 };
-      await this._postsFacade.loadPosts({ payload: this._postRequestModel, idToken });
+      await this._postsFacade.loadPosts({ content: this._postRequestModel, idToken });
     });
   }
 
@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit {
       this.selectedNavItem = this.navItems.find(x => x.id === page);
       this._angularFireAuth.idToken.pipe(take(1)).subscribe(async (idToken: string) => {
         this._postRequestModel = { page, tag, limit: 20, offset: 1 };
-        await this._postsFacade.loadPosts({ payload: this._postRequestModel, idToken });
+        await this._postsFacade.loadPosts({ content: this._postRequestModel, idToken });
       });
     }
   }

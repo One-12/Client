@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { PostsModuleState } from '../index';
 import { postsAdapter, PostsState } from './posts.reducers';
 

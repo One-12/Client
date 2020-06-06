@@ -1,12 +1,14 @@
 import { DOCUMENT } from '@angular/common';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { OnChanges, SimpleChanges } from '@angular/core';
 import { Component, Inject, Input, OnInit } from '@angular/core';
 
+import { take } from 'rxjs/operators';
 import domtoimage from 'dom-to-image';
 
-import { UploadService } from '../../../services/upload.service';
-import { dataURLtoFile, nameOf } from '../../../../shared/utils/utils';
+import { PostsFacade } from '../../../state/posts/posts.facade';
 import { EMPTY_STRING } from '../../../../shared/constants/constants';
+import { dataURLtoFile, nameOf } from '../../../../shared/utils/utils';
 import { SearchTemplatesResponseModel } from '../../../models/template/search-templates-response.model';
 
 @Component({
@@ -40,7 +42,11 @@ export class AddPostComponentComponent implements OnChanges, OnInit {
 
   private _mousePositionY: number;
 
-  constructor(@Inject(DOCUMENT) private readonly _document: Document, private readonly _uploadService: UploadService) {
+  constructor(
+    private readonly _postsFacade: PostsFacade,
+    private readonly _angularFireAuth: AngularFireAuth,
+    @Inject(DOCUMENT) private readonly _document: Document,
+  ) {
     this._initializeProperties();
   }
 
@@ -69,6 +75,24 @@ export class AddPostComponentComponent implements OnChanges, OnInit {
       this.tags = [...this.tags, this.tag];
       this.tag = '';
     }
+  }
+
+  public async onUploadPostButtonClicked(): Promise<void> {
+    this._angularFireAuth.idToken.pipe(take(1)).subscribe(async (idToken: string) => {
+      const postContent = this._document.querySelector('.post-content');
+      if (postContent) {
+        this._postsFacade.uploadedContentUrl$.pipe(take(1)).subscribe(async url => {
+          await this._postsFacade.createPost({
+            content: { content: url, tags: this.tags, title: this.title, type: 'post' },
+            idToken,
+          });
+        });
+
+        const postImage = await domtoimage.toPng(postContent);
+        const postFile = await dataURLtoFile(postImage, 'hello.png', 'image/png');
+        await this._postsFacade.uploadContent({ content: postFile, idToken });
+      }
+    });
   }
 
   public async onFileSelected(fileInputElement: HTMLInputElement): Promise<void> {
@@ -109,13 +133,5 @@ export class AddPostComponentComponent implements OnChanges, OnInit {
     dragEvent.stopPropagation();
     (dragEvent.target as HTMLElement).style.left = `${this._mousePositionX}px`;
     (dragEvent.target as HTMLElement).style.top = `${this._mousePositionY}px`;
-  }
-
-  public async onUploadPostButtonClicked(): Promise<void> {
-    domtoimage.toPng(this._document.querySelector('.post-content')).then(img => {
-      dataURLtoFile(img, 'hello.png', `image/png`).then(res => {
-        this._uploadService.uploadFiles(res).subscribe(response => {});
-      });
-    });
   }
 }

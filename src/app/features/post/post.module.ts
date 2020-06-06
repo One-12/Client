@@ -10,12 +10,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { reducers } from './state';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { ColorPickerModule } from 'ngx-color-picker';
 
 import { SharedModule } from '../shared/shared.module';
 import { PostRoutingModule } from './post-routing.module';
 
+import { PostsEffects } from './state/posts/posts.effects';
 import { PostComponent } from './components/post.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { CreatorsCornerComponent } from './components/creators-corner/creators-corner.component';
@@ -45,6 +47,7 @@ import { SearchTemplatesPanelComponent } from './components/creators-corner/sear
     PostRoutingModule,
     MatFormFieldModule,
     StoreModule.forFeature('posts', reducers),
+    EffectsModule.forFeature([PostsEffects]),
   ],
 })
 export class PostModule {}
