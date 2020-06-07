@@ -68,6 +68,10 @@
   margin-right: 16px !important;
 }
 
+.mr-30 {
+  margin-right: 30px !important;
+}
+
 .mt-m10 {
   margin-top: -10px !important;
 }
@@ -228,4 +232,8 @@
 
 .collapse {
   visibility: collapse !important;
+}
+
+.user-select-none {
+  user-select: none !important;
 }

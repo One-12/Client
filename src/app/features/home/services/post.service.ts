@@ -9,6 +9,7 @@ import { ConfigService } from '../../../core/services/config.service';
 import { Payload } from '../../shared/models/payload.model';
 import { PostRequestModel } from '../models/post/post-request.model';
 import { PostResponseModel } from '../models/post/post-response.model';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -34,9 +35,6 @@ export class PostService extends ApiService {
     const postRequest = payload.content;
     const headers = this.getDefaultHttpHeaders(idToken);
     const params = PostService._getDefaultParamsForPost(postRequest);
-
-    // offset: pagenumber - starts at 1;
-    // limit: pagesize - default at 20;
 
     const apiUrl = `${this.baseUrl}/api/posts`;
     const postResponse = [];
@@ -64,7 +62,7 @@ export class PostService extends ApiService {
       postResponse.push(post);
     }
 
-    return of<PostResponseModel[]>(postResponse);
+    return of<PostResponseModel[]>(postResponse).pipe(delay(3000));
     // return this._httpClient.get<PostResponseModel>(apiUrl, { params, headers });
   }
 }

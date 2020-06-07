@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { ChangeDetectionStrategy } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Inject, Input } from '@angular/core';
 
 import { PostResponseModel } from '../../models/post/post-response.model';
 
@@ -11,4 +11,14 @@ import { PostResponseModel } from '../../models/post/post-response.model';
 })
 export class PopularPostsStreamComponent {
   @Input() public popularPosts: PostResponseModel[];
+
+  constructor(@Inject(DOCUMENT) private readonly _document: Document) {}
+
+  public async scrollLeft(): Promise<void> {
+    this._document.getElementById('popular-posts-stream-container').scrollLeft -= 200;
+  }
+
+  public async scrollRight(): Promise<void> {
+    this._document.getElementById('popular-posts-stream-container').scrollLeft += 200;
+  }
 }

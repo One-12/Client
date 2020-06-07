@@ -21,6 +21,18 @@
     <one12-time-line-header></one12-time-line-header>
   </section>
 
+  <!-- Popular Posts -->
+  <section class="popular-posts-container overflow-hidden">
+    <one12-section-header
+      title="Popular"
+      subtitle="Now"
+      showScrollButton="true"
+      (scrollLeftButtonClicked)="popularPost.scrollLeft()"
+      (scrollRightButtonClicked)="popularPost.scrollRight()"
+    ></one12-section-header>
+    <one12-popular-posts-stream [popularPosts]="popularPosts$ | async" #popularPost></one12-popular-posts-stream>
+  </section>
+
   <!-- Tags -->
   <section class="tags-container overflow-hidden">
     <!-- Tags Header -->
@@ -28,12 +40,6 @@
 
     <!-- Tags Stream -->
     <!-- <one12-tag-stream [tags]="trendingTags$ | async" (tagSelected)="onTagSelected($event)"> </one12-tag-stream> -->
-  </section>
-
-  <!-- Popular Posts -->
-  <section class="popular-posts-container overflow-hidden">
-    <one12-section-header title="Popular" subtitle="Now" showScrollButton="true"></one12-section-header>
-    <one12-popular-posts-stream [popularPosts]="popularPosts$ | async"></one12-popular-posts-stream>
   </section>
 
   <!-- Posts List -->
@@ -54,7 +60,7 @@
       class="posts"
       *ngIf="posts$ | async as posts"
     >
-      <article class="post" *ngFor="let post of posts">
+      <article class="post mb-16" *ngFor="let post of posts">
         <one12-feed-card [post]="post" (postSelected)="onPostSelected($event)"> </one12-feed-card>
       </article>
     </section>
