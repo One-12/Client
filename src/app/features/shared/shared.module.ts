@@ -14,11 +14,11 @@ import { ProgressSpinnerComponent } from './components/progress-spinner/progress
 
 @NgModule({
   declarations: [
-    SectionHeaderComponent,
-    TagsComponent,
-    RoundPipe,
-    NumberFormatterPipe,
     SafePipe,
+    RoundPipe,
+    TagsComponent,
+    NumberFormatterPipe,
+    SectionHeaderComponent,
     ProgressSpinnerComponent,
   ],
   exports: [SectionHeaderComponent, TagsComponent, RoundPipe, NumberFormatterPipe, SafePipe, ProgressSpinnerComponent],
