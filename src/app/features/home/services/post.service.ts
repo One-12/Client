@@ -62,7 +62,7 @@ export class PostService extends ApiService {
       postResponse.push(post);
     }
 
-    return of<PostResponseModel[]>(postResponse).pipe(delay(3000));
+    return of<PostResponseModel[]>(postResponse).pipe(delay(2000));
     // return this._httpClient.get<PostResponseModel>(apiUrl, { params, headers });
   }
 }

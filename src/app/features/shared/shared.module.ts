@@ -10,10 +10,18 @@ import { NumberFormatterPipe } from './pipes/math/number-formatter.pipe';
 
 import { TagsComponent } from './components/tags/tags.component';
 import { SectionHeaderComponent } from './components/section-header/section-header.component';
+import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
 
 @NgModule({
-  declarations: [SectionHeaderComponent, TagsComponent, RoundPipe, NumberFormatterPipe, SafePipe],
-  exports: [SectionHeaderComponent, TagsComponent, RoundPipe, NumberFormatterPipe, SafePipe],
+  declarations: [
+    SectionHeaderComponent,
+    TagsComponent,
+    RoundPipe,
+    NumberFormatterPipe,
+    SafePipe,
+    ProgressSpinnerComponent,
+  ],
+  exports: [SectionHeaderComponent, TagsComponent, RoundPipe, NumberFormatterPipe, SafePipe, ProgressSpinnerComponent],
   imports: [CommonModule, MatButtonModule, MatIconModule, MatRippleModule],
 })
 export class SharedModule {}

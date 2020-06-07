@@ -47,9 +47,7 @@
     <one12-section-header title="Feeds"></one12-section-header>
 
     <!-- Load Indicator -->
-    <section *ngIf="isFetchingPosts$ | async">
-      <h1>Loading</h1>
-    </section>
+    <one12-progress-spinner *ngIf="isFetchingPosts$ | async"></one12-progress-spinner>
 
     <!-- Feed Stream -->
     <section
