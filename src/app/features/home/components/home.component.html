@@ -30,7 +30,11 @@
       (scrollLeftButtonClicked)="popularPost.scrollLeft()"
       (scrollRightButtonClicked)="popularPost.scrollRight()"
     ></one12-section-header>
-    <one12-popular-posts-stream [popularPosts]="popularPosts$ | async" #popularPost></one12-popular-posts-stream>
+    <one12-popular-posts-stream
+      [isFetchingPopularPosts]="isFetchingPopularPosts$ | async"
+      [popularPosts]="popularPosts$ | async"
+      #popularPost
+    ></one12-popular-posts-stream>
   </section>
 
   <!-- Tags -->

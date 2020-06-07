@@ -1,6 +1,16 @@
 <!-- Popular Posts Stream Container -->
-<section id="popular-posts-stream-container" class="flex flex-row overflow-hidden mr-30">
-  <section *ngFor="let post of popularPosts" class="pt-16 px-16">
-    <img [src]="post.content" alt="" />
+<section class="flex flex-row mr-30">
+  <!-- Popular Posts -->
+  <section id="popular-posts-wrapper" class="flex flex-row overflow-hidden" *ngIf="!isFetchingPopularPosts">
+    <section *ngFor="let post of popularPosts" class="pt-16 px-16">
+      <img [src]="post.content" alt="" />
+    </section>
+  </section>
+
+  <!-- Popular Posts Loader -->
+  <section id="popular-posts-loader-wrapper" class="flex flex-row overflow-hidden" *ngIf="isFetchingPopularPosts">
+    <section *ngFor="let post of popularPostsShadowedItems" class="pt-16 px-16">
+      <section class="image-placeholder"></section>
+    </section>
   </section>
 </section>

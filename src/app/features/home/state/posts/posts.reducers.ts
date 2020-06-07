@@ -38,7 +38,7 @@ export function postsReducer(state: PostsState = initialState, action: PostsActi
       return {
         ...state,
         popularPosts: [...state.popularPosts, ...action.payload],
-        isFetchingPosts: false,
+        isFetchingPopularPosts: false,
       };
     }
 

@@ -15,7 +15,7 @@ import { selectIsFetchingPopularPosts, selectIsFetchingPosts } from './posts.sel
 export class PostsFacade {
   public isFetchingPosts$ = this.store.select(selectIsFetchingPosts);
 
-  public isFetchingPopularPosts = this.store.select(selectIsFetchingPopularPosts);
+  public isFetchingPopularPosts$ = this.store.select(selectIsFetchingPopularPosts);
 
   public popularPosts$ = this.store.select(selectPopularPosts);
 

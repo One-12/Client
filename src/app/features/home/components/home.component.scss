@@ -1,7 +1,7 @@
 #home-container {
   display: grid;
   grid-template-columns: 240px 1fr;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: 50px 150px 100px auto;
   grid-template-areas:
     'logo time-line-header'
     'left-sidebar popular-posts'

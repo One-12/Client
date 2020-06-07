@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
   public isFetchingTags$: Observable<boolean>;
 
   public popularPosts$: Observable<PostResponseModel[]>;
+  public isFetchingPopularPosts$: Observable<boolean>;
 
   private _postRequestModel: PostRequestModel;
 
@@ -59,6 +60,7 @@ export class HomeComponent implements OnInit {
 
     this.isFetchingTags$ = this._tagsFacade.isFetching$;
     this.isFetchingPosts$ = this._postsFacade.isFetchingPosts$;
+    this.isFetchingPopularPosts$ = this._postsFacade.isFetchingPopularPosts$;
 
     await this._tagsFacade.loadTrendingTags();
     await this._postsFacade.loadPopularPosts({

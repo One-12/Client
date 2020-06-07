@@ -1,9 +1,37 @@
-#popular-posts-stream-container {
-  section {
-    img {
+@import "../../../../../assets/styles/colors";
+
+:host {
+  #popular-posts-wrapper {
+    section {
+      img {
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  #popular-posts-loader-wrapper {
+    .image-placeholder {
       width: 75px;
       height: 75px;
       border-radius: 50%;
+      background-color: $skeleton-color;
+      animation: pulse 2s infinite ease-in-out;
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      background-color: $skeleton-color-01;
+    }
+
+    50% {
+      background-color: $skeleton-color-03;
+    }
+
+    100% {
+      background-color: $skeleton-color-01;
     }
   }
 }
