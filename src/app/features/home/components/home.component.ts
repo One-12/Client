@@ -85,6 +85,12 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  /**
+   * Loads Posts with subsequent Post Request.
+   * @param {IInfiniteScrollEvent} $event
+   * @returns {Promise<void>}
+   * @memberof HomeComponent
+   */
   public async onFeedsScrolled($event: IInfiniteScrollEvent): Promise<void> {
     this._angularFireAuth.idToken.pipe(take(1)).subscribe(async (idToken: string) => {
       this._postRequestModel = { ...this._postRequestModel, offset: this._postRequestModel.offset + 1 };
@@ -92,6 +98,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  /**
+   * Loads Posts based on the Page Category.
+   * @private
+   * @param {Params} queryParams
+   * @returns {Promise<void>}
+   * @memberof HomeComponent
+   */
   private async _onQueryParamsChanged(queryParams: Params): Promise<void> {
     const { page, tag } = queryParams;
 
