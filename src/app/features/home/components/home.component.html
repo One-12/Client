@@ -51,7 +51,16 @@
     <one12-section-header title="Feeds"></one12-section-header>
 
     <!-- Load Indicator -->
-    <one12-progress-spinner *ngIf="isFetchingPosts$ | async"></one12-progress-spinner>
+    <section class="posts" *ngIf="isFetchingPosts$ | async">
+      <article class="mb-16" *ngFor="let post of postsShadowedItems">
+        <section class="post-loader-wrapper">
+          <section></section>
+          <section></section>
+          <section></section>
+          <section></section>
+        </section>
+      </article>
+    </section>
 
     <!-- Feed Stream -->
     <section
@@ -60,9 +69,9 @@
       [infiniteScrollThrottle]="50"
       (scrolled)="onFeedsScrolled($event)"
       class="posts"
-      *ngIf="posts$ | async as posts"
+      *ngIf="!(isFetchingPosts$ | async)"
     >
-      <article class="post mb-16" *ngFor="let post of posts">
+      <article class="post mb-16" *ngFor="let post of posts$ | async">
         <one12-feed-card [post]="post" (postSelected)="onPostSelected($event)"> </one12-feed-card>
       </article>
     </section>

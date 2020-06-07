@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { IInfiniteScrollEvent } from 'ngx-infinite-scroll';
 
 import { POST_PAGES } from '../utils/constants';
@@ -16,7 +17,6 @@ import { TagModel } from '../models/tag/tag.model';
 import { NavItemModel } from '../models/nav/nav-item.model';
 import { PostRequestModel } from '../models/post/post-request.model';
 import { PostResponseModel } from '../models/post/post-response.model';
-import { take } from 'rxjs/operators';
 
 @UntilDestroy()
 @Component({
@@ -37,6 +37,8 @@ export class HomeComponent implements OnInit {
   public popularPosts$: Observable<PostResponseModel[]>;
   public isFetchingPopularPosts$: Observable<boolean>;
 
+  public postsShadowedItems: number[];
+
   private _postRequestModel: PostRequestModel;
 
   constructor(
@@ -47,6 +49,7 @@ export class HomeComponent implements OnInit {
     private readonly _angularFireAuth: AngularFireAuth,
     private readonly _menuItemsService: MenuItemsService,
   ) {
+    this.postsShadowedItems = Array(20).fill(0);
     this.navItems = this._menuItemsService.getMenuItems();
     this.selectedNavItem = this.navItems[0];
 
@@ -98,6 +101,8 @@ export class HomeComponent implements OnInit {
         this._postRequestModel = { page, tag, limit: 20, offset: 1 };
         await this._postsFacade.loadPosts({ content: this._postRequestModel, idToken });
       });
+    } else {
+      await this._router.navigate(['/'], { queryParams: { page: POST_PAGES.Fresh }, replaceUrl: true });
     }
   }
 }

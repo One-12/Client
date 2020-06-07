@@ -1,3 +1,5 @@
+@import "../../../../assets/styles/colors";
+
 #home-container {
   display: grid;
   grid-template-columns: 240px 1fr;
@@ -43,6 +45,53 @@
       flex-wrap: wrap;
       justify-content: space-evenly;
       margin: 16px;
+
+      .post-loader-wrapper {
+        border-radius: 16px;
+        border: $light-grey-color 1px solid;
+        padding: 16px;
+
+        section {
+          height: 14px;
+          margin-bottom: 10px;
+          background-color: $skeleton-color;
+          animation: pulse 2s infinite ease-in-out;
+        }
+
+        section:nth-child(1) {
+          width: 150px;
+          border-bottom: 1px $light-grey-color solid;
+        }
+
+        section:nth-child(2) {
+          width: 200px;
+          border-bottom: 1px $light-grey-color solid;
+        }
+
+        section:nth-child(3) {
+          border-bottom: 1px $light-grey-color solid;
+          height: 380px;
+          width: 320px;
+        }
+
+        section:nth-child(4) {
+          border-bottom: 1px $light-grey-color solid;
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          background-color: $skeleton-color-01;
+        }
+
+        50% {
+          background-color: $skeleton-color-03;
+        }
+
+        100% {
+          background-color: $skeleton-color-01;
+        }
+      }
     }
   }
 }
