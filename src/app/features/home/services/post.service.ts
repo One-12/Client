@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 import { ApiService } from '../../shared/services/api.service';
 import { ConfigService } from '../../../core/services/config.service';
@@ -9,7 +10,6 @@ import { ConfigService } from '../../../core/services/config.service';
 import { Payload } from '../../shared/models/payload.model';
 import { PostRequestModel } from '../models/post/post-request.model';
 import { PostResponseModel } from '../models/post/post-response.model';
-import { delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',

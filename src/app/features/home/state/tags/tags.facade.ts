@@ -9,13 +9,13 @@ import { selectAllTags, selectIsFetchingData } from './tags.selectors';
 
 @Injectable({ providedIn: 'root' })
 export class TagsFacade {
-  trendingTags$ = this.store.select(selectAllTags).pipe(map(data => Object.values(data)));
+  public trendingTags$ = this.store.select(selectAllTags).pipe(map(data => Object.values(data)));
 
-  isFetching$ = this.store.select(selectIsFetchingData);
+  public isFetchingTrendingTags$ = this.store.select(selectIsFetchingData);
 
   constructor(private readonly store: Store<TagsState>) {}
 
-  async loadTrendingTags(): Promise<void> {
+  public async loadTrendingTags(): Promise<void> {
     this.store.dispatch(new LoadTrendingTags());
   }
 }

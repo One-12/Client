@@ -11,4 +11,4 @@ const { selectEntities } = tagsAdapter.getSelectors(selectTagsState);
 
 export const selectAllTags = selectEntities;
 
-export const selectIsFetchingData = createSelector(selectTagsState, (state: TagsState) => state.isFetching);
+export const selectIsFetchingData = createSelector(selectTagsState, (state: TagsState) => state.isFetchingTrendingTags);

@@ -41,6 +41,15 @@ export class HomeComponent implements OnInit {
 
   private _postRequestModel: PostRequestModel;
 
+  /**
+   * Creates a new instance of Home Component.
+   * @param _router
+   * @param _tagsFacade
+   * @param _postsFacade
+   * @param _activatedRoute
+   * @param _angularFireAuth
+   * @param _menuItemsService
+   */
   constructor(
     private readonly _router: Router,
     private readonly _tagsFacade: TagsFacade,
@@ -61,7 +70,7 @@ export class HomeComponent implements OnInit {
     this.trendingTags$ = this._tagsFacade.trendingTags$;
     this.popularPosts$ = this._postsFacade.popularPosts$;
 
-    this.isFetchingTags$ = this._tagsFacade.isFetching$;
+    this.isFetchingTags$ = this._tagsFacade.isFetchingTrendingTags$;
     this.isFetchingPosts$ = this._postsFacade.isFetchingPosts$;
     this.isFetchingPopularPosts$ = this._postsFacade.isFetchingPopularPosts$;
 

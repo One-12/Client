@@ -1,25 +1,24 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
-import { TagsEntity } from './tags.entity';
 import { TagModel } from '../../models/tag/tag.model';
 import { TagsActions, TagsActionType } from './tags.actions';
 
 export interface TagsState extends EntityState<TagModel> {
-  isFetching: boolean;
+  isFetchingTrendingTags: boolean;
 }
 
 export const tagsAdapter: EntityAdapter<TagModel> = createEntityAdapter<TagModel>();
 
-export const initialState: TagsState = tagsAdapter.getInitialState({ isFetching: false });
+export const initialState: TagsState = tagsAdapter.getInitialState({ isFetchingTrendingTags: false });
 
 export function tagsReducer(state: TagsState = initialState, action: TagsActions): TagsState {
   switch (action.type) {
     case TagsActionType.LoadTrendingTags: {
-      return tagsAdapter.setAll(TagsEntity.getTrendingTags(), { ...state, isFetching: true });
+      return { ...state, isFetchingTrendingTags: true };
     }
 
     case TagsActionType.TrendingTagsLoaded: {
-      return { ...state, isFetching: false };
+      return tagsAdapter.setAll(action.payload, { ...state, isFetchingTrendingTags: false });
     }
 
     default: {

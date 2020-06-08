@@ -27,6 +27,8 @@ import { MenuItemsCardComponent } from './components/sidebar/menu-items-card/men
 import { PopularPostsStreamComponent } from './components/popular-posts-stream/popular-posts-stream.component';
 import { SupportCenterCardComponent } from './components/sidebar/support-center-card/support-center-card.component';
 import { NewsAndAnnouncementsCardComponent } from './components/sidebar/news-and-announcements-card/news-and-announcements-card.component';
+import { TagsEffects } from './state/tags/tags.effects';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { NewsAndAnnouncementsCardComponent } from './components/sidebar/news-and
     HomeRoutingModule,
     InfiniteScrollModule,
     StoreModule.forFeature('home', reducers),
-    EffectsModule.forFeature([PostsEffects]),
+    EffectsModule.forFeature([PostsEffects, TagsEffects]),
+    MatChipsModule,
   ],
 })
 export class HomeModule {}

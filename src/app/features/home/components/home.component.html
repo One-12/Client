@@ -40,10 +40,18 @@
   <!-- Tags -->
   <section class="tags-container overflow-hidden">
     <!-- Tags Header -->
-    <one12-section-header title="What People Are" subtitle="Talking" showScrollButton="true"> </one12-section-header>
+    <one12-section-header
+      title="What People Are"
+      subtitle="Talking"
+      showScrollButton="true"
+      (scrollLeftButtonClicked)="trendingTags.scrollLeft()"
+      (scrollRightButtonClicked)="trendingTags.scrollRight()"
+    >
+    </one12-section-header>
 
     <!-- Tags Stream -->
-    <!-- <one12-tag-stream [tags]="trendingTags$ | async" (tagSelected)="onTagSelected($event)"> </one12-tag-stream> -->
+    <one12-tag-stream [tags]="trendingTags$ | async" (tagSelected)="onTagSelected($event)" #trendingTags>
+    </one12-tag-stream>
   </section>
 
   <!-- Posts List -->
