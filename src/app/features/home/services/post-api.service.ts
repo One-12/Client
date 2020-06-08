@@ -14,7 +14,7 @@ import { PostResponseModel } from '../models/post/post-response.model';
 @Injectable({
   providedIn: 'root',
 })
-export class PostService extends ApiService {
+export class PostApiService extends ApiService {
   constructor(httpClient: HttpClient, configService: ConfigService) {
     super(httpClient, configService);
   }
@@ -34,7 +34,7 @@ export class PostService extends ApiService {
     const { idToken } = payload;
     const postRequest = payload.content;
     const headers = this.getDefaultHttpHeaders(idToken);
-    const params = PostService._getDefaultParamsForPost(postRequest);
+    const params = PostApiService._getDefaultParamsForPost(postRequest);
 
     const apiUrl = `${this.baseUrl}/api/posts`;
     const postResponse = [];

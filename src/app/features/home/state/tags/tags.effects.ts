@@ -4,13 +4,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
-import { TagsService } from '../../services/tags.service';
+import { TagApiService } from '../../services/tag-api.service';
 import { LoadTrendingTags, TagsActionType } from './tags.actions';
 import { Injectable } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class TagsEffects {
-  constructor(private readonly _actions$: Actions, private readonly _tagService: TagsService) {}
+  constructor(private readonly _actions$: Actions, private readonly _tagService: TagApiService) {}
 
   @Effect()
   loadTrendingTags$ = this._actions$.pipe(

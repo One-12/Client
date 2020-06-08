@@ -12,11 +12,15 @@ import { UploadFileResponseModel } from '../models/post/upload-file-response.mod
 @Injectable({
   providedIn: 'root',
 })
-export class UploadService extends ApiService {
+export class UploadApiService extends ApiService {
   constructor(httpClient: HttpClient, configService: ConfigService) {
     super(httpClient, configService);
   }
 
+  /**
+   * Uploads File to the Server.
+   * @param payload
+   */
   public uploadFiles(payload: Payload<File>): Observable<UploadFileResponseModel> {
     const { idToken } = payload;
     const headers = this.getDefaultHttpHeaders(idToken);

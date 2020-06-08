@@ -14,7 +14,7 @@ import { SharedModule } from '../shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
 
 import { TagsFacade } from './state/tags/tags.facade';
-import { PostService } from './services/post.service';
+import { PostApiService } from './services/post-api.service';
 import { PostsFacade } from './state/posts/posts.facade';
 import { PostsEffects } from './state/posts/posts.effects';
 
@@ -42,7 +42,7 @@ import { MatChipsModule } from '@angular/material/chips';
     PopularPostsStreamComponent,
     NewsAndAnnouncementsCardComponent,
   ],
-  providers: [PostsFacade, TagsFacade, PostService],
+  providers: [PostsFacade, TagsFacade, PostApiService],
   imports: [
     SharedModule,
     CommonModule,

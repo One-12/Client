@@ -12,7 +12,7 @@ import { GetTrendingTagResponseModel } from '../models/tag/get-trending-tag-resp
 @Injectable({
   providedIn: 'root',
 })
-export class TagsService extends ApiService {
+export class TagApiService extends ApiService {
   /**
    * Creates an instance of TagsService.
    * @param {HttpClient} httpClient

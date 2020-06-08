@@ -6,12 +6,12 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
-import { PostService } from '../../services/post.service';
+import { PostApiService } from '../../services/post-api.service';
 import { LoadPopularPosts, LoadPosts, PostsActionType } from './posts.actions';
 
 @Injectable({ providedIn: 'root' })
 export class PostsEffects {
-  constructor(private readonly _actions$: Actions, private readonly _postService: PostService) {}
+  constructor(private readonly _actions$: Actions, private readonly _postService: PostApiService) {}
 
   @Effect()
   loadPosts$ = this._actions$.pipe(
