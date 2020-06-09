@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 
-import { UploadApiService } from '../../services/upload-api.service';
+import { UploadHttpService } from '../../services/upload-http.service';
 import { PostsActionType, UploadContent } from './posts.actions';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -9,7 +9,7 @@ import { of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class PostsEffects {
-  constructor(private readonly _actions$: Actions, private readonly _uploadService: UploadApiService) {}
+  constructor(private readonly _actions$: Actions, private readonly _uploadService: UploadHttpService) {}
 
   @Effect()
   uploadContent$ = this._actions$.pipe(

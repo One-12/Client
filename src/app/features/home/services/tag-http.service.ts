@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
-import { ApiService } from '../../shared/services/api.service';
+import { BaseHttpService } from '../../shared/services/baseHttpService';
 import { ConfigService } from '../../../core/services/config.service';
 
 import { GetTrendingTagResponseModel } from '../models/tag/get-trending-tag-response.model';
@@ -12,7 +12,7 @@ import { GetTrendingTagResponseModel } from '../models/tag/get-trending-tag-resp
 @Injectable({
   providedIn: 'root',
 })
-export class TagApiService extends ApiService {
+export class TagHttpService extends BaseHttpService {
   /**
    * Creates an instance of TagsService.
    * @param {HttpClient} httpClient

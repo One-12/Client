@@ -9,12 +9,14 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { FeaturesModule } from './features/features.module';
 
 import { AppComponent } from './app.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { environment } from '../environments/environment';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBj-DGF0P5unpVEAGAi1qFfNF-de3E8a44',
@@ -41,7 +43,7 @@ const firebaseConfig = {
     StoreModule.forRoot([]),
     EffectsModule.forRoot([]),
     AngularFireModule.initializeApp(firebaseConfig),
-    StoreDevtoolsModule.instrument({ maxAge: 50 }),
+    StoreDevtoolsModule.instrument({ maxAge: 50, logOnly: environment.production }),
   ],
   bootstrap: [AppComponent],
 })

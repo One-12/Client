@@ -4,7 +4,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
-import { ApiService } from '../../shared/services/api.service';
+import { BaseHttpService } from '../../shared/services/baseHttpService';
 import { ConfigService } from '../../../core/services/config.service';
 
 import { Payload } from '../../shared/models/payload.model';
@@ -14,7 +14,7 @@ import { PostResponseModel } from '../models/post/post-response.model';
 @Injectable({
   providedIn: 'root',
 })
-export class PostApiService extends ApiService {
+export class PostHttpService extends BaseHttpService {
   constructor(httpClient: HttpClient, configService: ConfigService) {
     super(httpClient, configService);
   }
@@ -34,7 +34,7 @@ export class PostApiService extends ApiService {
     const { idToken } = payload;
     const postRequest = payload.content;
     const headers = this.getDefaultHttpHeaders(idToken);
-    const params = PostApiService._getDefaultParamsForPost(postRequest);
+    const params = PostHttpService._getDefaultParamsForPost(postRequest);
 
     const apiUrl = `${this.baseUrl}/api/posts`;
     const postResponse = [];

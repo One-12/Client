@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ConfigService } from '../../../core/services/config.service';
 
-export class ApiService {
+export class BaseHttpService {
   protected readonly baseUrl: string;
 
   constructor(protected readonly _httpClient: HttpClient, protected readonly _configService: ConfigService) {

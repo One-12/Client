@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
-import { ApiService } from '../../shared/services/api.service';
+import { BaseHttpService } from '../../shared/services/baseHttpService';
 import { ConfigService } from '../../../core/services/config.service';
 
 import { Payload } from '../../shared/models/payload.model';
@@ -12,7 +12,7 @@ import { UploadFileResponseModel } from '../models/post/upload-file-response.mod
 @Injectable({
   providedIn: 'root',
 })
-export class UploadApiService extends ApiService {
+export class UploadHttpService extends BaseHttpService {
   constructor(httpClient: HttpClient, configService: ConfigService) {
     super(httpClient, configService);
   }
