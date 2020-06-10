@@ -29,8 +29,7 @@ export class AppComponent {
     this.canShowScrollToTopButton = scrollPosition >= 100;
   }
 
-  // TODO: Cross browsing
-  onScrollToTopButtonClicked(): void {
+  public onScrollToTopButtonClicked(): void {
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
   }
 }
