@@ -7,6 +7,7 @@ import { TagModel } from '../../models/tag/tag.model';
 @Component({
   selector: 'one12-tag-stream',
   templateUrl: './tag-stream.component.html',
+  styleUrls: ['./tag-stream.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TagStreamComponent {

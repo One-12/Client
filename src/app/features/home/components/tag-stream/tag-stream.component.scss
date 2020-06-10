@@ -1,0 +1,17 @@
+@import "../../../../../assets/styles/colors";
+
+:host {
+  .tag {
+    background-color: $link-color;
+    color: $link-content-color;
+    font-size: 16px;
+    padding: 6px 16px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: $link-hover-color;
+      transform: scaleX(1.02);
+    }
+  }
+}

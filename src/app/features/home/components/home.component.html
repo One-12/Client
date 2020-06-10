@@ -26,7 +26,7 @@
     <one12-section-header
       title="Popular"
       subtitle="Now"
-      showScrollButton="true"
+      [showScrollButton]="!(isFetchingPopularPosts$ | async)"
       (scrollLeftButtonClicked)="popularPost.scrollLeft()"
       (scrollRightButtonClicked)="popularPost.scrollRight()"
     ></one12-section-header>
@@ -43,7 +43,7 @@
     <one12-section-header
       title="What People Are"
       subtitle="Talking"
-      showScrollButton="true"
+      [showScrollButton]="!(isFetchingTags$ | async)"
       (scrollLeftButtonClicked)="trendingTags.scrollLeft()"
       (scrollRightButtonClicked)="trendingTags.scrollRight()"
     >

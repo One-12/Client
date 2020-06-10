@@ -32,7 +32,7 @@ export class TagHttpService extends BaseHttpService {
     const apiUrl = `${this.baseUrl}/api/tags/trending`;
     const tagsResponse = [];
 
-    for (let i = 1; i <= 20; i++) {
+    for (let i = 1; i <= 50; i++) {
       const tag: GetTrendingTagResponseModel = {
         id: `Tag ${i}`,
         name: `Tag ${i}`,
