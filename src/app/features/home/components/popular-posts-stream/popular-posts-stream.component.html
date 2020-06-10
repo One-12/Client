@@ -1,7 +1,11 @@
 <!-- Popular Posts Stream Container -->
 <section class="flex flex-row mr-30">
   <!-- Popular Posts -->
-  <section id="popular-posts-wrapper" class="flex flex-row overflow-hidden" *ngIf="!isFetchingPopularPosts">
+  <section
+    id="popular-posts-wrapper"
+    class="flex flex-row overflow-hidden smooth-scroll"
+    *ngIf="!isFetchingPopularPosts"
+  >
     <section *ngFor="let post of popularPosts" class="pt-16 px-8">
       <img class="pointer" [src]="post.content" alt="" />
     </section>
