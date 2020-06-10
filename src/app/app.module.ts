@@ -17,6 +17,7 @@ import { FeaturesModule } from './features/features.module';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
+import { MatIconModule } from '@angular/material/icon';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBj-DGF0P5unpVEAGAi1qFfNF-de3E8a44',
@@ -44,6 +45,7 @@ const firebaseConfig = {
     EffectsModule.forRoot([]),
     AngularFireModule.initializeApp(firebaseConfig),
     StoreDevtoolsModule.instrument({ maxAge: 50, logOnly: environment.production }),
+    MatIconModule,
   ],
   bootstrap: [AppComponent],
 })

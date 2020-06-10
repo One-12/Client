@@ -1,1 +1,4 @@
 <router-outlet></router-outlet>
+<button class="scroll-to-top-button pointer" *ngIf="canShowScrollToTopButton" (click)="onScrollToTopButtonClicked()">
+  <mat-icon class="pointer">keyboard_arrow_up</mat-icon>
+</button>
