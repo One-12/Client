@@ -4,7 +4,7 @@
   class="ml-15 mr-16 flex-row overflow-hidden smooth-scroll"
   *ngIf="!isFetchingTrendingTags"
 >
-  <section *ngFor="let tag of tags" class="tag pointer no-wrap mr-16">
+  <section *ngFor="let tag of tags" class="tag pointer no-wrap mr-16" (click)="onTagButtonClicked(tag)">
     {{ tag.name }}
   </section>
 </section>
