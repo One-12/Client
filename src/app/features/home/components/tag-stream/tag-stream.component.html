@@ -1,6 +1,19 @@
 <!-- Tag Container -->
-<section id="tag-stream-container" class="ml-15 mr-16 flex-row overflow-hidden smooth-scroll">
+<section
+  id="tag-stream-container"
+  class="ml-15 mr-16 flex-row overflow-hidden smooth-scroll"
+  *ngIf="!isFetchingTrendingTags"
+>
   <section *ngFor="let tag of tags" class="tag pointer no-wrap mr-16">
     {{ tag.name }}
   </section>
+</section>
+
+<!-- Tag Loader -->
+<section
+  id="tag-stream-loader-container"
+  class="ml-15 mt-10 mr-16 flex-row overflow-hidden smooth-scroll"
+  *ngIf="isFetchingTrendingTags"
+>
+  <section *ngFor="let tag of tagsShadowedItems" class="tag pointer no-wrap mr-16"></section>
 </section>

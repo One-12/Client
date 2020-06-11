@@ -1,16 +1,66 @@
 @import "../../../../../assets/styles/colors";
 
 :host {
-  .tag {
-    background-color: $link-color;
-    color: $link-content-color;
-    font-size: 16px;
-    padding: 6px 16px;
-    border-radius: 8px;
-    transition: all 0.5s ease;
-
-    &:hover {
+  #tag-stream-container {
+    .tag {
+      background-color: $link-color;
+      color: $link-content-color;
+      font-size: 16px;
+      padding: 6px 16px;
       border-radius: 3px;
+      transition: all 0.5s ease;
+    }
+  }
+
+  #tag-stream-loader-container {
+    .tag {
+      min-width: 100px;
+      height: 30px;
+      border-radius: 3px;
+      background-color: $skeleton-color;
+      animation: pulse 2s infinite ease-in-out;
+
+      &:nth-child(1) {
+        min-width: 80px;
+      }
+
+      &:nth-child(2) {
+        min-width: 90px;
+      }
+
+      &:nth-child(3) {
+        min-width: 75px;
+      }
+
+      &:nth-child(4) {
+        min-width: 60px;
+      }
+
+      &:nth-child(5) {
+        min-width: 90px;
+      }
+
+      &:nth-child(6) {
+        min-width: 60px;
+      }
+
+      &:nth-child(7) {
+        min-width: 80px;
+      }
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      background-color: $skeleton-color-01;
+    }
+
+    50% {
+      background-color: $skeleton-color-03;
+    }
+
+    100% {
+      background-color: $skeleton-color-01;
     }
   }
 }

@@ -43,14 +43,19 @@
     <one12-section-header
       title="What People Are"
       subtitle="Talking"
-      [showScrollButton]="!(isFetchingTags$ | async)"
+      [showScrollButton]="!(isFetchingTrendingTags$ | async)"
       (scrollLeftButtonClicked)="trendingTags.scrollLeft()"
       (scrollRightButtonClicked)="trendingTags.scrollRight()"
     >
     </one12-section-header>
 
     <!-- Tags Stream -->
-    <one12-tag-stream [tags]="trendingTags$ | async" (tagSelected)="onTagSelected($event)" #trendingTags>
+    <one12-tag-stream
+      [tags]="trendingTags$ | async"
+      [isFetchingTrendingTags]="isFetchingTrendingTags$ | async"
+      (tagSelected)="onTagSelected($event)"
+      #trendingTags
+    >
     </one12-tag-stream>
   </section>
 

@@ -12,9 +12,14 @@ import { TagModel } from '../../models/tag/tag.model';
 })
 export class TagStreamComponent {
   @Input() public tags: TagModel[];
+
+  @Input() public isFetchingTrendingTags: boolean;
+
   @Output() public tagSelected: EventEmitter<TagModel>;
 
   public selectedTag: TagModel;
+
+  public tagsShadowedItems: number[];
 
   constructor(@Inject(DOCUMENT) private readonly _document: Document) {
     this._initializeProperties();
@@ -35,5 +40,6 @@ export class TagStreamComponent {
 
   private _initializeProperties(): void {
     this.tagSelected = new EventEmitter<TagModel>();
+    this.tagsShadowedItems = Array(20).fill(0);
   }
 }

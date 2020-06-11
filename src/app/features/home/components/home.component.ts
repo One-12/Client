@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   public isFetchingPosts$: Observable<boolean>;
 
   public trendingTags$: Observable<TagModel[]>;
-  public isFetchingTags$: Observable<boolean>;
+  public isFetchingTrendingTags$: Observable<boolean>;
 
   public popularPosts$: Observable<PostResponseModel[]>;
   public isFetchingPopularPosts$: Observable<boolean>;
@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
     this.trendingTags$ = this._tagsFacade.trendingTags$;
     this.popularPosts$ = this._postsFacade.popularPosts$;
 
-    this.isFetchingTags$ = this._tagsFacade.isFetchingTrendingTags$;
+    this.isFetchingTrendingTags$ = this._tagsFacade.isFetchingTrendingTags$;
     this.isFetchingPosts$ = this._postsFacade.isFetchingPosts$;
     this.isFetchingPopularPosts$ = this._postsFacade.isFetchingPopularPosts$;
 
