@@ -20,16 +20,16 @@ export class TagStreamComponent {
 
   public tagsShadowedItems: number[];
 
-  constructor(@Inject(DOCUMENT) private readonly document: Document) {
-    this.initializeProperties();
+  constructor(@Inject(DOCUMENT) private readonly _document: Document) {
+    this._initializeProperties();
   }
 
   public async scrollLeft(): Promise<void> {
-    this.document.getElementById('tag-stream-container').scrollLeft -= 200;
+    this._document.getElementById('tag-stream-container').scrollLeft -= 200;
   }
 
   public async scrollRight(): Promise<void> {
-    this.document.getElementById('tag-stream-container').scrollLeft += 200;
+    this._document.getElementById('tag-stream-container').scrollLeft += 200;
   }
 
   public async onTagButtonClicked(tag: TagModel): Promise<void> {
@@ -37,7 +37,7 @@ export class TagStreamComponent {
     this.tagSelected.emit(tag);
   }
 
-  private initializeProperties(): void {
+  private _initializeProperties(): void {
     this.tagSelected = new EventEmitter<TagModel>();
     this.tagsShadowedItems = Array(20).fill(0);
   }

@@ -1,6 +1,11 @@
-<section id="time-line-header-container" class="mr-16">
-  <section class="flex justify-content-end" *ngIf="user">
-    <!-- User Information -->
+<header id="time-line-header-container" class="flex flex-row justify-content-space-between">
+  <!-- Logo -->
+  <section class="logo-container">
+    <h1>One 12</h1>
+  </section>
+
+  <!-- User Information -->
+  <section class="flex justify-content-end pr-46" *ngIf="user">
     <section class="user-badge">
       <!-- User Details -->
       <section class="flex-column">
@@ -16,7 +21,7 @@
   </section>
 
   <!-- Login Button -->
-  <section class="flex justify-content-end" *ngIf="!user">
+  <section class="flex justify-content-end pr-46" *ngIf="!user">
     <button mat-flat-button color="primary" (click)="onLoginButtonClicked()">Login</button>
   </section>
-</section>
+</header>

@@ -43,53 +43,53 @@ export class HomeComponent implements OnInit {
 
   /**
    * Creates a new instance of Home Component.
-   * @param router
-   * @param tagsFacade
-   * @param postsFacade
-   * @param activatedRoute
-   * @param angularFireAuth
-   * @param menuItemsService
+   * @param _router
+   * @param _tagsFacade
+   * @param _postsFacade
+   * @param _activatedRoute
+   * @param _angularFireAuth
+   * @param _menuItemsService
    */
   constructor(
-    private readonly router: Router,
-    private readonly tagsFacade: TagsFacade,
-    private readonly postsFacade: PostsFacade,
-    private readonly activatedRoute: ActivatedRoute,
-    private readonly angularFireAuth: AngularFireAuth,
-    private readonly menuItemsService: MenuItemsService,
+    private readonly _router: Router,
+    private readonly _tagsFacade: TagsFacade,
+    private readonly _postsFacade: PostsFacade,
+    private readonly _activatedRoute: ActivatedRoute,
+    private readonly _angularFireAuth: AngularFireAuth,
+    private readonly _menuItemsService: MenuItemsService,
   ) {
     this.postsShadowedItems = Array(20).fill(0);
-    this.navItems = this.menuItemsService.getMenuItems();
+    this.navItems = this._menuItemsService.getMenuItems();
     this.selectedNavItem = this.navItems[0];
 
-    this.activatedRoute.queryParams.pipe(untilDestroyed(this)).subscribe(params => this.onQueryParamsChanged(params));
+    this._activatedRoute.queryParams.pipe(untilDestroyed(this)).subscribe(params => this._onQueryParamsChanged(params));
   }
 
   public async ngOnInit(): Promise<void> {
-    this.posts$ = this.postsFacade.posts$;
-    this.trendingTags$ = this.tagsFacade.trendingTags$;
-    this.popularPosts$ = this.postsFacade.popularPosts$;
+    this.posts$ = this._postsFacade.posts$;
+    this.trendingTags$ = this._tagsFacade.trendingTags$;
+    this.popularPosts$ = this._postsFacade.popularPosts$;
 
-    this.isFetchingTrendingTags$ = this.tagsFacade.isFetchingTrendingTags$;
-    this.isFetchingPosts$ = this.postsFacade.isFetchingPosts$;
-    this.isFetchingPopularPosts$ = this.postsFacade.isFetchingPopularPosts$;
+    this.isFetchingTrendingTags$ = this._tagsFacade.isFetchingTrendingTags$;
+    this.isFetchingPosts$ = this._postsFacade.isFetchingPosts$;
+    this.isFetchingPopularPosts$ = this._postsFacade.isFetchingPopularPosts$;
 
-    await this.tagsFacade.loadTrendingTags();
-    await this.postsFacade.loadPopularPosts({
+    await this._tagsFacade.loadTrendingTags();
+    await this._postsFacade.loadPopularPosts({
       content: { page: POST_PAGES.Popular, offset: 1, limit: 20, tag: null },
       idToken: null,
     });
   }
 
   public async onTagSelected(selectedTag: TagModel): Promise<void> {
-    await this.router.navigate([], {
+    await this._router.navigate([], {
       queryParams: { page: POST_PAGES.Tag, tag: selectedTag.name },
-      relativeTo: this.activatedRoute,
+      relativeTo: this._activatedRoute,
     });
   }
 
   public async onPostSelected(selectedPost: PostResponseModel): Promise<void> {
-    await this.router.navigate(['/post'], {
+    await this._router.navigate(['/post'], {
       queryParams: { id: selectedPost.id },
     });
   }
@@ -101,9 +101,9 @@ export class HomeComponent implements OnInit {
    * @memberof HomeComponent
    */
   public async onFeedsScrolled(infiniteScrollEvent: IInfiniteScrollEvent): Promise<void> {
-    this.angularFireAuth.idToken.pipe(take(1)).subscribe(async (idToken: string) => {
+    this._angularFireAuth.idToken.pipe(take(1)).subscribe(async (idToken: string) => {
       this.postRequestModel = { ...this.postRequestModel, offset: this.postRequestModel.offset + 1 };
-      await this.postsFacade.loadPosts({ content: this.postRequestModel, idToken });
+      await this._postsFacade.loadPosts({ content: this.postRequestModel, idToken });
     });
   }
 
@@ -114,17 +114,17 @@ export class HomeComponent implements OnInit {
    * @returns {Promise<void>}
    * @memberof HomeComponent
    */
-  private async onQueryParamsChanged(queryParams: Params): Promise<void> {
+  private async _onQueryParamsChanged(queryParams: Params): Promise<void> {
     const { page, tag } = queryParams;
 
     if (page) {
       this.selectedNavItem = this.navItems.find(x => x.id === page);
-      this.angularFireAuth.idToken.pipe(take(1)).subscribe(async (idToken: string) => {
+      this._angularFireAuth.idToken.pipe(take(1)).subscribe(async (idToken: string) => {
         this.postRequestModel = { page, tag, limit: 20, offset: 1 };
-        await this.postsFacade.loadPosts({ content: this.postRequestModel, idToken });
+        await this._postsFacade.loadPosts({ content: this.postRequestModel, idToken });
       });
     } else {
-      await this.router.navigate(['/'], { queryParams: { page: POST_PAGES.Fresh }, replaceUrl: true });
+      await this._router.navigate(['/'], { queryParams: { page: POST_PAGES.Fresh }, replaceUrl: true });
     }
   }
 }

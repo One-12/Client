@@ -6,11 +6,11 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from '../../../../core/auth/services/auth.service';
 
 @Component({
-  selector: 'one12-time-line-header',
-  templateUrl: './time-line-header.component.html',
-  styleUrls: ['./time-line-header.component.scss'],
+  selector: 'one12-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
 })
-export class TimeLineHeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit {
   public user: User;
 
   constructor(
