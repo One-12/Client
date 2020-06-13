@@ -5,7 +5,7 @@
   </section>
 
   <!-- User Information -->
-  <section class="flex justify-content-end pr-46" *ngIf="user">
+  <section class="flex justify-content-end" *ngIf="user">
     <section class="user-badge">
       <!-- User Details -->
       <section class="flex-column">
@@ -21,7 +21,7 @@
   </section>
 
   <!-- Login Button -->
-  <section class="flex justify-content-end pr-46" *ngIf="!user">
+  <section class="flex justify-content-end" *ngIf="!user">
     <button mat-flat-button color="primary" (click)="onLoginButtonClicked()">Login</button>
   </section>
 </header>
