@@ -3,13 +3,15 @@
   <section class="menu-items-container">
     <!-- Menu Items -->
     <section
-      class="menu-item pointer"
+      class="menu-item-wrapper pointer"
       [class.selected]="item.id === selectedNavItem.id"
       *ngFor="let item of navItems"
       (click)="onMenuItemClicked(item)"
     >
-      <section><i class="fas" [ngClass]="item.icon"></i></section>
-      <section>{{ item.title }}</section>
+      <section class="menu-item" [class.selected]="item.id === selectedNavItem.id">
+        <section><i class="fas" [ngClass]="item.icon"></i></section>
+        <section>{{ item.title }}</section>
+      </section>
     </section>
   </section>
 </section>

@@ -1,34 +1,40 @@
 @import '../../../../../../assets/styles/colors';
 
 #menu-sidebar-card-container {
+  margin-top: 30px;
+
   .menu-items-container {
-    background-color: $primary-blue-color;
-    color: $white-color;
-    padding-top: 18px;
-    padding-bottom: 18px;
+    .menu-item-wrapper {
+      margin-top: 10px;
+      border-left-width: 4px;
+      border-left-style: solid;
+      border-left-color: $white-color;
 
-    .selected {
-      border-left-color: white !important;
+      .menu-item {
+        display: flex;
+        padding: 16px;
+        margin-left: 20px;
+        border-left: transparent 5px solid;
+        color: $primary-blue-color;
 
-      section {
-        i {
-          color: #F52881;
+        &.selected {
+          width: calc(100% - 50px);
+          border-radius: 10px;
+          background-color: $primary-blue-color;
+          color: $link-content-color;
+        }
+
+        &:hover {
+          @extend .selected;
+        }
+
+        section {
+          margin-right: 16px;
         }
       }
-    }
 
-    .menu-item {
-      display: flex;
-      padding: 16px;
-      margin-top: 8px;
-      border-left: transparent 5px solid;
-
-      &:hover {
-        @extend .selected;
-      }
-
-      section {
-        margin-right: 16px;
+      &.selected {
+        border-left-color: $primary-blue-color;
       }
     }
   }

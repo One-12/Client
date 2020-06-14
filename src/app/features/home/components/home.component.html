@@ -7,7 +7,7 @@
 
   <!-- Left Sidebar -->
   <!-- Navigation Menu -->
-  <section class="left-sidebar-container flex-column px-30">
+  <section class="left-sidebar-container flex-column">
     <!-- Logo -->
     <section class="text-align-center">
       <h1>One 12</h1>
@@ -17,6 +17,8 @@
     <one12-menu-items-card class="mb-16" [navItems]="navItems" [selectedNavItem]="selectedNavItem">
     </one12-menu-items-card>
 
+    <hr />
+
     <!-- Help & Support Card -->
     <one12-support-center-card class="mb-16"></one12-support-center-card>
 
@@ -25,7 +27,7 @@
   </section>
 
   <!-- Popular Posts -->
-  <section class="popular-posts-container overflow-hidden">
+  <section class="popular-posts-container overflow-hidden px-30">
     <one12-section-header
       title="Popular"
       subtitle="Now"
@@ -41,7 +43,7 @@
   </section>
 
   <!-- Tags -->
-  <section class="tags-container overflow-hidden">
+  <section class="tags-container overflow-hidden px-30">
     <!-- Tags Header -->
     <one12-section-header
       title="What People Are"
@@ -63,7 +65,7 @@
   </section>
 
   <!-- Posts List -->
-  <section class="posts-container">
+  <section class="posts-container px-30">
     <one12-section-header title="Feeds"></one12-section-header>
 
     <!-- Load Indicator -->

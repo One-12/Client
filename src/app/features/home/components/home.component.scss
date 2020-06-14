@@ -3,9 +3,10 @@
 #home-container {
   display: grid;
   grid-template-columns: 280px 1fr;
-  grid-template-rows: 50px 150px 85px auto;
+  grid-template-rows: 50px 20px 150px 85px auto;
   grid-template-areas:
     'left-sidebar time-line-header'
+    'left-sidebar .'
     'left-sidebar popular-posts'
     'left-sidebar trending-tags'
     'left-sidebar feeds';
@@ -14,6 +15,11 @@
     grid-area: left-sidebar;
     background-color: $white-color;
     border-top-right-radius: 50px;
+
+    hr {
+      width: 80%;
+      color: $body-background-color;
+    }
   }
 
   .time-line-header {
