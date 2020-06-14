@@ -1,11 +1,6 @@
 @import '../../../../../../assets/styles/colors';
 
 #menu-sidebar-card-container {
-  background-color: $white-color;
-  border-radius: 16px;
-  border: $light-grey-color 1px solid;
-  overflow: hidden;
-
   .menu-items-container {
     background-color: $primary-blue-color;
     color: $white-color;
