@@ -9,6 +9,7 @@ import { RoundPipe } from './pipes/math/round.pipe';
 import { NumberFormatterPipe } from './pipes/math/number-formatter.pipe';
 
 import { TagsComponent } from './components/tags/tags.component';
+import { MenuItemsComponent } from './components/sidebar/menu-items/menu-items.component';
 import { SectionHeaderComponent } from './components/section-header/section-header.component';
 import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
 
@@ -17,11 +18,20 @@ import { ProgressSpinnerComponent } from './components/progress-spinner/progress
     SafePipe,
     RoundPipe,
     TagsComponent,
+    MenuItemsComponent,
     NumberFormatterPipe,
     SectionHeaderComponent,
     ProgressSpinnerComponent,
   ],
-  exports: [SectionHeaderComponent, TagsComponent, RoundPipe, NumberFormatterPipe, SafePipe, ProgressSpinnerComponent],
+  exports: [
+    SectionHeaderComponent,
+    TagsComponent,
+    RoundPipe,
+    NumberFormatterPipe,
+    SafePipe,
+    ProgressSpinnerComponent,
+    MenuItemsComponent,
+  ],
   imports: [CommonModule, MatButtonModule, MatIconModule, MatRippleModule],
 })
 export class SharedModule {}
