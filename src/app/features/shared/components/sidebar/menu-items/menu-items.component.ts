@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NavItemModel } from '../../../../home/models/nav/nav-item.model';
 
 @Component({
-  selector: 'one12-menu-items-card',
+  selector: 'shared-menu-items',
   templateUrl: './menu-items.component.html',
   styleUrls: ['./menu-items.component.scss'],
 })
