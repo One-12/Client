@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { IInfiniteScrollEvent } from 'ngx-infinite-scroll';
 
-import { POST_PAGES } from '../utils/constants';
+import { HOME_PAGES } from '../utils/constants';
 
 import { TagsFacade } from '../state/tags/tags.facade';
 import { PostsFacade } from '../state/posts/posts.facade';
@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
     private readonly _menuItemsService: MenuItemsService,
   ) {
     this.postsShadowedItems = Array(20).fill(0);
-    this.navItems = this._menuItemsService.getMenuItems();
+    this.navItems = this._menuItemsService.getHomePageMenuItems();
     this.selectedNavItem = this.navItems[0];
 
     this._activatedRoute.queryParams.pipe(untilDestroyed(this)).subscribe(params => this._onQueryParamsChanged(params));
@@ -76,14 +76,14 @@ export class HomeComponent implements OnInit {
 
     await this._tagsFacade.loadTrendingTags();
     await this._postsFacade.loadPopularPosts({
-      content: { page: POST_PAGES.Popular, offset: 1, limit: 20, tag: null },
+      content: { page: HOME_PAGES.Popular, offset: 1, limit: 20, tag: null },
       idToken: null,
     });
   }
 
   public async onTagSelected(selectedTag: TagModel): Promise<void> {
     await this._router.navigate([], {
-      queryParams: { page: POST_PAGES.Tag, tag: selectedTag.name },
+      queryParams: { page: HOME_PAGES.Tag, tag: selectedTag.name },
       relativeTo: this._activatedRoute,
     });
   }
@@ -124,7 +124,7 @@ export class HomeComponent implements OnInit {
         await this._postsFacade.loadPosts({ content: this.postRequestModel, idToken });
       });
     } else {
-      await this._router.navigate(['/'], { queryParams: { page: POST_PAGES.Fresh }, replaceUrl: true });
+      await this._router.navigate(['/'], { queryParams: { page: HOME_PAGES.Fresh }, replaceUrl: true });
     }
   }
 }

@@ -33,6 +33,11 @@
         }
       }
 
+      hr {
+        width: 80%;
+        color: $body-background-color;
+      }
+
       &.selected {
         border-left-color: $primary-blue-color;
       }

@@ -8,9 +8,15 @@
       *ngFor="let item of navItems"
       (click)="onMenuItemClicked(item)"
     >
-      <section class="menu-item" [class.selected]="item.id === selectedNavItem.id">
+      <!-- Menu Item -->
+      <section *ngIf="item.id" class="menu-item" [class.selected]="item.id === selectedNavItem.id">
         <section><i class="fas" [ngClass]="item.icon"></i></section>
         <section>{{ item.title }}</section>
+      </section>
+
+      <!-- Menu Items Separator -->
+      <section *ngIf="!item.id">
+        <hr />
       </section>
     </section>
   </section>
