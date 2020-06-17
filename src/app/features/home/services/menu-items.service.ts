@@ -19,6 +19,7 @@ export class MenuItemsService {
       { id: null, title: null, icon: null },
       { id: HOME_PAGES.AddNewPost, title: 'Upload New Post', icon: 'fa-plus' },
       { id: HOME_PAGES.AddNewTemplate, title: 'Upload New Template', icon: 'fa-palette' },
+      { id: null, title: null, icon: null },
     ];
   }
 }

@@ -25,6 +25,7 @@
 
   <!-- Popular Posts -->
   <section class="popular-posts-container overflow-hidden px-30">
+    <!-- Popular Posts Header -->
     <one12-section-header
       title="Popular"
       subtitle="Now"
@@ -32,6 +33,8 @@
       (scrollLeftButtonClicked)="popularPost.scrollLeft()"
       (scrollRightButtonClicked)="popularPost.scrollRight()"
     ></one12-section-header>
+
+    <!-- Popular Posts Stream -->
     <one12-popular-posts-stream
       [isFetchingPopularPosts]="isFetchingPopularPosts$ | async"
       [popularPosts]="popularPosts$ | async"
