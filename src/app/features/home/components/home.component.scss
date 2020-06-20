@@ -40,6 +40,11 @@
       justify-content: space-evenly;
       margin: 16px;
 
+      .post {
+        margin-right: 16px;
+        flex: 1;
+      }
+
       .post-loader-wrapper {
         border-radius: 16px;
         border: $light-grey-color 1px solid;
