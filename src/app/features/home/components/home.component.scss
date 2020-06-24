@@ -23,16 +23,10 @@
 
   .tags-container {
     grid-area: trending-tags;
-
-    border-radius: 16px;
-    background-color: $white-color;
   }
 
   .popular-posts-container {
     grid-area: popular-posts;
-
-    border-radius: 16px;
-    background-color: $white-color;
   }
 
   .posts-container {
