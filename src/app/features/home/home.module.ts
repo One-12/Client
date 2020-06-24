@@ -28,6 +28,7 @@ import { SupportCenterCardComponent } from './components/sidebar/support-center-
 import { NewsAndAnnouncementsCardComponent } from './components/sidebar/news-and-announcements-card/news-and-announcements-card.component';
 import { TagsEffects } from './state/tags/tags.effects';
 import { MatChipsModule } from '@angular/material/chips';
+import { NgDatePipesModule } from 'ngx-pipes';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { MatChipsModule } from '@angular/material/chips';
     StoreModule.forFeature('home', reducers),
     EffectsModule.forFeature([PostsEffects, TagsEffects]),
     MatChipsModule,
+    NgDatePipesModule,
   ],
 })
 export class HomeModule {}

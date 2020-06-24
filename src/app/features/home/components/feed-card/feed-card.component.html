@@ -3,19 +3,13 @@
   <header>
     <!-- Post Title -->
     <section class="title pointer" (click)="onPostClicked(post)">
-      <strong>
-        {{ post.title }}
-      </strong>
+      <strong> {{ post.title }} </strong>
     </section>
 
     <!-- Username -->
     <section class="sub-title">
-      <section>
-        <!-- ToDo: UserName Binding -->
-      </section>
-      <section>
-        {{ post.postedOn }}
-      </section>
+      <section>Arun Selva Kumar</section>
+      <section>{{ post.postedOn | timeAgo }}</section>
     </section>
   </header>
 
