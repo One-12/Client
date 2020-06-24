@@ -3,12 +3,16 @@
 :host {
   #tag-stream-container {
     .tag {
-      background-color: $link-color;
+      background-color: $tag-grey-color;
       color: $link-content-color;
       font-size: 16px;
-      padding: 6px 16px;
-      border-radius: 3px;
-      transition: all 0.5s ease;
+      padding: 8px 16px;
+      border-radius: 16px;
+      transition: background-color 0.5s ease-in-out;
+
+      &:hover {
+        background-color: $tag-dark-grey-color;
+      }
     }
   }
 
