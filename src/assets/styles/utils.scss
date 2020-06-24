@@ -24,6 +24,11 @@
   cursor: move !important;
 }
 
+.mx-30 {
+  margin-left: 30px !important;
+  margin-right: 30px !important;
+}
+
 .m-5 {
   margin: 5px !important;
 }
@@ -108,12 +113,20 @@
   padding: 32px !important;
 }
 
+.pt-8 {
+  padding-top: 8px !important;
+}
+
 .pt-16 {
   padding-top: 16px !important;
 }
 
 .pl-16 {
   padding-left: 16px !important;
+}
+
+.pl-20 {
+  padding-left: 20px !important;
 }
 
 .pr-30 {
@@ -266,10 +279,14 @@
 }
 
 .card {
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border: $light-grey-color 1px solid;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
   &:hover {
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    margin-top: -4px;
   }
+}
+
+.card-no-hover-with-shadow {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }

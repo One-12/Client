@@ -3,12 +3,12 @@
 #home-container {
   display: grid;
   grid-template-columns: 280px 1fr;
-  grid-template-rows: 50px 20px 150px 85px auto;
+  grid-template-rows: 50px 20px auto auto auto;
   grid-template-areas:
     'left-sidebar time-line-header'
     'left-sidebar .'
-    'left-sidebar popular-posts'
     'left-sidebar trending-tags'
+    'left-sidebar popular-posts'
     'left-sidebar feeds';
 
   .left-sidebar-container {
@@ -23,10 +23,16 @@
 
   .tags-container {
     grid-area: trending-tags;
+
+    border-radius: 16px;
+    background-color: $white-color;
   }
 
   .popular-posts-container {
     grid-area: popular-posts;
+
+    border-radius: 16px;
+    background-color: $white-color;
   }
 
   .posts-container {

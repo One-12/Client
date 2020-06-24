@@ -6,7 +6,7 @@
   </section>
 
   <!-- Left Sidebar -->
-  <section class="left-sidebar-container flex-column">
+  <section class="left-sidebar-container flex-column card-no-hover-with-shadow">
 
     <!-- Logo -->
     <section class="text-align-center">
@@ -25,27 +25,8 @@
 
   </section>
 
-  <!-- Popular Posts -->
-  <section class="popular-posts-container overflow-hidden px-30">
-    <!-- Popular Posts Header -->
-    <one12-section-header
-      title="Popular"
-      subtitle="Now"
-      [showScrollButton]="!(isFetchingPopularPosts$ | async)"
-      (scrollLeftButtonClicked)="popularPost.scrollLeft()"
-      (scrollRightButtonClicked)="popularPost.scrollRight()">
-    </one12-section-header>
-
-    <!-- Popular Posts Stream -->
-    <one12-popular-posts-stream
-      #popularPost
-      [isFetchingPopularPosts]="isFetchingPopularPosts$ | async"
-      [popularPosts]="popularPosts$ | async">
-    </one12-popular-posts-stream>
-  </section>
-
   <!-- Tags -->
-  <section class="tags-container overflow-hidden px-30">
+  <section class="tags-container overflow-hidden mx-30 p-20">
     <!-- Tags Header -->
     <one12-section-header
       title="What People Are"
@@ -64,9 +45,28 @@
     </one12-tag-stream>
   </section>
 
+  <!-- Popular Posts -->
+  <section class="popular-posts-container overflow-hidden mx-30 p-20">
+    <!-- Popular Posts Header -->
+    <one12-section-header
+      title="Popular"
+      subtitle="Now"
+      [showScrollButton]="!(isFetchingPopularPosts$ | async)"
+      (scrollLeftButtonClicked)="popularPost.scrollLeft()"
+      (scrollRightButtonClicked)="popularPost.scrollRight()">
+    </one12-section-header>
+
+    <!-- Popular Posts Stream -->
+    <one12-popular-posts-stream
+      #popularPost
+      [isFetchingPopularPosts]="isFetchingPopularPosts$ | async"
+      [popularPosts]="popularPosts$ | async">
+    </one12-popular-posts-stream>
+  </section>
+
   <!-- Posts List -->
-  <section class="posts-container px-30">
-    <one12-section-header title="Feeds"></one12-section-header>
+  <section class="posts-container mx-30">
+    <one12-section-header title="Feeds" class="pl-20"></one12-section-header>
 
     <!-- Load Indicator -->
     <section class="posts" *ngIf="isFetchingPosts$ | async">
