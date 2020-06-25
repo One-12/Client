@@ -1,31 +1,30 @@
 <!-- Post Page Container -->
 <section id="post-container">
 
-  <!-- Logo -->
-  <section class="logo-wrapper">
-    <h3>One12</h3>
+  <!-- Post -->
+  <section class="post-container flex align-items-center justify-content-center">
+    <section class="post-wrapper">
+      <img src="https://pics.jilljuck.com/content/medium/085403content_3fd751f1-fa20-4291-8f05-3633644038dd.jpg" alt="" />
+    </section>
   </section>
-
-  <!-- Post Content -->
-  <section
-    class="post-container flex align-items-center justify-content-center">
-    <img
-      src="https://pics.jilljuck.com/content/medium/085403content_3fd751f1-fa20-4291-8f05-3633644038dd.jpg"
-      alt="" />
-  </section>
-
-  <!-- Close Button -->
-  <section class="close-button-wrapper flex justify-content-end">X</section>
 
   <!-- Post Details -->
-  <section
-    class="post-details-container p-32 flex-column justify-content-center">
-    <header class="f-26">Title of the Post</header>
-    <header class="f-16 mb-6">@arunselvakumar</header>
-    <header class="f-12 mb-6">I am a description of the Post, Ha Ha Ha!</header>
-    <one12-tags [tags]="tags"></one12-tags>
-    <hr />
-    <one12-post-details-cards></one12-post-details-cards>
+  <section class="post-details-container">
+
+    <!-- Close Button -->
+    <section class="close-button-wrapper pointer">
+      <mat-icon class="pointer f-32" (click)="onCloseButtonClicked()">close</mat-icon>
+    </section>
+
+    <!-- Post Details -->
+    <section class="p-32 flex-column justify-content-center">
+      <header class="f-26">Title of the Post</header>
+      <header class="f-16 mb-6">@arunselvakumar</header>
+      <header class="f-12 mb-6">I am a description of the Post, Ha Ha Ha!</header>
+      <one12-tags [tags]="tags"></one12-tags>
+      <hr />
+      <one12-post-details-cards></one12-post-details-cards>
+    </section>
   </section>
 
   <!-- Comments -->

@@ -1,42 +1,48 @@
-@import "../../../../assets/styles/colors";
+@import '../../../../assets/styles/colors';
 
 #post-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    'logo close'
     'post post-details'
     'comments comments';
-
-  .logo-wrapper {
-    grid-area: logo;
-    padding-left: 64px;
-  }
-
-  .close-button-wrapper {
-    grid-area: close;
-    background-color: $lighter-grey-color;
-    color: $dark-grey-color;
-    font-size: 48px;
-    padding-top: 16px;
-    padding-right: 32px;
-  }
 
   .post-container {
     grid-area: post;
     height: 100vh;
+    background-color: $white-color;
 
-    img {
-      width: auto;
-      height: auto;
-      max-height: 480px;
-      max-width: 520px;
+    .post-wrapper {
+      img {
+        width: auto;
+        height: auto;
+        max-height: 480px;
+        max-width: 520px;
+      }
     }
   }
 
   .post-details-container {
     grid-area: post-details;
-    background-color: $lighter-grey-color;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: grid;
+    height: 100vh;
+    grid-template-rows: auto 1fr;
+
+    .close-button-wrapper {
+      padding-top: 48px;
+      padding-right: 48px;
+      display: flex;
+      justify-self: flex-end;
+      font-size: 18px;
+
+      color: $primary-blue-color;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        color: $brick-color;
+      }
+    }
   }
 
   .comments-container {
