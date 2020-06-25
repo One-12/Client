@@ -5,7 +5,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     'post post-details'
-    'comments comments';
+    'post comments';
 
   .post-container {
     grid-area: post;
@@ -26,8 +26,6 @@
     grid-area: post-details;
     background-color: rgba(255, 255, 255, 0.7);
     display: grid;
-    height: 100vh;
-    grid-template-rows: auto 1fr;
 
     .close-button-wrapper {
       padding-top: 48px;

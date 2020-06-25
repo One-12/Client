@@ -67,6 +67,83 @@ export class CommentsComponent {
         postedOn: 'Few Minutes Ago',
         replies: [],
       },
+      {
+        id: '5',
+        comment: 'Comment 5',
+        postedBy: {
+          id: '5',
+          name: 'Selva Kumar',
+          profilePic: 'https://upload.wikimedia.org/wikipedia/commons/1/15/Virat_Kohli_portrait.jpg',
+        },
+        postedOn: 'Few Minutes Ago',
+        replies: [],
+      },
+      {
+        id: '5',
+        comment: 'Comment 5',
+        postedBy: {
+          id: '5',
+          name: 'Selva Kumar',
+          profilePic: 'https://upload.wikimedia.org/wikipedia/commons/1/15/Virat_Kohli_portrait.jpg',
+        },
+        postedOn: 'Few Minutes Ago',
+        replies: [],
+      },
+      {
+        id: '5',
+        comment: 'Comment 5',
+        postedBy: {
+          id: '5',
+          name: 'Selva Kumar',
+          profilePic: 'https://upload.wikimedia.org/wikipedia/commons/1/15/Virat_Kohli_portrait.jpg',
+        },
+        postedOn: 'Few Minutes Ago',
+        replies: [],
+      },
+      {
+        id: '5',
+        comment: 'Comment 5',
+        postedBy: {
+          id: '5',
+          name: 'Selva Kumar',
+          profilePic: 'https://upload.wikimedia.org/wikipedia/commons/1/15/Virat_Kohli_portrait.jpg',
+        },
+        postedOn: 'Few Minutes Ago',
+        replies: [],
+      },
+      {
+        id: '5',
+        comment: 'Comment 5',
+        postedBy: {
+          id: '5',
+          name: 'Selva Kumar',
+          profilePic: 'https://upload.wikimedia.org/wikipedia/commons/1/15/Virat_Kohli_portrait.jpg',
+        },
+        postedOn: 'Few Minutes Ago',
+        replies: [],
+      },
+      {
+        id: '5',
+        comment: 'Comment 5',
+        postedBy: {
+          id: '5',
+          name: 'Selva Kumar',
+          profilePic: 'https://upload.wikimedia.org/wikipedia/commons/1/15/Virat_Kohli_portrait.jpg',
+        },
+        postedOn: 'Few Minutes Ago',
+        replies: [],
+      },
+      {
+        id: '5',
+        comment: 'Comment 5',
+        postedBy: {
+          id: '5',
+          name: 'Selva Kumar',
+          profilePic: 'https://upload.wikimedia.org/wikipedia/commons/1/15/Virat_Kohli_portrait.jpg',
+        },
+        postedOn: 'Few Minutes Ago',
+        replies: [],
+      },
     ];
   }
 }
