@@ -28,7 +28,7 @@
     <one12-section-header
       title="What People Are"
       subtitle="Talking"
-      [showScrollButton]="!(isFetchingTrendingTags$ | async)"
+      [showScrollButton]="(isFetchingTrendingTags$ | async) === false"
       (scrollLeftButtonClicked)="trendingTags.scrollLeft()"
       (scrollRightButtonClicked)="trendingTags.scrollRight()"
     >
@@ -50,7 +50,7 @@
     <one12-section-header
       title="Popular"
       subtitle="Now"
-      [showScrollButton]="!(isFetchingPopularPosts$ | async)"
+      [showScrollButton]="(isFetchingPopularPosts$ | async) === false"
       (scrollLeftButtonClicked)="popularPost.scrollLeft()"
       (scrollRightButtonClicked)="popularPost.scrollRight()"
     >
@@ -83,7 +83,7 @@
 
     <!-- Feed Stream -->
     <section
-      *ngIf="!(isFetchingPosts$ | async)"
+      *ngIf="(isFetchingPosts$ | async) === false"
       class="posts"
       infiniteScroll
       [infiniteScrollDistance]="2"
