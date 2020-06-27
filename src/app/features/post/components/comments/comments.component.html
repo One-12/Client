@@ -3,6 +3,13 @@
   <!-- Header -->
   <header class="f-26">Comments</header>
 
+  <section class="add-comment-wrapper my-10">
+    <textarea class="full-width" name="" id="" rows="5"></textarea>
+    <div class="flex justify-content-end mr-m5">
+      <button mat-flat-button color="primary">Comment</button>
+    </div>
+  </section>
+
   <!-- Comments List -->
   <section>
     <section *ngFor="let comment of comments" class="py-16">
@@ -20,9 +27,7 @@
           <section class="comment-content">
             {{ comment.comment }}
           </section>
-          <section class="respond-container">
-            <i class="fa fa-reply" aria-hidden="true"></i> Reply
-          </section>
+          <section class="respond-container"><i class="fa fa-reply" aria-hidden="true"></i> Reply</section>
         </section>
 
         <!-- Time Content -->

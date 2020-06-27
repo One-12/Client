@@ -41,7 +41,6 @@
 
   .comments-container {
     grid-area: comments;
-    height: calc(100vh - 400px);
     overflow: auto;
   }
 }

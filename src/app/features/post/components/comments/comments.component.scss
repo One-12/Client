@@ -3,6 +3,14 @@
 #comments-container {
   background-color: rgba(255, 255, 255, 0.7);
 
+  .add-comment-wrapper {
+    textarea {
+      border-color: $dark-grey-color;
+      border-radius: 5px;
+      resize: none;
+    }
+  }
+
   .comment {
     display: grid;
     grid-template-columns: auto 1fr auto;
