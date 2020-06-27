@@ -1,8 +1,9 @@
 export interface CommentModel {
   id: string;
-  postedBy: UserModel;
-  postedOn: string;
   comment: string;
+  postedOn: string;
+  showReply: boolean;
+  postedBy: UserModel;
   replies: CommentModel[];
 }
 

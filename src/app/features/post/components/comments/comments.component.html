@@ -27,7 +27,19 @@
           <section class="comment-content">
             {{ comment.comment }}
           </section>
-          <section class="respond-container"><i class="fa fa-reply" aria-hidden="true"></i> Reply</section>
+          <section class="respond-container pointer">
+            <div *ngIf="!comment.showReply" (click)="comment.showReply = true">
+              <i class="fa fa-reply" aria-hidden="true"></i> Reply
+            </div>
+            <div *ngIf="comment.showReply" (click)="comment.showReply = false">Hide</div>
+
+            <section class="add-comment-wrapper my-10" *ngIf="comment.showReply">
+              <textarea class="full-width" name="" id="" rows="5"></textarea>
+              <div class="flex justify-content-end mr-m5">
+                <button mat-flat-button color="primary">Comment</button>
+              </div>
+            </section>
+          </section>
         </section>
 
         <!-- Time Content -->
