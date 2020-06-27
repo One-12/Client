@@ -2,6 +2,8 @@
 
 #post-container {
   display: grid;
+  height: 100vh;
+  overflow: hidden;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     'post post-details'
@@ -27,13 +29,7 @@
     background-color: rgba(255, 255, 255, 0.7);
     display: grid;
 
-    .close-button-wrapper {
-      padding-top: 48px;
-      padding-right: 48px;
-      display: flex;
-      justify-self: flex-end;
-      font-size: 18px;
-
+    .close-button {
       color: $primary-blue-color;
       transition: all 0.2s ease-in-out;
 
@@ -45,5 +41,7 @@
 
   .comments-container {
     grid-area: comments;
+    height: calc(100vh - 400px);
+    overflow: auto;
   }
 }

@@ -1,11 +1,13 @@
-@import "../../../../../assets/styles/colors";
+@import '../../../../../assets/styles/colors';
 
 #comments-container {
+  background-color: rgba(255, 255, 255, 0.7);
+
   .comment {
     display: grid;
     grid-template-columns: auto 1fr auto;
     font-size: 14px;
-    
+
     .image-wrapper {
       img {
         height: 50px;
