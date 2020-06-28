@@ -12,7 +12,7 @@
 
   <!-- Comments List -->
   <section>
-    <section *ngFor="let comment of comments" class="py-16">
+    <section *ngFor="let comment of comments" class="pt-16">
       <section class="comment">
         <!-- User Image Wrapper -->
         <section class="image-wrapper px-16">
@@ -33,7 +33,7 @@
             </div>
             <div *ngIf="comment.showReply" (click)="comment.showReply = false">Hide</div>
 
-            <section class="add-comment-wrapper my-10" *ngIf="comment.showReply">
+            <section class="add-comment-wrapper my-10 mb-0" *ngIf="comment.showReply">
               <textarea class="full-width" name="" id="" rows="5"></textarea>
               <div class="flex justify-content-end mr-m5">
                 <button mat-flat-button color="primary">Comment</button>
