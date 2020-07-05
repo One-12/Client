@@ -118,11 +118,15 @@ export class HomeComponent implements OnInit {
     const { page, tag } = queryParams;
 
     if (page) {
-      this.selectedNavItem = this.navItems.find(x => x.id === page);
-      this._angularFireAuth.idToken.pipe(take(1)).subscribe(async (idToken: string) => {
-        this.postRequestModel = { page, tag, limit: 20, offset: 1 };
-        await this._postsFacade.loadPosts({ content: this.postRequestModel, idToken });
-      });
+      if (page === HOME_PAGES.AddNewPost || page === HOME_PAGES.AddNewTemplate) {
+        await this._router.navigate(['/posts/creators-corner'], { replaceUrl: true, relativeTo: this._activatedRoute });
+      } else {
+        this.selectedNavItem = this.navItems.find(x => x.id === page);
+        this._angularFireAuth.idToken.pipe(take(1)).subscribe(async (idToken: string) => {
+          this.postRequestModel = { page, tag, limit: 20, offset: 1 };
+          await this._postsFacade.loadPosts({ content: this.postRequestModel, idToken });
+        });
+      }
     } else {
       await this._router.navigate(['/'], { queryParams: { page: HOME_PAGES.Fresh }, replaceUrl: true });
     }
