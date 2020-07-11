@@ -9,6 +9,10 @@ const routes: Routes = [
     component: FeaturesComponent,
     children: [
       {
+        path: 'creators-corner',
+        loadChildren: () => import('./creators-corner/creators-corner.module').then(m => m.CreatorsCornerModule),
+      },
+      {
         path: 'post',
         loadChildren: () => import('./post/post.module').then(m => m.PostModule),
       },

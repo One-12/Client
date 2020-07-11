@@ -119,7 +119,7 @@ export class HomeComponent implements OnInit {
 
     if (page) {
       if (page === HOME_PAGES.AddNewPost || page === HOME_PAGES.AddNewTemplate) {
-        await this._router.navigate(['/posts/creators-corner'], { replaceUrl: true, relativeTo: this._activatedRoute });
+        await this._router.navigate(['/creators-corner'], { replaceUrl: true, relativeTo: this._activatedRoute });
       } else {
         this.selectedNavItem = this.navItems.find(x => x.id === page);
         this._angularFireAuth.idToken.pipe(take(1)).subscribe(async (idToken: string) => {
