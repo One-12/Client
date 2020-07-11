@@ -1,16 +1,11 @@
 <!-- Sidebar Navigation Menu -->
 <section id="menu-sidebar-card-container">
   <section class="menu-items-container">
-
     <!-- Menu Items -->
-    <section
-      class="menu-item-wrapper pointer"
-      [class.selected]="item.id === selectedNavItem.id"
-      *ngFor="let item of navItems"
-      (click)="onMenuItemClicked(item)">
-
+    <section class="menu-item-wrapper pointer" [class.selected]="item.id === selectedNavItem.id"
+      *ngFor="let item of navItems" (click)="onMenuItemClicked(item)">
       <!-- Menu Item -->
-      <section *ngIf="item.id" class="menu-item" [class.selected]="item.id === selectedNavItem.id">
+      <section *ngIf="item.id" class="menu-item user-select-none" [class.selected]="item.id === selectedNavItem.id">
         <section><i class="fas" [ngClass]="item.icon"></i></section>
         <section>{{ item.title }}</section>
       </section>
