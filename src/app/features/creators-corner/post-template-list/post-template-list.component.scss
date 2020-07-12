@@ -1,8 +1,36 @@
+@import '../../../../assets/styles/colors';
+
 .masonry-item {
   img {
     height: auto;
-    width: auto;
-    max-width: 280px;
+    width: 280px;
     max-height: 320px;
+    border: transparent 5px solid;
+    border-radius: 2px;
+
+    &:hover {
+      filter: none;
+      transition: all 200ms ease-in;
+    }
+  }
+
+  .selected-text {
+    color: $white-color;
+    background-color: $primary-blue-color;
+    border-radius: 3px;
+    opacity: 0;
+  }
+
+  .selected {
+    filter: none;
+    border: $primary-blue-color 5px solid;
+  }
+
+  .selected + .selected-text {
+    opacity: 1;
+    position: absolute;
+    bottom: 15px;
+    right: 16px;
+    transition: all 200ms ease-in;
   }
 }

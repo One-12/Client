@@ -1,7 +1,11 @@
 <section>
-  <ngx-masonry [options]="{ gutter: 80}">
-    <section ngxMasonryItem class="masonry-item" *ngFor="let item of masonryItems">
-      <img [src]="item" alt="">
+  <ngx-masonry [options]="{ gutter: 20, columnWidth: 280, fitWidth: true }" [ordered]="true">
+    <section ngxMasonryItem class="masonry-item pointer" *ngFor="let item of masonryItems" (click)="selectedMasonryItem = item">
+      <img [src]="item.url" alt="" class="moon" [class.selected] = "selectedMasonryItem && selectedMasonryItem.id === item.id">
+      <div class="selected-text p-5">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        <span class="ml-5">Selected</span>
+      </div>
     </section>
   </ngx-masonry>
 </section>
