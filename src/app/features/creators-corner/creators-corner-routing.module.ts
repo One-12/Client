@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { PostTemplateListComponent } from './post-template-list/post-template-list.component';
+import { CreatorsCornerComponent } from './components/creators-corner.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: PostTemplateListComponent,
+    component: CreatorsCornerComponent,
   },
   {
     path: '**',
