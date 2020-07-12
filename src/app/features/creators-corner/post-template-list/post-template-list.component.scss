@@ -18,7 +18,7 @@
     color: $white-color;
     background-color: $primary-blue-color;
     border-radius: 3px;
-    opacity: 0;
+    display: none;
   }
 
   .selected {
@@ -27,7 +27,7 @@
   }
 
   .selected + .selected-text {
-    opacity: 1;
+    display: block;
     position: absolute;
     bottom: 15px;
     right: 16px;

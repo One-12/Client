@@ -1,0 +1,27 @@
+@import '../../../../assets/styles/colors.scss';
+
+#post-template-search-component-container {
+  input {
+    border: none;
+    box-shadow: none;
+    background-color: #f2f2f2;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 15px;
+    font-size: 16px;
+
+    &:focus {
+      outline: 0;
+      background-color: #ebebeb;
+    }
+  }
+
+  button {
+    border: none;
+    background-color: $primary-blue-color;
+    cursor: pointer;
+    width: 150px;
+    margin-left: 10px;
+    color: #ffffff;
+  }
+}
