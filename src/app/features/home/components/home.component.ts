@@ -41,15 +41,6 @@ export class HomeComponent implements OnInit {
 
   private postRequestModel: PostRequestModel;
 
-  /**
-   * Creates a new instance of Home Component.
-   * @param _router
-   * @param _tagsFacade
-   * @param _postsFacade
-   * @param _activatedRoute
-   * @param _angularFireAuth
-   * @param _menuItemsService
-   */
   constructor(
     private readonly _router: Router,
     private readonly _tagsFacade: TagsFacade,
@@ -70,8 +61,8 @@ export class HomeComponent implements OnInit {
     this.trendingTags$ = this._tagsFacade.trendingTags$;
     this.popularPosts$ = this._postsFacade.popularPosts$;
 
-    this.isFetchingTrendingTags$ = this._tagsFacade.isFetchingTrendingTags$;
     this.isFetchingPosts$ = this._postsFacade.isFetchingPosts$;
+    this.isFetchingTrendingTags$ = this._tagsFacade.isFetchingTrendingTags$;
     this.isFetchingPopularPosts$ = this._postsFacade.isFetchingPopularPosts$;
 
     await this._tagsFacade.loadTrendingTags();
@@ -94,12 +85,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  /**
-   * Loads Posts with subsequent Post Request.
-   * @param {IInfiniteScrollEvent} infiniteScrollEvent
-   * @returns {Promise<void>}
-   * @memberof HomeComponent
-   */
   public async onFeedsScrolled(infiniteScrollEvent: IInfiniteScrollEvent): Promise<void> {
     this._angularFireAuth.idToken.pipe(take(1)).subscribe(async (idToken: string) => {
       this.postRequestModel = { ...this.postRequestModel, offset: this.postRequestModel.offset + 1 };
@@ -107,13 +92,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  /**
-   * Loads Posts based on the Page Category.
-   * @private
-   * @param {Params} queryParams
-   * @returns {Promise<void>}
-   * @memberof HomeComponent
-   */
   private async _onQueryParamsChanged(queryParams: Params): Promise<void> {
     const { page, tag } = queryParams;
 
