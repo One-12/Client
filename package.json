@@ -30,6 +30,7 @@
     "@ngrx/effects": "^9.1.2",
     "@ngrx/entity": "^9.1.2",
     "@ngrx/store": "^9.1.2",
+    "angular-feather": "^6.0.10",
     "animate.css": "^4.1.0",
     "dom-to-image": "^2.6.0",
     "firebase": "^7.14.4",

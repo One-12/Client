@@ -19,6 +19,14 @@
     background-color: $primary-blue-color;
     border-radius: 3px;
     display: none;
+
+    .check-circle {
+      height: 18px;
+      width: 18px;
+      padding-top: 3px;
+      padding-left: 3px;
+      padding-right: 3px;
+    }
   }
 
   .selected {

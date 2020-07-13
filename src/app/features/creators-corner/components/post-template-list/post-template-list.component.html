@@ -4,9 +4,8 @@
       (click)="selectedMasonryItem = item">
       <img [src]="item.url" alt="" class="moon"
         [class.selected]="selectedMasonryItem && selectedMasonryItem.id === item.id">
-      <div class="selected-text p-5">
-        <i class="fa fa-check" aria-hidden="true"></i>
-        <span class="ml-5">Selected</span>
+      <div class="selected-text">
+        <i-feather name="check-circle" class="check-circle"></i-feather>
       </div>
     </section>
   </ngx-masonry>
