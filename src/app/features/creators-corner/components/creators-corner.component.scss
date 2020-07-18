@@ -1,12 +1,36 @@
+@import '../../../../assets/styles/colors.scss';
+
 #creators-corner-container {
   display: grid;
   grid-template-columns: 380px 1fr;
   height: 100vh;
 
   .upload-panel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 20px;
+
+    .upload-meme-label {
+      font-size: 28px;
+      color: $dark-blue-color;
+    }
+
+    button {
+      height: 40px;
+      width: 145px;
+      margin: 0;
+      border: 2px solid #808990;
+      border-radius: 40px;
+      color: #808990;
+      background-color: $white-color;
+      cursor: pointer;
+      margin-left: 10px;
+      font-size: 14px;
+
+      &:hover {
+        background-color: #808990;
+        color: $white-color;
+        transition: all 200ms ease-in;
+      }
+    }
   }
 
   .post-template-panel {
