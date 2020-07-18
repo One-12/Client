@@ -1,12 +1,11 @@
-<section>
-  <ngx-masonry [options]="{ gutter: 20, columnWidth: 280, fitWidth: true }" [ordered]="true">
-    <section ngxMasonryItem class="masonry-item pointer" *ngFor="let item of masonryItems"
-      (click)="selectedMasonryItem = item">
-      <img [src]="item.url" alt="" class="moon"
+<section id="post-template-list-container">
+  <section class="post-template-grid">
+    <div *ngFor="let item of masonryItems" (click)="selectedMasonryItem = item" class="masonry-item pointer">
+      <img [src]="item.url" alt="" class="moon" (click)="onMemeTemplateSelected()"
         [class.selected]="selectedMasonryItem && selectedMasonryItem.id === item.id">
       <div class="selected-text">
         <i-feather name="check-circle" class="check-circle"></i-feather>
       </div>
-    </section>
-  </ngx-masonry>
+    </div>
+  </section>
 </section>

@@ -1,4 +1,16 @@
 #creators-corner-container {
   display: grid;
   grid-template-columns: 380px 1fr;
+  height: 100vh;
+
+  .upload-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .post-template-panel {
+    padding: 20px;
+    overflow: auto;
+  }
 }

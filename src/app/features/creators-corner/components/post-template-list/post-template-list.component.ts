@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'one12-post-template-list',
@@ -10,6 +10,8 @@ export class PostTemplateListComponent implements OnInit {
   public selectedMasonryItem: { id: number; url: string };
 
   public masonryItems: { id: number; url: string }[];
+
+  public templateSelected: EventEmitter<string> = new EventEmitter();
 
   constructor() {
     this.selectedMasonryItem = null;
@@ -35,5 +37,9 @@ export class PostTemplateListComponent implements OnInit {
       { id: 12, url: 'https://qph.fs.quoracdn.net/main-qimg-bdd706dda3f10c5e98b14ef9e6582f69.webp' },
       { id: 13, url: 'https://pbs.twimg.com/media/Dta-FEmVYAAr5MQ.jpg' },
     ];
+  }
+
+  public async onMemeTemplateSelected(): Promise<void> {
+    this.templateSelected.emit('hello');
   }
 }
