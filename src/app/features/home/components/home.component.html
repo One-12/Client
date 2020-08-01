@@ -25,43 +25,27 @@
   <!-- Tags -->
   <section class="tags-container overflow-hidden mx-30 p-20 pb-0">
     <!-- Tags Header -->
-    <one12-section-header
-      title="What People Are"
-      subtitle="Talking"
-      [showScrollButton]="!(isFetchingTrendingTags$ | async)"
-      (scrollLeftButtonClicked)="trendingTags.scrollLeft()"
-      (scrollRightButtonClicked)="trendingTags.scrollRight()"
-    >
+    <one12-section-header title="What People Are" subtitle="Talking"
+      [showScrollButton]="!(isFetchingTrendingTags$ | async)" (scrollLeftButtonClicked)="trendingTags.scrollLeft()"
+      (scrollRightButtonClicked)="trendingTags.scrollRight()">
     </one12-section-header>
 
     <!-- Tags Stream -->
-    <one12-tag-stream
-      #trendingTags
-      [tags]="trendingTags$ | async"
-      [isFetchingTrendingTags]="isFetchingTrendingTags$ | async"
-      (tagSelected)="onTagSelected($event)"
-    >
+    <one12-tag-stream #trendingTags [tags]="trendingTags$ | async"
+      [isFetchingTrendingTags]="isFetchingTrendingTags$ | async" (tagSelected)="onTagSelected($event)">
     </one12-tag-stream>
   </section>
 
   <!-- Popular Posts -->
   <section class="popular-posts-container overflow-hidden mx-30 p-20">
     <!-- Popular Posts Header -->
-    <one12-section-header
-      title="Popular"
-      subtitle="Now"
-      [showScrollButton]="!(isFetchingPopularPosts$ | async)"
-      (scrollLeftButtonClicked)="popularPost.scrollLeft()"
-      (scrollRightButtonClicked)="popularPost.scrollRight()"
-    >
+    <one12-section-header title="Popular" subtitle="Now" [showScrollButton]="!(isFetchingPopularPosts$ | async)"
+      (scrollLeftButtonClicked)="popularPost.scrollLeft()" (scrollRightButtonClicked)="popularPost.scrollRight()">
     </one12-section-header>
 
     <!-- Popular Posts Stream -->
-    <one12-popular-posts-stream
-      #popularPost
-      [isFetchingPopularPosts]="isFetchingPopularPosts$ | async"
-      [popularPosts]="popularPosts$ | async"
-    >
+    <one12-popular-posts-stream #popularPost [isFetchingPopularPosts]="isFetchingPopularPosts$ | async"
+      [popularPosts]="popularPosts$ | async">
     </one12-popular-posts-stream>
   </section>
 
@@ -82,14 +66,8 @@
     </section>
 
     <!-- Feed Stream -->
-    <section
-      *ngIf="!(isFetchingPosts$ | async)"
-      class="posts"
-      infiniteScroll
-      [infiniteScrollDistance]="2"
-      [infiniteScrollThrottle]="50"
-      (scrolled)="onFeedsScrolled($event)"
-    >
+    <section *ngIf="!(isFetchingPosts$ | async)" class="posts" infiniteScroll [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="50" (scrolled)="onFeedsScrolled($event)">
       <article class="post mb-16" *ngFor="let post of posts$ | async">
         <one12-feed-card [post]="post" (postSelected)="onPostSelected($event)"></one12-feed-card>
       </article>
