@@ -1,6 +1,10 @@
-#header-component-container {
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.98);
-  position: fixed;
-  z-index: 1000;
+:host {
+  height: 60px;
+
+  #header-component-container {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.98);
+    position: fixed;
+    z-index: 1000;
+  }
 }
