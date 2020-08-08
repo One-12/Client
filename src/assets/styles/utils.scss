@@ -138,6 +138,10 @@
   padding-top: 8px !important;
 }
 
+.pt-60 {
+  padding-top: 60px !important;
+}
+
 .pt-16 {
   padding-top: 16px !important;
 }
@@ -310,4 +314,9 @@
 
 .card-no-hover-with-shadow {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.container {
+  max-width: 1920px;
+  margin: auto;
 }

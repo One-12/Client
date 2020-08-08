@@ -1,4 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'one12-creators-corner',
@@ -7,7 +10,22 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreatorsCornerComponent implements OnInit {
-  constructor() {}
+  public selectedTemplate: string;
 
-  ngOnInit(): void {}
+  constructor(private readonly _router: Router, private readonly _activatedRoute: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this._activatedRoute.queryParams.pipe(filter(param => param.selectedTemplate)).subscribe(param => {
+      this.selectedTemplate = param.selectedTemplate;
+    });
+  }
+
+  public async onFileSelected(fileInputElement: HTMLInputElement): Promise<void> {
+    if (fileInputElement.files && fileInputElement.files[0]) {
+      const image = URL.createObjectURL(fileInputElement.files[0]);
+      await this._router.navigate(['creators-corner/studio'], {
+        queryParams: { imageUrl: image },
+      });
+    }
+  }
 }

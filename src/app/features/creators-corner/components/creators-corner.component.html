@@ -1,14 +1,26 @@
-<section id="creators-corner-container">
+<!-- Header -->
+<one12-header></one12-header>
+
+<!-- Creator's Corner Container -->
+<section id="creators-corner-container" class="container">
+
+  <!-- Left View -->
   <section class="upload-panel flex flex-column align-items-justify-content-center">
     <section class="flex flex-column align-items-justify-content-center">
       <div class="upload-meme-label">Upload Meme</div>
       <div class="mt-20 text-muted text-align-center">
         Search and select a Meme Template and click next to continue, or upload your meme directly from your machine.
       </div>
-      <button class="pointer mt-20">Upload</button>
+
+      <!-- Action Items -->
+      <input class="collapse" type="file" accept="image/*" (change)="onFileSelected(fileUpload)" #fileUpload />
+      <button class="pointer mt-20" *ngIf="selectedTemplate"> Next </button>
+      <button class="pointer mt-20" *ngIf="!selectedTemplate" (click)="fileUpload.click()"> Upload </button>
     </section>
   </section>
-  <section class="post-template-panel">
+
+  <!-- Right View -->
+  <section class="post-template-panel pt-60">
     <one12-post-template-search></one12-post-template-search>
     <one12-post-template-list></one12-post-template-list>
   </section>
