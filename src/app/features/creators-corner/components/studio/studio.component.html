@@ -5,7 +5,7 @@
 <section id="studio-component-container" class="full-height container">
   <section class="tool-bar-container">
     <!-- Post Information Tool -->
-    <div matRipple class="m-5 p-20 flex-row align-items-justify-content-center pointer tool-bar-icon-container">
+    <div matRipple class="m-5 p-20 flex-row align-items-justify-content-center pointer tool-bar-icon-container" [class.selected]="isDetailsMenuSelected" (click)="onMenuItemSelected('post-details')">
       <div class="info-text flex-column align-items-justify-content-center">
         <i-feather name="info" class="info-text-icon"></i-feather>
         <span class="tool-bar-text">Post Details</span>
@@ -13,7 +13,7 @@
     </div>
 
     <!-- Add Text Tool -->
-    <div matRipple class="m-5 p-20 flex-row align-items-justify-content-center pointer tool-bar-icon-container">
+    <div matRipple class="m-5 p-20 flex-row align-items-justify-content-center pointer tool-bar-icon-container" [class.selected]="isAddTextMenuSelected" (click)="onMenuItemSelected('add-text')">
       <div class="add-text flex-column align-items-justify-content-center">
         <i-feather name="type" class="add-text-icon"></i-feather>
         <span class="tool-bar-text">Add Text</span>
@@ -21,7 +21,7 @@
     </div>
 
     <!-- Add Shapes Tool -->
-    <div matRipple class="m-5 p-20 flex-row align-items-justify-content-center pointer tool-bar-icon-container">
+    <div matRipple class="m-5 p-20 flex-row align-items-justify-content-center pointer tool-bar-icon-container" [class.selected]="isAddShapeMenuSelected" (click)="onMenuItemSelected('add-shapes')">
       <div class="shapes-text flex-column align-items-justify-content-center">
         <i-feather name="box" class="shapes-text-icon"></i-feather>
         <span class="tool-bar-text">Add Shapes</span>
@@ -30,7 +30,15 @@
   </section>
 
   <section class="tool-bar-options-container">
-
+    <div *ngIf="isDetailsMenuSelected" class="p-20">
+      <one12-section-header title="Update Post" subtitle="Details"></one12-section-header>
+    </div>
+    <div *ngIf="isAddTextMenuSelected" class="p-20">
+      hello world 2
+    </div>
+    <div *ngIf="isAddShapeMenuSelected" class="p-20">
+      hello world 3
+    </div>
   </section>
 
   <section class="art-board-container" #container>
