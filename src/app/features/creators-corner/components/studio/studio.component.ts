@@ -1,4 +1,6 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { filter } from 'rxjs/operators';
 
 @Component({
   templateUrl: './studio.component.html',
@@ -6,7 +8,13 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StudioComponent implements OnInit {
-  constructor() {}
+  public imageUrl: string;
 
-  ngOnInit(): void {}
+  constructor(private readonly _activatedRoute: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this._activatedRoute.queryParams.pipe(filter(x => x.imageUrl)).subscribe(data => {
+      this.imageUrl = data.imageUrl;
+    });
+  }
 }

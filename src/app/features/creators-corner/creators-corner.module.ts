@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { NgxMasonryModule } from 'ngx-masonry';
 import { FeatherModule } from 'angular-feather';
-import { Box, CheckCircle, Type } from 'angular-feather/icons';
+import { Box, CheckCircle, Info, Type } from 'angular-feather/icons';
 
 import { HeaderComponent } from './components/header/header.component';
 import { StudioComponent } from './components/studio/studio.component';
@@ -12,8 +12,10 @@ import { PostTemplateListComponent } from './components/post-template-list/post-
 import { PostTemplateSearchComponent } from './components/post-template-search/post-template-search.component';
 
 import { CreatorsCornerRoutingModule } from './creators-corner-routing.module';
+import { SharedModule } from '../shared/shared.module';
+import { MatRippleModule } from '@angular/material/core';
 
-const icons = { CheckCircle, Type, Box };
+const icons = { CheckCircle, Type, Box, Info };
 
 @NgModule({
   declarations: [
@@ -23,6 +25,13 @@ const icons = { CheckCircle, Type, Box };
     StudioComponent,
     HeaderComponent,
   ],
-  imports: [CommonModule, CreatorsCornerRoutingModule, NgxMasonryModule, FeatherModule.pick(icons)],
+  imports: [
+    CommonModule,
+    CreatorsCornerRoutingModule,
+    NgxMasonryModule,
+    FeatherModule.pick(icons),
+    SharedModule,
+    MatRippleModule,
+  ],
 })
 export class CreatorsCornerModule {}
