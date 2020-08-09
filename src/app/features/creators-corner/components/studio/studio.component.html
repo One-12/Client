@@ -31,13 +31,51 @@
 
   <section class="tool-bar-options-container">
     <div *ngIf="isDetailsMenuSelected" class="p-20">
+
+      <!-- Header -->
       <one12-section-header title="Update Post" subtitle="Details"></one12-section-header>
+
+      <!-- Post Details -->
+      <div class="post-details-container mt-20">
+
+        <!-- Post's Title -->
+        <mat-form-field class="full-width" appearance="standard" color="primary" floatLabel="always">
+          <mat-label>Title: </mat-label>
+          <input matInput maxlength="256" placeholder="Enter Post's Title" [(ngModel)]="postTitle" autocomplete="off">
+        </mat-form-field>
+
+        <!-- Post's Description -->
+        <mat-form-field class="full-width" appearance="standard" color="primary" floatLabel="always">
+          <mat-label>Description: </mat-label>
+          <input matInput maxlength="256" placeholder="Enter Post's Description" [(ngModel)]="postDescription" autocomplete="off">
+        </mat-form-field>
+
+        <!-- Post's Tags -->
+        <mat-form-field class="full-width" appearance="standard" color="primary" floatLabel="always">
+          <mat-label>Tags: </mat-label>
+          <input matInput maxlength="256" placeholder="Title" [(ngModel)]="postTitle" autocomplete="off">
+        </mat-form-field>
+
+        <!-- Post's Source -->
+        <mat-form-field class="full-width" appearance="standard" color="primary" floatLabel="always">
+          <mat-label>Source: </mat-label>
+          <input matInput maxlength="256" placeholder="Enter Post's Source" [(ngModel)]="postSource" autocomplete="off">
+        </mat-form-field>
+
+        <mat-checkbox [(ngModel)]="isPostAnonymous" color="primary">Post Anonymously</mat-checkbox>
+      </div>
+
     </div>
+
     <div *ngIf="isAddTextMenuSelected" class="p-20">
+      <!-- Header -->
+      <one12-section-header title="Add" subtitle="Text"></one12-section-header>
       hello world 2
     </div>
+
     <div *ngIf="isAddShapeMenuSelected" class="p-20">
-      hello world 3
+      <!-- Header -->
+      <one12-section-header title="Add" subtitle="Shapes"></one12-section-header>
     </div>
   </section>
 

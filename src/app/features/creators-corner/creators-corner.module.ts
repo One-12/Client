@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { MatRippleModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 import { NgxMasonryModule } from 'ngx-masonry';
 import { FeatherModule } from 'angular-feather';
 import { Box, CheckCircle, Info, Type } from 'angular-feather/icons';
@@ -13,7 +17,8 @@ import { PostTemplateSearchComponent } from './components/post-template-search/p
 
 import { CreatorsCornerRoutingModule } from './creators-corner-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { MatRippleModule } from '@angular/material/core';
+import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const icons = { CheckCircle, Type, Box, Info };
 
@@ -32,6 +37,10 @@ const icons = { CheckCircle, Type, Box, Info };
     FeatherModule.pick(icons),
     SharedModule,
     MatRippleModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatCheckboxModule,
   ],
 })
 export class CreatorsCornerModule {}

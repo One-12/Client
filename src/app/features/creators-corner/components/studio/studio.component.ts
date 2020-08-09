@@ -13,6 +13,14 @@ import { STUDIO_MENU } from '../../constants/studio-menu.constants';
 export class StudioComponent implements OnInit {
   public imageUrl: string;
 
+  public postTitle: string;
+
+  public postSource: string;
+
+  public postDescription: string;
+
+  public isPostAnonymous: boolean;
+
   public isDetailsMenuSelected: boolean;
 
   public isAddTextMenuSelected: boolean;

@@ -1,6 +1,14 @@
 @import 'assets/styles/utils';
-@import '~@angular/material/theming';
+/**
+* Generated theme by Material Theme Generator
+* https://materialtheme.arcsine.dev
+*/
 
+@import '~@angular/material/theming';
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+
+// Fonts
 @import 'https://fonts.googleapis.com/css?family=Material+Icons';
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
 
@@ -140,19 +148,19 @@ $mat-dark-theme-background: (
 // Theme Config
 
 body {
-  --primary-color: #004f79;
-  --primary-lighter-color: #b3cad7;
-  --primary-darker-color: #00365c;
+  --primary-color: #003765;
+  --primary-lighter-color: #b3c3d1;
+  --primary-darker-color: #002349;
   --text-primary-color: #{$light-primary-text};
   --text-primary-lighter-color: #{$dark-primary-text};
   --text-primary-darker-color: #{$light-primary-text};
 }
 
 $mat-primary: (
-  main: #004f79,
-  lighter: #b3cad7,
-  darker: #00365c,
-  200: #004f79,
+  main: #003765,
+  lighter: #b3c3d1,
+  darker: #002349,
+  200: #003765,
   // For slide toggle,
     contrast:
     (
@@ -170,7 +178,6 @@ body {
   --text-accent-color: #{$light-primary-text};
   --text-accent-lighter-color: #{$dark-primary-text};
   --text-accent-darker-color: #{$light-primary-text};
-  color: #444444;
 }
 
 $mat-accent: (
@@ -212,8 +219,8 @@ $mat-warn: (
 );
 $theme-warn: mat-palette($mat-warn, main, lighter, darker);
 
-$theme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
-$altTheme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
+$theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
+$altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 
 // Theme Init
 @include angular-material-theme($theme);
