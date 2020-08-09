@@ -70,8 +70,8 @@
         <mat-checkbox [(ngModel)]="isPostAnonymous" color="primary">Post Anonymously</mat-checkbox>
 
         <section class="flex align-items-justify-content-center mt-20">
-          <button mat-flat-button color="primary" class="btn primary-btn" (click)="onSaveButtonClicked()">Save</button>
-          <button mat-flat-button color="accent" class="btn ml-15" (click)="onSaveButtonClicked()">Close</button>
+          <button mat-flat-button color="primary" class="btn primary-btn" (click)="onPostDetailsSaveButtonClicked()">Save</button>
+          <button mat-flat-button color="accent" class="btn ml-15" (click)="onPostDetailsSaveButtonClicked()">Close</button>
         </section>
       </div>
 
@@ -80,7 +80,47 @@
     <div *ngIf="isAddTextMenuSelected" class="p-20">
       <!-- Header -->
       <one12-section-header title="Add" subtitle="Text"></one12-section-header>
-      hello world 2
+      <div class="add-text-container mt-20">
+
+        <!-- Text -->
+        <mat-form-field class="full-width" appearance="standard" color="primary" floatLabel="always">
+          <mat-label>Text: </mat-label>
+          <input matInput maxlength="256" type="text" placeholder="Enter Text" [(ngModel)]="text" autocomplete="off">
+        </mat-form-field>
+
+        <!-- Font Size -->
+        <mat-form-field class="full-width" appearance="none" color="primary" floatLabel="always">
+          <mat-label>Font Size: </mat-label>
+          <mat-slider
+            class="full-width ml-m8"
+            max="240"
+            min="0"
+            thumbLabel=true
+            [(ngModel)]="fontSize">
+          </mat-slider>
+          <textarea matInput hidden></textarea>
+        </mat-form-field>
+
+        <!-- Font Color -->
+        <mat-form-field class="full-width mt-m20" appearance="none" color="primary" floatLabel="always">
+          <mat-label>Font Color: </mat-label>
+          <input matInput [(colorPicker)]="color" [style.background]="color" cpPosition="bottom" class="pointer" />
+        </mat-form-field>
+
+        <!-- Preview -->
+        <section *ngIf="text">
+          <section class="f-12 primary-color">Preview:</section>
+          <section [style.color]="color" [style.font-size]="fontSize + 'px'" class="mt-10 p-16">
+            {{ text }}
+          </section>
+        </section>
+
+        <!-- Action Buttons -->
+        <section class="flex align-items-justify-content-center mt-20">
+          <button mat-flat-button color="primary" class="btn primary-btn" (click)="onAddTextButtonClicked()">Save</button>
+          <button mat-flat-button color="accent" class="btn ml-15" (click)="onPostDetailsSaveButtonClicked()">Close</button>
+        </section>
+      </div>
     </div>
 
     <div *ngIf="isAddShapeMenuSelected" class="p-20">
@@ -90,7 +130,8 @@
   </section>
 
   <section class="art-board-container" #container>
-    <div class="full-height flex-column align-items-justify-content-center">
+    <div class="full-height flex-column align-items-justify-content-center" (dragover)="onPostContentDragOver($event)" (drop)="onUIElementDropped($event)">
+      <section id="post-messages"></section>
       <img [src]="imageUrl | safe: 'url'" alt="" [style.max-width]="container.clientWidth - 100 + 'px'"
         [style.max-height]="container.clientHeight - 200 + 'px'" />
     </div>

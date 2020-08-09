@@ -1,9 +1,10 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
 
 import { filter } from 'rxjs/operators';
 
 import { STUDIO_MENU } from '../../constants/studio-menu.constants';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   templateUrl: './studio.component.html',
@@ -15,7 +16,13 @@ export class StudioComponent implements OnInit {
 
   public tags: string[];
 
+  public text: string;
+
+  public color: string;
+
   public imageUrl: string;
+
+  public fontSize: number;
 
   public postTitle: string;
 
@@ -31,7 +38,15 @@ export class StudioComponent implements OnInit {
 
   public isAddShapeMenuSelected: boolean;
 
-  constructor(private readonly _router: Router, private readonly _activatedRoute: ActivatedRoute) {
+  private _mousePositionX: number;
+
+  private _mousePositionY: number;
+
+  constructor(
+    private readonly _router: Router,
+    private readonly _activatedRoute: ActivatedRoute,
+    @Inject(DOCUMENT) private readonly _document: Document,
+  ) {
     this._initializeProperties();
   }
 
@@ -57,7 +72,7 @@ export class StudioComponent implements OnInit {
     });
   }
 
-  public async onSaveButtonClicked(): Promise<void> {
+  public async onPostDetailsSaveButtonClicked(): Promise<void> {
     await this._router.navigate([], {
       queryParams: { menu: null },
       replaceUrl: true,
@@ -68,6 +83,27 @@ export class StudioComponent implements OnInit {
     this._resetMenuSelection();
   }
 
+  public onPostContentDragOver(dragEvent: DragEvent): void {
+    dragEvent.preventDefault();
+    this._mousePositionX = dragEvent.clientX;
+    this._mousePositionY = dragEvent.clientY;
+    console.log('Dragging Event', dragEvent);
+  }
+
+  public onAddTextButtonClicked(): void {
+    const postContent = this._document.querySelector('#post-messages');
+    const textNode = this._document.createElement('section');
+    textNode.innerText = this.text;
+    textNode.draggable = true;
+    textNode.classList.add('move');
+    textNode.style.position = 'absolute';
+    textNode.style.fontSize = `${this.fontSize}px`;
+    textNode.style.color = this.color;
+    textNode.style.background = 'transparent';
+    textNode.addEventListener('dragend', this._onDragEnd.bind(this), false);
+    postContent.appendChild(textNode);
+  }
+
   public onEnterKeyPressedOnTags(): void {
     if (this.tag) {
       this.tags = [...this.tags, this.tag];
@@ -75,8 +111,17 @@ export class StudioComponent implements OnInit {
     }
   }
 
+  private _onDragEnd(dragEvent: DragEvent): void {
+    console.log('End Event', dragEvent);
+    // dragEvent.stopPropagation();
+    (dragEvent.target as HTMLElement).style.left = `${dragEvent.clientX}px`;
+    (dragEvent.target as HTMLElement).style.top = `${dragEvent.clientY}px`;
+  }
+
   private _initializeProperties(): void {
     this.tags = [];
+    this.fontSize = 12;
+    this.color = '#1657a7';
 
     this._resetMenuSelection();
   }
@@ -102,5 +147,10 @@ export class StudioComponent implements OnInit {
         this.isAddShapeMenuSelected = true;
         break;
     }
+  }
+
+  onUIElementDropped($event: DragEvent) {
+    console.log('Paara');
+    console.log($event);
   }
 }

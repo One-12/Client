@@ -20,6 +20,8 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSliderModule } from '@angular/material/slider';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 const icons = { CheckCircle, Type, Box, Info };
 
@@ -43,6 +45,8 @@ const icons = { CheckCircle, Type, Box, Info };
     FormsModule,
     MatCheckboxModule,
     MatButtonModule,
+    MatSliderModule,
+    ColorPickerModule,
   ],
 })
 export class CreatorsCornerModule {}
