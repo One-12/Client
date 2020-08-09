@@ -1,10 +1,10 @@
+import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
 
 import { filter } from 'rxjs/operators';
 
 import { STUDIO_MENU } from '../../constants/studio-menu.constants';
-import { DOCUMENT } from '@angular/common';
 
 @Component({
   templateUrl: './studio.component.html',
@@ -87,7 +87,6 @@ export class StudioComponent implements OnInit {
     dragEvent.preventDefault();
     this._mousePositionX = dragEvent.clientX;
     this._mousePositionY = dragEvent.clientY;
-    console.log('Dragging Event', dragEvent);
   }
 
   public onAddTextButtonClicked(): void {
@@ -112,8 +111,6 @@ export class StudioComponent implements OnInit {
   }
 
   private _onDragEnd(dragEvent: DragEvent): void {
-    console.log('End Event', dragEvent);
-    // dragEvent.stopPropagation();
     (dragEvent.target as HTMLElement).style.left = `${dragEvent.clientX}px`;
     (dragEvent.target as HTMLElement).style.top = `${dragEvent.clientY}px`;
   }
@@ -147,10 +144,5 @@ export class StudioComponent implements OnInit {
         this.isAddShapeMenuSelected = true;
         break;
     }
-  }
-
-  onUIElementDropped($event: DragEvent) {
-    console.log('Paara');
-    console.log($event);
   }
 }

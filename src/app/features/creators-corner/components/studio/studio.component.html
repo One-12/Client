@@ -130,7 +130,7 @@
   </section>
 
   <section class="art-board-container" #container>
-    <div class="full-height flex-column align-items-justify-content-center" (dragover)="onPostContentDragOver($event)" (drop)="onUIElementDropped($event)">
+    <div class="full-height flex-column align-items-justify-content-center" (dragover)="onPostContentDragOver($event)">
       <section id="post-messages"></section>
       <img [src]="imageUrl | safe: 'url'" alt="" [style.max-width]="container.clientWidth - 100 + 'px'"
         [style.max-height]="container.clientHeight - 200 + 'px'" />
