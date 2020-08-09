@@ -19,6 +19,7 @@ import { CreatorsCornerRoutingModule } from './creators-corner-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
 
 const icons = { CheckCircle, Type, Box, Info };
 
@@ -41,6 +42,7 @@ const icons = { CheckCircle, Type, Box, Info };
     MatInputModule,
     FormsModule,
     MatCheckboxModule,
+    MatButtonModule,
   ],
 })
 export class CreatorsCornerModule {}

@@ -1,4 +1,4 @@
-@import "../../../../../assets/styles/colors";
+@import '../../../../../assets/styles/colors';
 
 #tags-container {
   .tag {
@@ -6,9 +6,9 @@
     margin: 8px 8px 8px 0;
     padding: 4px 8px;
     color: white;
-    background-color: $light-purple-color;
+    background-color: $dark-blue-color;
 
-    border: $light-purple-color 1px solid;
+    border: $dark-blue-color 1px solid;
     border-radius: 5px;
     font-size: 12px;
   }

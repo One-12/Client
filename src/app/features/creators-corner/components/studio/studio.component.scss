@@ -57,7 +57,10 @@
       padding-top: 60px;
       background: $white-color;
       box-shadow: inset 0 0 0 1px #c5ccd0;
-      min-width: 280px;
+
+      .post-details-container {
+        min-width: 280px;
+      }
     }
 
     .art-board-container {

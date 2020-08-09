@@ -3,6 +3,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import { filter } from 'rxjs/operators';
 
+import { STUDIO_MENU } from '../constants/studio-menu.constants';
+
 @Component({
   selector: 'one12-creators-corner',
   templateUrl: './creators-corner.component.html',
@@ -24,7 +26,7 @@ export class CreatorsCornerComponent implements OnInit {
     if (fileInputElement.files && fileInputElement.files[0]) {
       const image = URL.createObjectURL(fileInputElement.files[0]);
       await this._router.navigate(['creators-corner/studio'], {
-        queryParams: { imageUrl: image },
+        queryParams: { imageUrl: image, menu: STUDIO_MENU.PostDetails },
       });
     }
   }

@@ -1,5 +1,5 @@
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'one12-post-template-list',
@@ -11,8 +11,6 @@ export class PostTemplateListComponent implements OnInit {
   public selectedMasonryItem: { id: number; url: string };
 
   public masonryItems: { id: number; url: string }[];
-
-  public templateSelected: EventEmitter<string> = new EventEmitter();
 
   constructor(private readonly _router: Router, private readonly _activatedRoute: ActivatedRoute) {
     this.selectedMasonryItem = null;

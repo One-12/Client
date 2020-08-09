@@ -11,6 +11,10 @@ import { STUDIO_MENU } from '../../constants/studio-menu.constants';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StudioComponent implements OnInit {
+  public tag: string;
+
+  public tags: string[];
+
   public imageUrl: string;
 
   public postTitle: string;
@@ -38,7 +42,9 @@ export class StudioComponent implements OnInit {
 
     this._activatedRoute.queryParams.pipe(filter(x => x.menu)).subscribe(data => {
       this._resetMenuSelection();
-      this._selectMenuItems(data.menu);
+      if (data.menu) {
+        this._selectMenuItems(data.menu);
+      }
     });
   }
 
@@ -51,7 +57,27 @@ export class StudioComponent implements OnInit {
     });
   }
 
+  public async onSaveButtonClicked(): Promise<void> {
+    await this._router.navigate([], {
+      queryParams: { menu: null },
+      replaceUrl: true,
+      relativeTo: this._activatedRoute,
+      queryParamsHandling: 'merge',
+    });
+
+    this._resetMenuSelection();
+  }
+
+  public onEnterKeyPressedOnTags(): void {
+    if (this.tag) {
+      this.tags = [...this.tags, this.tag];
+      this.tag = '';
+    }
+  }
+
   private _initializeProperties(): void {
+    this.tags = [];
+
     this._resetMenuSelection();
   }
 
@@ -61,8 +87,8 @@ export class StudioComponent implements OnInit {
     this.isAddShapeMenuSelected = false;
   }
 
-  private _selectMenuItems(data: string): void {
-    switch (data) {
+  private _selectMenuItems(selectedMenu: string): void {
+    switch (selectedMenu) {
       case STUDIO_MENU.AddShapes:
         this.isAddShapeMenuSelected = true;
         break;
