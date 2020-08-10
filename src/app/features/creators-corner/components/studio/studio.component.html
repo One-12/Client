@@ -5,7 +5,7 @@
 <section id="studio-component-container" class="full-height container">
   <section class="tool-bar-container">
     <!-- Post Information Tool -->
-    <div matRipple class="m-5 p-20 flex-row align-items-justify-content-center pointer tool-bar-icon-container" [class.selected]="isDetailsMenuSelected" (click)="onMenuItemSelected('post-details')">
+    <div matRipple class="m-5 p-20 flex-row align-items-justify-content-center pointer tool-bar-icon-container" (click)="onMenuItemSelected('post-details')">
       <div class="info-text flex-column align-items-justify-content-center">
         <i-feather name="info" class="info-text-icon"></i-feather>
         <span class="tool-bar-text">Post Details</span>
@@ -13,7 +13,7 @@
     </div>
 
     <!-- Add Text Tool -->
-    <div matRipple class="m-5 p-20 flex-row align-items-justify-content-center pointer tool-bar-icon-container" [class.selected]="isAddTextMenuSelected" (click)="onMenuItemSelected('add-text')">
+    <div matRipple class="m-5 p-20 flex-row align-items-justify-content-center pointer tool-bar-icon-container" (click)="onMenuItemSelected('add-text')">
       <div class="add-text flex-column align-items-justify-content-center">
         <i-feather name="type" class="add-text-icon"></i-feather>
         <span class="tool-bar-text">Add Text</span>
@@ -21,7 +21,7 @@
     </div>
 
     <!-- Add Shapes Tool -->
-    <div matRipple class="m-5 p-20 flex-row align-items-justify-content-center pointer tool-bar-icon-container" [class.selected]="isAddShapeMenuSelected" (click)="onMenuItemSelected('add-shapes')">
+    <div matRipple class="m-5 p-20 flex-row align-items-justify-content-center pointer tool-bar-icon-container" (click)="onMenuItemSelected('add-shapes')">
       <div class="shapes-text flex-column align-items-justify-content-center">
         <i-feather name="box" class="shapes-text-icon"></i-feather>
         <span class="tool-bar-text">Add Shapes</span>
@@ -30,54 +30,8 @@
   </section>
 
   <section class="tool-bar-options-container">
-    <div *ngIf="isDetailsMenuSelected" class="p-20">
 
-      <!-- Header -->
-      <one12-section-header title="Update Post" subtitle="Details"></one12-section-header>
-
-      <!-- Post Details -->
-      <div class="post-details-container mt-20">
-
-        <!-- Post's Title -->
-        <mat-form-field class="full-width" appearance="standard" color="primary" floatLabel="always">
-          <mat-label>Title: </mat-label>
-          <input matInput maxlength="256" type="text" placeholder="Enter Post's Title" [(ngModel)]="postTitle" autocomplete="off">
-        </mat-form-field>
-
-        <!-- Post's Description -->
-        <mat-form-field class="full-width" appearance="standard" color="primary" floatLabel="always">
-          <mat-label>Description: </mat-label>
-          <input matInput maxlength="256" type="text" placeholder="Enter Post's Description" [(ngModel)]="postDescription" autocomplete="off">
-        </mat-form-field>
-
-        <!-- Post's Tags -->
-        <mat-form-field class="full-width" appearance="standard" color="primary" floatLabel="always">
-          <mat-label>Tags: </mat-label>
-          <input matInput maxlength="256" type="text" placeholder="+Tag" [value]="tag" [(ngModel)]="tag" autocomplete="off" (keydown.enter)="onEnterKeyPressedOnTags()">
-        </mat-form-field>
-
-        <!-- Tags -->
-        <section class="flex align-items-center mt-m20" *ngIf="tags.length">
-          <one12-tags class="mr-16" [tags]="tags"></one12-tags>
-        </section>
-
-        <!-- Post's Source -->
-        <mat-form-field class="full-width" appearance="standard" color="primary" floatLabel="always">
-          <mat-label>Source: </mat-label>
-          <input matInput maxlength="256" type="text" placeholder="Enter Post's Source" [(ngModel)]="postSource" autocomplete="off">
-        </mat-form-field>
-
-        <mat-checkbox [(ngModel)]="isPostAnonymous" color="primary">Post Anonymously</mat-checkbox>
-
-        <section class="flex align-items-justify-content-center mt-20">
-          <button mat-flat-button color="primary" class="btn primary-btn" (click)="onPostDetailsSaveButtonClicked()">Save</button>
-          <button mat-flat-button color="accent" class="btn ml-15" (click)="onPostDetailsSaveButtonClicked()">Close</button>
-        </section>
-      </div>
-
-    </div>
-
-    <div *ngIf="isAddTextMenuSelected" class="p-20">
+    <div class="p-20">
       <!-- Header -->
       <one12-section-header title="Add" subtitle="Text"></one12-section-header>
       <div class="add-text-container mt-20">
@@ -123,7 +77,7 @@
       </div>
     </div>
 
-    <div *ngIf="isAddShapeMenuSelected" class="p-20">
+    <div class="p-20">
       <!-- Header -->
       <one12-section-header title="Add" subtitle="Shapes"></one12-section-header>
     </div>

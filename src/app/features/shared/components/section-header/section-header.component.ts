@@ -13,6 +13,8 @@ export class SectionHeaderComponent {
 
   @Input() public showScrollButton: boolean;
 
+  @Input() public isLightMode: boolean;
+
   @Output() public scrollLeftButtonClicked = new EventEmitter();
 
   @Output() public scrollRightButtonClicked = new EventEmitter();
@@ -30,6 +32,7 @@ export class SectionHeaderComponent {
   }
 
   private _initializeProperties() {
+    this.isLightMode = false;
     this.showScrollButton = false;
   }
 }

@@ -5,6 +5,9 @@ import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/cor
 import { filter } from 'rxjs/operators';
 
 import { STUDIO_MENU } from '../../constants/studio-menu.constants';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { PostDetailsBottomSheetComponent } from './_bottom-sheet/post-details-bottom-sheet/post-details-bottom-sheet.component';
+import { PostDetailsModel } from '../../models/studio/post-details.model';
 
 @Component({
   templateUrl: './studio.component.html',
@@ -12,10 +15,6 @@ import { STUDIO_MENU } from '../../constants/studio-menu.constants';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StudioComponent implements OnInit {
-  public tag: string;
-
-  public tags: string[];
-
   public text: string;
 
   public color: string;
@@ -24,19 +23,7 @@ export class StudioComponent implements OnInit {
 
   public fontSize: number;
 
-  public postTitle: string;
-
-  public postSource: string;
-
-  public postDescription: string;
-
-  public isPostAnonymous: boolean;
-
-  public isDetailsMenuSelected: boolean;
-
-  public isAddTextMenuSelected: boolean;
-
-  public isAddShapeMenuSelected: boolean;
+  private _postDetails: PostDetailsModel;
 
   private _mousePositionX: number;
 
@@ -45,6 +32,7 @@ export class StudioComponent implements OnInit {
   constructor(
     private readonly _router: Router,
     private readonly _activatedRoute: ActivatedRoute,
+    private readonly _matBottomSheet: MatBottomSheet,
     @Inject(DOCUMENT) private readonly _document: Document,
   ) {
     this._initializeProperties();
@@ -56,7 +44,6 @@ export class StudioComponent implements OnInit {
     });
 
     this._activatedRoute.queryParams.pipe(filter(x => x.menu)).subscribe(data => {
-      this._resetMenuSelection();
       if (data.menu) {
         this._selectMenuItems(data.menu);
       }
@@ -79,8 +66,6 @@ export class StudioComponent implements OnInit {
       relativeTo: this._activatedRoute,
       queryParamsHandling: 'merge',
     });
-
-    this._resetMenuSelection();
   }
 
   public onPostContentDragOver(dragEvent: DragEvent): void {
@@ -103,46 +88,56 @@ export class StudioComponent implements OnInit {
     postContent.appendChild(textNode);
   }
 
-  public onEnterKeyPressedOnTags(): void {
-    if (this.tag) {
-      this.tags = [...this.tags, this.tag];
-      this.tag = '';
-    }
-  }
-
   private _onDragEnd(dragEvent: DragEvent): void {
     (dragEvent.target as HTMLElement).style.left = `${dragEvent.clientX}px`;
     (dragEvent.target as HTMLElement).style.top = `${dragEvent.clientY}px`;
   }
 
   private _initializeProperties(): void {
-    this.tags = [];
     this.fontSize = 12;
     this.color = '#1657a7';
-
-    this._resetMenuSelection();
-  }
-
-  private _resetMenuSelection(): void {
-    this.isDetailsMenuSelected = false;
-    this.isAddTextMenuSelected = false;
-    this.isAddShapeMenuSelected = false;
+    this._postDetails = this._getDefaultPostDetails();
   }
 
   private _selectMenuItems(selectedMenu: string): void {
     switch (selectedMenu) {
       case STUDIO_MENU.AddShapes:
-        this.isAddShapeMenuSelected = true;
         break;
       case STUDIO_MENU.AddText:
-        this.isAddTextMenuSelected = true;
         break;
       case STUDIO_MENU.PostDetails:
-        this.isDetailsMenuSelected = true;
+        const postDetailsBottomSheetComponentRef = this._matBottomSheet.open(PostDetailsBottomSheetComponent, {
+          data: this._postDetails,
+        });
+        postDetailsBottomSheetComponentRef.afterDismissed().subscribe(async (data: PostDetailsModel) => {
+          if (data) {
+            this._postDetails = data;
+          }
+
+          await this._resetQueryParams();
+        });
         break;
       default:
-        this.isAddShapeMenuSelected = true;
         break;
     }
+  }
+
+  private _getDefaultPostDetails(): PostDetailsModel {
+    return {
+      isAnonymous: false,
+      source: '',
+      tags: [],
+      description: '',
+      title: '',
+    };
+  }
+
+  private async _resetQueryParams(): Promise<void> {
+    await this._router.navigate([], {
+      queryParams: { menu: null },
+      replaceUrl: true,
+      relativeTo: this._activatedRoute,
+      queryParamsHandling: 'merge',
+    });
   }
 }

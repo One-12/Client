@@ -1,0 +1,16 @@
+:host {
+  #post-details-bottom-sheet-container {
+    padding: 30px;
+    background: #ffffff;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+  }
+}
+
+::ng-deep .mat-bottom-sheet-container {
+  background: #043238;
+  margin: 0;
+  padding: 0;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
