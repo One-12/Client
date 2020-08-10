@@ -1,0 +1,39 @@
+<section id="create-post-type-sheet-container">
+  <mat-nav-list>
+    <a mat-list-item (click)="onSelectedImageButtonClicked($event)">
+      <section class="flex">
+        <div class="feather-icon-wrapper image-icon">
+          <i-feather name="image" class="feather-icon"></i-feather>
+        </div>
+        <div>
+          <span class="primary-color" mat-line>Image</span>
+          <span class="text-muted" mat-line>Upload from PC/ Design from Templates</span>
+        </div>
+      </section>
+    </a>
+
+    <a mat-list-item>
+      <section class="flex">
+        <div class="feather-icon-wrapper video-icon">
+          <i-feather name="video" class="feather-icon"></i-feather>
+        </div>
+        <div>
+          <span class="primary-color" mat-line>Video</span>
+          <span class="text-muted" mat-line>Upload Video from PC</span>
+        </div>
+      </section>
+    </a>
+
+    <a mat-list-item>
+      <section class="flex">
+        <div class="feather-icon-wrapper youtube-icon">
+          <i-feather name="Youtube" class="feather-icon"></i-feather>
+        </div>
+        <div>
+          <span class="primary-color" mat-line>YouTube</span>
+          <span class="text-muted" mat-line>Share YouTube URL</span>
+        </div>
+      </section>
+    </a>
+  </mat-nav-list>
+</section>

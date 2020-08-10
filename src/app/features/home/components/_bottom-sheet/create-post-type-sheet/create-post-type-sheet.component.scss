@@ -1,0 +1,23 @@
+:host {
+  #create-post-type-sheet-container {
+    .image-icon {
+      color: #3d5654;
+    }
+
+    .video-icon {
+      color: #d8417a;
+    }
+
+    .youtube-icon {
+      color: #ff0000;
+    }
+
+    .feather-icon-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      margin-right: 20px;
+    }
+  }
+}
