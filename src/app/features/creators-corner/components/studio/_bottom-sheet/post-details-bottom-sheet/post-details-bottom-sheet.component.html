@@ -4,26 +4,30 @@
     <one12-section-header title="Post" subtitle="Details" isLightMode="true"></one12-section-header>
   </div>
 
-  <section id="post-details-bottom-sheet-container" class="animate__animated animate__zoomInUp">
+  <!-- Post Details Container -->
+  <section id="post-details-container" class="animate__animated animate__zoomInUp">
     <!-- Post Details -->
-    <div class="post-details-container mt-20">
+    <div class="mt-20">
 
       <!-- Post's Title -->
       <mat-form-field class="full-width" appearance="standard" color="primary" floatLabel="always">
         <mat-label>Title: </mat-label>
-        <input matInput maxlength="256" type="text" placeholder="Enter Post's Title" [(ngModel)]="postDetails.title" autocomplete="off">
+        <input matInput maxlength="256" type="text" placeholder="Enter Post's Title" [(ngModel)]="postDetails.title"
+          autocomplete="off">
       </mat-form-field>
 
       <!-- Post's Description -->
       <mat-form-field class="full-width" appearance="standard" color="primary" floatLabel="always">
         <mat-label>Description: </mat-label>
-        <input matInput maxlength="256" type="text" placeholder="Enter Post's Description" [(ngModel)]="postDetails.description" autocomplete="off">
+        <input matInput maxlength="256" type="text" placeholder="Enter Post's Description"
+          [(ngModel)]="postDetails.description" autocomplete="off">
       </mat-form-field>
 
       <!-- Post's Tags -->
       <mat-form-field class="full-width" appearance="standard" color="primary" floatLabel="always">
         <mat-label>Tags: </mat-label>
-        <input matInput maxlength="256" type="text" placeholder="+Tag" [value]="tag" [(ngModel)]="tag" autocomplete="off" (keydown.enter)="onEnterKeyPressedOnTags()">
+        <input matInput maxlength="256" type="text" placeholder="+Tag" [value]="tag" [(ngModel)]="tag"
+          autocomplete="off" (keydown.enter)="onEnterKeyPressedOnTags()">
       </mat-form-field>
 
       <!-- Tags -->
@@ -34,14 +38,17 @@
       <!-- Post's Source -->
       <mat-form-field class="full-width" appearance="standard" color="primary" floatLabel="always">
         <mat-label>Source: </mat-label>
-        <input matInput maxlength="256" type="text" placeholder="Enter Post's Source" [(ngModel)]="postDetails.source" autocomplete="off">
+        <input matInput maxlength="256" type="text" placeholder="Enter Post's Source" [(ngModel)]="postDetails.source"
+          autocomplete="off">
       </mat-form-field>
 
       <mat-checkbox [(ngModel)]="postDetails.isAnonymous" color="primary">Post Anonymously</mat-checkbox>
 
       <section class="flex align-items-justify-content-center mt-20">
-        <button mat-flat-button color="primary" class="btn primary-btn" (click)="onPostDetailsSaveButtonClicked()">Save</button>
-        <button mat-flat-button color="accent" class="btn ml-15" (click)="onPostDetailsCloseButtonClicked()">Close</button>
+        <button mat-flat-button color="primary" class="btn primary-btn"
+          (click)="onPostDetailsSaveButtonClicked()">Save</button>
+        <button mat-flat-button color="accent" class="btn ml-15"
+          (click)="onPostDetailsCloseButtonClicked()">Close</button>
       </section>
     </div>
   </section>

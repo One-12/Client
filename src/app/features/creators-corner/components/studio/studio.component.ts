@@ -1,13 +1,16 @@
 import { DOCUMENT } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
 
 import { filter } from 'rxjs/operators';
 
 import { STUDIO_MENU } from '../../constants/studio-menu.constants';
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { PostDetailsBottomSheetComponent } from './_bottom-sheet/post-details-bottom-sheet/post-details-bottom-sheet.component';
 import { PostDetailsModel } from '../../models/studio/post-details.model';
+import { PostAddTextModel } from '../../models/studio/post-add-text.model';
+
+import { PostDetailsBottomSheetComponent } from './_bottom-sheet/post-details-bottom-sheet/post-details-bottom-sheet.component';
+import { TextBottomSheetComponent } from './_bottom-sheet/text-bottom-sheet/text-bottom-sheet.component';
 
 @Component({
   templateUrl: './studio.component.html',
@@ -25,9 +28,7 @@ export class StudioComponent implements OnInit {
 
   private _postDetails: PostDetailsModel;
 
-  private _mousePositionX: number;
-
-  private _mousePositionY: number;
+  private _addTextPostModel: PostAddTextModel;
 
   constructor(
     private readonly _router: Router,
@@ -70,8 +71,6 @@ export class StudioComponent implements OnInit {
 
   public onPostContentDragOver(dragEvent: DragEvent): void {
     dragEvent.preventDefault();
-    this._mousePositionX = dragEvent.clientX;
-    this._mousePositionY = dragEvent.clientY;
   }
 
   public onAddTextButtonClicked(): void {
@@ -104,6 +103,14 @@ export class StudioComponent implements OnInit {
       case STUDIO_MENU.AddShapes:
         break;
       case STUDIO_MENU.AddText:
+        const textBottomSheetComponentRef = this._matBottomSheet.open(TextBottomSheetComponent);
+        textBottomSheetComponentRef.afterDismissed().subscribe(async (data: PostAddTextModel) => {
+          if (data) {
+            this._addTextPostModel = data;
+          }
+
+          await this._resetQueryParams();
+        });
         break;
       case STUDIO_MENU.PostDetails:
         const postDetailsBottomSheetComponentRef = this._matBottomSheet.open(PostDetailsBottomSheetComponent, {

@@ -25,6 +25,7 @@ import { PostDetailsBottomSheetComponent } from './components/studio/_bottom-she
 
 import { SharedModule } from '../shared/shared.module';
 import { CreatorsCornerRoutingModule } from './creators-corner-routing.module';
+import { TextBottomSheetComponent } from './components/studio/_bottom-sheet/text-bottom-sheet/text-bottom-sheet.component';
 
 const icons = { CheckCircle, Type, Box, Info };
 
@@ -36,6 +37,7 @@ const icons = { CheckCircle, Type, Box, Info };
     PostTemplateListComponent,
     PostTemplateSearchComponent,
     PostDetailsBottomSheetComponent,
+    TextBottomSheetComponent,
   ],
   imports: [
     FormsModule,

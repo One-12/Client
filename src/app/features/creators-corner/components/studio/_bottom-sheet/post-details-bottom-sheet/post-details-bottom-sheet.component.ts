@@ -14,9 +14,8 @@ export class PostDetailsBottomSheetComponent {
 
   constructor(
     @Inject(MAT_BOTTOM_SHEET_DATA) private readonly data: PostDetailsModel,
-    private _bottomSheetRef: MatBottomSheetRef<PostDetailsBottomSheetComponent>,
+    private readonly _bottomSheetRef: MatBottomSheetRef<PostDetailsBottomSheetComponent>,
   ) {
-    console.log(data);
     this.postDetails = { ...data };
   }
 
