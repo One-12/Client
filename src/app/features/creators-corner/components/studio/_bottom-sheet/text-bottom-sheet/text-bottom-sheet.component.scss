@@ -1,0 +1,27 @@
+@import '../../../../../../../assets/styles/utils.scss';
+@import '../../../../../../../assets/styles/colors.scss';
+
+.bottom-sheet-background {
+  background: #043238;
+}
+
+.border-x-radius-50 {
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+:host {
+  #add-text-container {
+    @extend .border-x-radius-50;
+
+    padding: 30px;
+    background: $white-color;
+  }
+}
+
+::ng-deep .mat-bottom-sheet-container {
+  @extend .m-0;
+  @extend .p-0;
+  @extend .border-x-radius-50;
+  @extend .bottom-sheet-background;
+}
