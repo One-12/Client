@@ -16,7 +16,7 @@ export class TextBottomSheetComponent {
   }
 
   public onAddTextButtonClicked(): void {
-    this._bottomSheetRef.dismiss();
+    this._bottomSheetRef.dismiss({...this.addTextModel});
   }
 
   public onCloseButtonClicked(): void {

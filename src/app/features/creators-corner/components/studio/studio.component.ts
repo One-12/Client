@@ -9,8 +9,8 @@ import { STUDIO_MENU } from '../../constants/studio-menu.constants';
 import { PostDetailsModel } from '../../models/studio/post-details.model';
 import { PostAddTextModel } from '../../models/studio/post-add-text.model';
 
-import { PostDetailsBottomSheetComponent } from './_bottom-sheet/post-details-bottom-sheet/post-details-bottom-sheet.component';
 import { TextBottomSheetComponent } from './_bottom-sheet/text-bottom-sheet/text-bottom-sheet.component';
+import { PostDetailsBottomSheetComponent } from './_bottom-sheet/post-details-bottom-sheet/post-details-bottom-sheet.component';
 
 @Component({
   templateUrl: './studio.component.html',
@@ -18,17 +18,9 @@ import { TextBottomSheetComponent } from './_bottom-sheet/text-bottom-sheet/text
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StudioComponent implements OnInit {
-  public text: string;
-
-  public color: string;
-
   public imageUrl: string;
 
-  public fontSize: number;
-
   private _postDetails: PostDetailsModel;
-
-  private _addTextPostModel: PostAddTextModel;
 
   constructor(
     private readonly _router: Router,
@@ -39,7 +31,7 @@ export class StudioComponent implements OnInit {
     this._initializeProperties();
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this._activatedRoute.queryParams.pipe(filter(x => x.imageUrl)).subscribe(data => {
       this.imageUrl = data.imageUrl;
     });
@@ -69,32 +61,12 @@ export class StudioComponent implements OnInit {
     });
   }
 
-  public onPostContentDragOver(dragEvent: DragEvent): void {
-    dragEvent.preventDefault();
-  }
-
-  public onAddTextButtonClicked(): void {
-    const postContent = this._document.querySelector('#post-messages');
-    const textNode = this._document.createElement('section');
-    textNode.innerText = this.text;
-    textNode.draggable = true;
-    textNode.classList.add('move');
-    textNode.style.position = 'absolute';
-    textNode.style.fontSize = `${this.fontSize}px`;
-    textNode.style.color = this.color;
-    textNode.style.background = 'transparent';
-    textNode.addEventListener('dragend', this._onDragEnd.bind(this), false);
-    postContent.appendChild(textNode);
-  }
-
   private _onDragEnd(dragEvent: DragEvent): void {
     (dragEvent.target as HTMLElement).style.left = `${dragEvent.clientX}px`;
     (dragEvent.target as HTMLElement).style.top = `${dragEvent.clientY}px`;
   }
 
   private _initializeProperties(): void {
-    this.fontSize = 12;
-    this.color = '#1657a7';
     this._postDetails = this._getDefaultPostDetails();
   }
 
@@ -106,7 +78,7 @@ export class StudioComponent implements OnInit {
         const textBottomSheetComponentRef = this._matBottomSheet.open(TextBottomSheetComponent);
         textBottomSheetComponentRef.afterDismissed().subscribe(async (data: PostAddTextModel) => {
           if (data) {
-            this._addTextPostModel = data;
+            this._onAddTextButtonClicked(data);
           }
 
           await this._resetQueryParams();
@@ -137,6 +109,20 @@ export class StudioComponent implements OnInit {
       description: '',
       title: '',
     };
+  }
+
+  private _onAddTextButtonClicked(addTextPostModel: PostAddTextModel): void {
+    const postContent = this._document.querySelector('#post-messages');
+    const textNode = this._document.createElement('section');
+    textNode.innerText = addTextPostModel.text;
+    textNode.draggable = true;
+    textNode.classList.add('move');
+    textNode.style.position = 'absolute';
+    textNode.style.fontSize = `${addTextPostModel.fontSize}px`;
+    textNode.style.color = addTextPostModel.fontColor;
+    textNode.style.background = 'transparent';
+    textNode.addEventListener('dragend', this._onDragEnd.bind(this), false);
+    postContent.appendChild(textNode);
   }
 
   private async _resetQueryParams(): Promise<void> {
