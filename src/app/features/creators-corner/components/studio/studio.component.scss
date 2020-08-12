@@ -3,7 +3,7 @@
 :host {
   #studio-component-container {
     display: grid;
-    grid-template-columns: auto auto 1fr;
+    grid-template-columns: auto 1fr;
     background: $studio-background-color;
 
     .tool-bar-container {
@@ -50,20 +50,6 @@
         &:hover {
           background: $dark-grey-color;
         }
-      }
-    }
-
-    .tool-bar-options-container {
-      padding-top: 60px;
-      background: $white-color;
-      box-shadow: inset 0 0 0 1px #c5ccd0;
-
-      .post-details-container {
-        min-width: 280px;
-      }
-
-      .add-text-container {
-        min-width: 280px;
       }
     }
 

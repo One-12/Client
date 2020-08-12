@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
 
@@ -20,6 +20,10 @@ import { PostDetailsBottomSheetComponent } from './_bottom-sheet/post-details-bo
 export class StudioComponent implements OnInit {
   public imageUrl: string;
 
+  public isAddTextButtonSelected: boolean;
+
+  public isPostDetailsButtonSelected: boolean;
+
   private _postDetails: PostDetailsModel;
 
   constructor(
@@ -38,6 +42,7 @@ export class StudioComponent implements OnInit {
 
     this._activatedRoute.queryParams.pipe(filter(x => x.menu)).subscribe(data => {
       if (data.menu) {
+        this._resetMenuSelection();
         this._selectMenuItems(data.menu);
       }
     });
@@ -68,13 +73,13 @@ export class StudioComponent implements OnInit {
 
   private _initializeProperties(): void {
     this._postDetails = this._getDefaultPostDetails();
+    this._resetMenuSelection();
   }
 
   private _selectMenuItems(selectedMenu: string): void {
     switch (selectedMenu) {
-      case STUDIO_MENU.AddShapes:
-        break;
       case STUDIO_MENU.AddText:
+        this.isAddTextButtonSelected = true;
         const textBottomSheetComponentRef = this._matBottomSheet.open(TextBottomSheetComponent);
         textBottomSheetComponentRef.afterDismissed().subscribe(async (data: PostAddTextModel) => {
           if (data) {
@@ -85,6 +90,7 @@ export class StudioComponent implements OnInit {
         });
         break;
       case STUDIO_MENU.PostDetails:
+        this.isPostDetailsButtonSelected = true;
         const postDetailsBottomSheetComponentRef = this._matBottomSheet.open(PostDetailsBottomSheetComponent, {
           data: this._postDetails,
         });
@@ -132,5 +138,10 @@ export class StudioComponent implements OnInit {
       relativeTo: this._activatedRoute,
       queryParamsHandling: 'merge',
     });
+  }
+
+  private _resetMenuSelection(): void {
+    this.isAddTextButtonSelected = false;
+    this.isPostDetailsButtonSelected = false;
   }
 }
