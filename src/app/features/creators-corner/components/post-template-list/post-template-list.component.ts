@@ -33,10 +33,10 @@ export class PostTemplateListComponent implements OnInit {
     ];
   }
 
-  public async onMemeTemplateSelected(selectedTemplatedId: string): Promise<void> {
+  public async onMemeTemplateSelected(selectedTemplate: string): Promise<void> {
     await this._router.navigate([], {
       relativeTo: this._activatedRoute,
-      queryParams: { selectedTemplate: selectedTemplatedId },
+      queryParams: { selectedTemplate },
       queryParamsHandling: 'merge',
       replaceUrl: true,
     });

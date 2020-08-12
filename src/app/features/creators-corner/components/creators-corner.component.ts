@@ -16,18 +16,26 @@ export class CreatorsCornerComponent implements OnInit {
 
   constructor(private readonly _router: Router, private readonly _activatedRoute: ActivatedRoute) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this._activatedRoute.queryParams.pipe(filter(param => param.selectedTemplate)).subscribe(param => {
       this.selectedTemplate = param.selectedTemplate;
     });
   }
 
+  public async onCreateMethodClicked(): Promise<void> {
+    await this._navigateToCreatorsStudio(this.selectedTemplate);
+  }
+
   public async onFileSelected(fileInputElement: HTMLInputElement): Promise<void> {
     if (fileInputElement.files && fileInputElement.files[0]) {
       const image = URL.createObjectURL(fileInputElement.files[0]);
-      await this._router.navigate(['creators-corner/studio'], {
-        queryParams: { imageUrl: image, menu: STUDIO_MENU.PostDetails },
-      });
+      await this._navigateToCreatorsStudio(image);
     }
+  }
+
+  private async _navigateToCreatorsStudio(imageUrl: string): Promise<void> {
+    await this._router.navigate(['creators-corner/studio'], {
+      queryParams: { imageUrl, menu: STUDIO_MENU.PostDetails },
+    });
   }
 }

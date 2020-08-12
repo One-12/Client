@@ -14,7 +14,7 @@
 
       <!-- Action Items -->
       <input class="collapse" type="file" accept="image/*" (change)="onFileSelected(fileUpload)" #fileUpload />
-      <button class="pointer mt-20" *ngIf="selectedTemplate"> Next </button>
+      <button class="pointer mt-20" *ngIf="selectedTemplate" (click)="onCreateMethodClicked()"> Next </button>
       <button class="pointer mt-20" *ngIf="!selectedTemplate" (click)="fileUpload.click()"> Upload </button>
     </section>
   </section>
