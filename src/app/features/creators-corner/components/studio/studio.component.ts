@@ -20,6 +20,8 @@ import { PostDetailsBottomSheetComponent } from './_bottom-sheet/post-details-bo
 export class StudioComponent implements OnInit {
   public imageUrl: string;
 
+  public postBackgroundColor: string;
+
   public isAddTextButtonSelected: boolean;
 
   public isPostDetailsButtonSelected: boolean;
@@ -72,6 +74,7 @@ export class StudioComponent implements OnInit {
   }
 
   private _initializeProperties(): void {
+    this.postBackgroundColor = '#000000';
     this._postDetails = this._getDefaultPostDetails();
     this._resetMenuSelection();
   }

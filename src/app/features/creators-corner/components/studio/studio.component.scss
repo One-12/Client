@@ -55,6 +55,15 @@
 
     .art-board-container {
       padding-top: 60px;
+
+      .art-board-tools-container {
+        display: flex;
+        flex-direction: row-reverse;
+
+        .post-btn {
+          height: 40px;
+        }
+      }
     }
   }
 }

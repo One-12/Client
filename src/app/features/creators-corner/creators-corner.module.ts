@@ -9,12 +9,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { NgxMasonryModule } from 'ngx-masonry';
 import { ColorPickerModule } from 'ngx-color-picker';
 
 import { FeatherModule } from 'angular-feather';
-import { Box, CheckCircle, Info, Type } from 'angular-feather/icons';
+import { Box, CheckCircle, Info, Type, Send } from 'angular-feather/icons';
 
 import { HeaderComponent } from './components/header/header.component';
 import { StudioComponent } from './components/studio/studio.component';
@@ -27,7 +28,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CreatorsCornerRoutingModule } from './creators-corner-routing.module';
 import { TextBottomSheetComponent } from './components/studio/_bottom-sheet/text-bottom-sheet/text-bottom-sheet.component';
 
-const icons = { CheckCircle, Type, Box, Info };
+const icons = { CheckCircle, Type, Box, Info, Send };
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ const icons = { CheckCircle, Type, Box, Info };
     MatBottomSheetModule,
     FeatherModule.pick(icons),
     CreatorsCornerRoutingModule,
+    MatButtonToggleModule,
   ],
   entryComponents: [PostDetailsBottomSheetComponent],
 })

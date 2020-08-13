@@ -23,7 +23,32 @@
     </div>
   </section>
 
-  <section class="art-board-container" #container>
+  <section class="art-board-container flex-column" #container>
+    <section class="art-board-tools-container p-16">
+      <button mat-flat-button color="primary" class="btn primary-btn mr-30 post-btn">
+        <span>Post</span>
+      </button>
+
+      <div class="mr-30">
+        Background:
+        <mat-form-field class="full-width mt-m20" appearance="none" color="primary" floatLabel="always"
+          autocomplete="off">
+          <input matInput [(colorPicker)]="postBackgroundColor" [style.background]="postBackgroundColor"
+            cpPosition="bottom" class="pointer" readonly>
+        </mat-form-field>
+      </div>
+
+      <div class="mr-30 flex-column">
+        Expand Padding:
+        <mat-button-toggle-group>
+          <mat-button-toggle>Top</mat-button-toggle>
+          <mat-button-toggle>Bottom</mat-button-toggle>
+          <mat-button-toggle>Left</mat-button-toggle>
+          <mat-button-toggle>Right</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+
+    </section>
     <div class="full-height flex-column align-items-justify-content-center" (dragover)="$event.preventDefault()">
       <section id="post-messages"></section>
       <img [src]="imageUrl | safe: 'url'" alt="" [style.max-width]="container.clientWidth - 100 + 'px'"
