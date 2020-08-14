@@ -26,8 +26,8 @@
   <section class="tags-container overflow-hidden mx-30 p-20 pb-0">
     <!-- Tags Header -->
     <one12-section-header title="What People Are" subtitle="Talking"
-      [showScrollButton]="(isFetchingTrendingTags$ | async) === (false || null || undefined)" (scrollLeftButtonClicked)="trendingTags.scrollLeft()"
-      (scrollRightButtonClicked)="trendingTags.scrollRight()">
+      [showScrollButton]="(isFetchingTrendingTags$ | async) !== (false || null || undefined)"
+      (scrollLeftButtonClicked)="trendingTags.scrollLeft()" (scrollRightButtonClicked)="trendingTags.scrollRight()">
     </one12-section-header>
 
     <!-- Tags Stream -->
@@ -39,7 +39,8 @@
   <!-- Popular Posts -->
   <section class="popular-posts-container overflow-hidden mx-30 p-20">
     <!-- Popular Posts Header -->
-    <one12-section-header title="Popular" subtitle="Now" [showScrollButton]="(isFetchingPopularPosts$ | async) === (false || null || undefined)"
+    <one12-section-header title="Popular" subtitle="Now"
+      [showScrollButton]="(isFetchingPopularPosts$ | async) !== (false || null || undefined)"
       (scrollLeftButtonClicked)="popularPost.scrollLeft()" (scrollRightButtonClicked)="popularPost.scrollRight()">
     </one12-section-header>
 
@@ -66,8 +67,8 @@
     </section>
 
     <!-- Feed Stream -->
-    <section *ngIf="(isFetchingPosts$ | async) === (false || null || undefined)" class="posts" infiniteScroll [infiniteScrollDistance]="2"
-      [infiniteScrollThrottle]="50" (scrolled)="onFeedsScrolled($event)">
+    <section *ngIf="(isFetchingPosts$ | async) !== (false || null || undefined)" class="posts" infiniteScroll
+      [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onFeedsScrolled($event)">
       <article class="post mb-16" *ngFor="let post of posts$ | async">
         <one12-feed-card [post]="post" (postSelected)="onPostSelected($event)"></one12-feed-card>
       </article>
