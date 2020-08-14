@@ -1,14 +1,19 @@
 import { DOCUMENT } from '@angular/common';
-import { ActivatedRoute, Router, Params } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
 
-import { filter } from 'rxjs/operators';
+import domtoimage from 'dom-to-image';
+import { filter, take } from 'rxjs/operators';
 
 import { STUDIO_MENU } from '../../constants/studio-menu.constants';
 import { PostDetailsModel } from '../../models/studio/post-details.model';
 import { PostAddTextModel } from '../../models/studio/post-add-text.model';
 
+import { dataURLtoFile } from '../../../shared/utils/utils';
+import { PostsFacade } from '../../../post/state/posts/posts.facade';
+import { UploadHttpService } from '../../../post/services/upload-http.service';
 import { TextBottomSheetComponent } from './_bottom-sheet/text-bottom-sheet/text-bottom-sheet.component';
 import { PostDetailsBottomSheetComponent } from './_bottom-sheet/post-details-bottom-sheet/post-details-bottom-sheet.component';
 
@@ -30,8 +35,11 @@ export class StudioComponent implements OnInit {
 
   constructor(
     private readonly _router: Router,
+    private readonly _postsFacade: PostsFacade,
     private readonly _activatedRoute: ActivatedRoute,
     private readonly _matBottomSheet: MatBottomSheet,
+    private readonly _angularFireAuth: AngularFireAuth,
+    private readonly _uploadHttpService: UploadHttpService,
     @Inject(DOCUMENT) private readonly _document: Document,
   ) {
     this._initializeProperties();
@@ -46,6 +54,31 @@ export class StudioComponent implements OnInit {
       if (data.menu) {
         this._resetMenuSelection();
         this._selectMenuItems(data.menu);
+      }
+    });
+  }
+
+  public async onUploadPostButtonClicked(): Promise<void> {
+    this._angularFireAuth.idToken.pipe(take(1)).subscribe(async (idToken: string) => {
+      const postContent = this._document.querySelector('.post-content');
+      if (postContent) {
+        this._postsFacade.uploadedContentUrl$.pipe(take(1)).subscribe(async url => {
+          await this._postsFacade.createPost({
+            content: {
+              content: url,
+              tags: this._postDetails.tags,
+              title: this._postDetails.title,
+              type: 'post',
+              description: this._postDetails.description,
+              isAnonymous: this._postDetails.isAnonymous,
+            },
+            idToken,
+          });
+        });
+
+        const postImage = await domtoimage.toPng(postContent);
+        const postFile = await dataURLtoFile(postImage, 'hello.png', 'image/png');
+        await this._postsFacade.uploadContent({ content: postFile, idToken });
       }
     });
   }

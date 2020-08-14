@@ -17,10 +17,6 @@ export class UploadHttpService extends BaseHttpService {
     super(httpClient, configService);
   }
 
-  /**
-   * Uploads File to the Server.
-   * @param payload
-   */
   public uploadFiles(payload: Payload<File>): Observable<UploadFileResponseModel> {
     const { idToken } = payload;
     const headers = this.getDefaultHttpHeaders(idToken);

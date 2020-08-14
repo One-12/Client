@@ -82,10 +82,10 @@ export class AddPostComponentComponent implements OnChanges, OnInit {
       const postContent = this._document.querySelector('.post-content');
       if (postContent) {
         this._postsFacade.uploadedContentUrl$.pipe(take(1)).subscribe(async url => {
-          await this._postsFacade.createPost({
-            content: { content: url, tags: this.tags, title: this.title, type: 'post' },
-            idToken,
-          });
+          // await this._postsFacade.createPost({
+          //   content: { content: url, tags: this.tags, title: this.title, type: 'image', description:  },
+          //   idToken,
+          // });
         });
 
         const postImage = await domtoimage.toPng(postContent);

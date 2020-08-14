@@ -91,6 +91,7 @@ export class HomeComponent implements OnInit {
 
   public async onFeedsScrolled(infiniteScrollEvent: IInfiniteScrollEvent): Promise<void> {
     this._angularFireAuth.idToken.pipe(take(1)).subscribe(async (idToken: string) => {
+      console.log(idToken);
       this.postRequestModel = { ...this.postRequestModel, offset: this.postRequestModel.offset + 1 };
       await this._postsFacade.loadPosts({ content: this.postRequestModel, idToken });
     });

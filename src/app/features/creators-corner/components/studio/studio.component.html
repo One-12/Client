@@ -25,7 +25,7 @@
 
   <section class="art-board-container flex-column" #container>
     <section class="art-board-tools-container p-16">
-      <button mat-flat-button color="primary" class="btn primary-btn mr-30 post-btn">
+      <button mat-flat-button color="primary" class="btn primary-btn mr-30 post-btn" (click)="onUploadPostButtonClicked()">
         <span>Post</span>
       </button>
 
@@ -49,7 +49,7 @@
       </div>
 
     </section>
-    <div class="full-height flex-column align-items-justify-content-center" (dragover)="$event.preventDefault()">
+    <div class="full-height flex-column align-items-justify-content-center post-content" (dragover)="$event.preventDefault()">
       <section id="post-messages"></section>
       <img [src]="imageUrl | safe: 'url'" alt="" [style.max-width]="container.clientWidth - 100 + 'px'"
         [style.max-height]="container.clientHeight - 200 + 'px'" />
