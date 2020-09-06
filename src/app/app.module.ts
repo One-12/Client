@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
+import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -9,6 +10,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { AdsenseModule } from 'ng2-adsense';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { CoreModule } from './core/core.module';
@@ -17,7 +20,6 @@ import { FeaturesModule } from './features/features.module';
 
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { MatIconModule } from '@angular/material/icon';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBj-DGF0P5unpVEAGAi1qFfNF-de3E8a44',
@@ -41,6 +43,10 @@ const firebaseConfig = {
     AngularFireAuthModule,
     AngularFirestoreModule,
     BrowserAnimationsModule,
+    AdsenseModule.forRoot({
+      adClient: 'ca-pub-6185517953080782',
+      adSlot: 2870432739,
+    }),
     StoreModule.forRoot([]),
     EffectsModule.forRoot([]),
     AngularFireModule.initializeApp(firebaseConfig),

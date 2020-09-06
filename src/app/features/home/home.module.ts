@@ -10,6 +10,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
+import { AdsenseModule } from 'ng2-adsense';
 import { NgDatePipesModule } from 'ngx-pipes';
 import { FeatherModule } from 'angular-feather';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -58,6 +59,8 @@ const icons = { Image, Video, Youtube };
     SharedModule,
     CommonModule,
     MatIconModule,
+    AdsenseModule,
+    MatListModule,
     MatChipsModule,
     MatButtonModule,
     FontAwesomeModule,
@@ -68,7 +71,6 @@ const icons = { Image, Video, Youtube };
     FeatherModule.pick(icons),
     StoreModule.forFeature('home', reducers),
     EffectsModule.forFeature([PostsEffects, TagsEffects]),
-    MatListModule,
   ],
   entryComponents: [CreatePostTypeSheetComponent],
 })
