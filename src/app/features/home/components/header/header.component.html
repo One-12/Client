@@ -1,10 +1,10 @@
-<header id="time-line-header-container" class="flex flex-row justify-content-end">
+<header id="time-line-header-container" class="full-height flex flex-row justify-content-end">
   <section>
     <ng-adsense [adClient]="'ca-pub-6185517953080782'" [adSlot]="2870432739"></ng-adsense>
   </section>
 
   <!-- User Information -->
-  <section class="flex justify-content-end" *ngIf="user">
+  <section class="flex justify-content-space-between" *ngIf="user">
     <section class="user-information-container">
 
       <!-- User Details -->
@@ -18,7 +18,7 @@
       </section>
 
       <!-- User Profile Pic -->
-      <section class="ml-15"><img [src]="user.photoURL" alt="" /></section>
+      <section class="ml-15 flex-column justify-content-center"><img [src]="user.photoURL" alt="" /></section>
     </section>
   </section>
 

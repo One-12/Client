@@ -3,7 +3,7 @@
 #home-container {
   display: grid;
   grid-template-columns: 280px 1fr;
-  grid-template-rows: 50px 20px auto auto auto;
+  grid-template-rows: 100px 20px auto auto auto;
   grid-template-areas:
     'left-sidebar time-line-header'
     'left-sidebar .'
