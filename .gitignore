@@ -27,6 +27,13 @@
 .idea/**/gradle.xml
 .idea/**/libraries
 
+# WebStorm
+.idea/.gitignore
+.idea/One12Client.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+
 # VS Code
 .vscode/*
 !.vscode/settings.json
@@ -190,9 +197,4 @@ dist
 .tern-port
 
 .DS_Store
-.idea/.gitignore
-.idea/One12Client.iml
-.idea/misc.xml
-.idea/modules.xml
-.idea/vcs.xml
 README.md
