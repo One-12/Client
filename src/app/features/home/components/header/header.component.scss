@@ -1,29 +1,18 @@
-@import '../../../../../assets/styles/colors.scss';
+@import '../../../../../assets/styles/variables.scss';
 
 #time-line-header-container {
   padding: 8px 30px;
 
-  .logo-container {
-    h1 {
-      margin-block-start: 0;
-      margin-block-end: 0;
-      font-size: 28px;
-    }
-  }
-  .user-badge {
+  .user-information-container {
     display: grid;
     grid-template-columns: repeat(2, auto);
     text-align: end;
-    color: $primary-blue-color;
-
-    .log-out {
-      color: $grey-color;
-    }
+    color: $one-12-primary-color;
 
     img {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      border-radius: 6px;
     }
   }
 }

@@ -1,13 +1,17 @@
 <header id="time-line-header-container" class="flex flex-row justify-content-end">
+
   <!-- User Information -->
   <section class="flex justify-content-end" *ngIf="user">
-    <section class="user-badge">
+    <section class="user-information-container">
+
       <!-- User Details -->
-      <section class="flex-column">
-        <section class="animate__lightSpeedInRight">
-          Good Morning, {{ user.displayName }} <strong class="italic">!</strong>
+      <section class="flex-column justify-content-center">
+        <section>
+          <strong>Welcome</strong>
         </section>
-        <section class="log-out f-14 pointer" (click)="onLogOutButtonClicked()">Log Out</section>
+        <section class="f-14 pointer" (click)="onLogOutButtonClicked()">
+          {{ user.displayName }}
+        </section>
       </section>
 
       <!-- User Profile Pic -->
