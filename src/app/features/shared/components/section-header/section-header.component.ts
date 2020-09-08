@@ -11,9 +11,9 @@ export class SectionHeaderComponent {
 
   @Input() public subtitle: string;
 
-  @Input() public showScrollButton: boolean;
-
   @Input() public isLightMode: boolean;
+
+  @Input() public showScrollButton: boolean;
 
   @Output() public scrollLeftButtonClicked = new EventEmitter();
 
